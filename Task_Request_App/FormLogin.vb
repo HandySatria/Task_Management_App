@@ -15,15 +15,16 @@ Public Class FormLogin
             Try
                 Call Enkripsi(TextBoxPassword.Text)
                 Call Koneksi()
-                Cmd = New MySqlCommand("Select * From user where username = '" & TextBoxNama.Text & "' and password = '" & HasilEnkripsi & "'", Conn)
+                Cmd = New MySqlCommand("SELECT u.user_id as user_id, u.fullname as fullname, u.username as username, u.password as password, d.divisi_name as divisi_name, d.divisi_id as divisi_id FROM user u left join divisi d on u.divisi_id = d.divisi_id where u.username = '" & TextBoxNama.Text & "' and u.password = '" & HasilEnkripsi & "'", Conn)
                 Rd = Cmd.ExecuteReader
                 Rd.Read()
                 If Not Rd.HasRows Then
-                    MsgBox("Nama atau Password Salah!")
+                    MsgBox("Username atau Password Salah!")
                 Else
                     Nama_User = Rd.Item("UserName")
                     Divisi_Id_User = Rd.Item("divisi_id")
-                    FormMenu.LabelHeader.Text = "Welcome, " & Nama_User & " from " & Divisi_Id_User
+                    Divisi_Name = Rd.Item("divisi_name")
+                    FormMenu.LabelHeader.Text = "Welcome, " & Nama_User & " dari Divisi " & Divisi_Name
                     Me.Close()
                     Call KondisiTerbuka()
 

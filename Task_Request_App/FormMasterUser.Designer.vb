@@ -22,6 +22,7 @@ Partial Class FormMasterUser
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.ButtonExport = New System.Windows.Forms.Button()
         Me.ButtonReset = New System.Windows.Forms.Button()
@@ -35,8 +36,12 @@ Partial Class FormMasterUser
         Me.Button4 = New System.Windows.Forms.Button()
         Me.LabelTotal = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.EditDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HapusDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -181,6 +186,7 @@ Partial Class FormMasterUser
         Me.DataGridView1.AllowUserToResizeRows = False
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.Lavender
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.ContextMenuStrip = Me.ContextMenuStrip1
         Me.DataGridView1.Location = New System.Drawing.Point(39, 387)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
@@ -188,6 +194,27 @@ Partial Class FormMasterUser
         Me.DataGridView1.RowTemplate.Height = 24
         Me.DataGridView1.Size = New System.Drawing.Size(1361, 477)
         Me.DataGridView1.TabIndex = 9
+        '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditDataToolStripMenuItem, Me.HapusDataToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(157, 52)
+        '
+        'EditDataToolStripMenuItem
+        '
+        Me.EditDataToolStripMenuItem.BackColor = System.Drawing.Color.Linen
+        Me.EditDataToolStripMenuItem.Name = "EditDataToolStripMenuItem"
+        Me.EditDataToolStripMenuItem.Size = New System.Drawing.Size(210, 24)
+        Me.EditDataToolStripMenuItem.Text = "Edit Data"
+        '
+        'HapusDataToolStripMenuItem
+        '
+        Me.HapusDataToolStripMenuItem.BackColor = System.Drawing.Color.Linen
+        Me.HapusDataToolStripMenuItem.Name = "HapusDataToolStripMenuItem"
+        Me.HapusDataToolStripMenuItem.Size = New System.Drawing.Size(210, 24)
+        Me.HapusDataToolStripMenuItem.Text = "Hapus Data"
         '
         'FormMasterUser
         '
@@ -205,6 +232,7 @@ Partial Class FormMasterUser
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -222,4 +250,7 @@ Partial Class FormMasterUser
     Friend WithEvents LabelTotal As Label
     Friend WithEvents DataGridView1 As DataGridView
     Protected WithEvents ComboBoxDivisi As ComboBox
+    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
+    Friend WithEvents EditDataToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents HapusDataToolStripMenuItem As ToolStripMenuItem
 End Class

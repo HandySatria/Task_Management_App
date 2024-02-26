@@ -6,7 +6,7 @@ Module Module1
     Public Cmd As MySqlCommand
     Public Ds As DataSet
     Public MyDB As String
-    Public Nama_User, Office_User, Divisi_Id_User, HasilEnkripsi As String
+    Public Nama_User, Divisi_Name, Divisi_Id_User, HasilEnkripsi As String
 
     Public Sub Koneksi()
         Try

@@ -3,7 +3,6 @@ Public Class FormAddDivisi
     Dim tString As String
     Dim cek_simpan As Integer
     Sub resetForm()
-        TextBoxNamaDivisi.Text = ""
         LabelId.Text = "id"
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -11,12 +10,12 @@ Public Class FormAddDivisi
         cek_simpan = 0
         For j = 0 To tString.Length - 1
             If tString.Chars(j) = "'" Then
-                MsgBox("Tidak Boleh Ada Tanda " & "( ' )" & " Pada NIK", vbOKOnly, "MESSAGE")
+                MsgBox("Tidak Boleh Ada Tanda " & "( ' )" & " Pada Nama Divisi", vbOKOnly, "MESSAGE")
                 TextBoxNamaDivisi.Focus()
                 cek_simpan = 1
             End If
         Next
-        If TextBoxNamaDivisi.Text = "" Then
+        If cek_simpan = 0 And TextBoxNamaDivisi.Text = "" Then
             MsgBox("Nama Divisi Tidak Boleh Kosong", vbOKOnly, "MESSAGE")
             cek_simpan = 1
         End If
@@ -38,8 +37,11 @@ Public Class FormAddDivisi
                 Else
                     Call Koneksi()
                     'ImportData = "INSERT INTO tbl_pegawai VALUES('" & TextBoxNIK.Text & "','" & TextBoxNama.Text & "','" & TglLahir & "','" & status & "','" & ComboBoxStatus.Text & "','" & TglMK & "','" & TglMPT & "','" & ComboBoxGolKer.Text & "')"
-                    Cmd = New MySqlCommand("Update divisi set divisi_name=@divisi_name where divisi_id = '" & LabelId.Text & "'", Conn)
+                    Cmd = New MySqlCommand("Update divisi set divisi_name=@divisi_name, user_upd=@user_upd, dtm_upd=@dtm_upd where divisi_id = '" & LabelId.Text & "'", Conn)
                     Cmd.Parameters.Add("@divisi_name", MySqlDbType.VarChar).Value = TextBoxNamaDivisi.Text
+                    Cmd.Parameters.Add("@user_upd", MySqlDbType.VarChar).Value = Nama_User
+                    Cmd.Parameters.Add("@dtm_upd", MySqlDbType.DateTime).Value = DateTime.Now
+
                     Cmd.ExecuteNonQuery()
 
                     MsgBox("Edit Data Berhasil", vbOKOnly, "Success Message")
@@ -58,4 +60,7 @@ Public Class FormAddDivisi
         Me.Close()
     End Sub
 
+    Private Sub FormAddDivisi_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

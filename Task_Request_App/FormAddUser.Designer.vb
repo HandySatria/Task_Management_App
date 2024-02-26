@@ -27,16 +27,17 @@ Partial Class FormAddUser
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.TextBoxNIK = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TextBoxNama = New System.Windows.Forms.TextBox()
+        Me.TextBoxUsername = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBoxPassword = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.ComboBoxStatus = New System.Windows.Forms.ComboBox()
+        Me.ComboBoxDivisi = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
+        Me.LabelId = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Button2
@@ -46,7 +47,7 @@ Partial Class FormAddUser
         Me.Button2.Location = New System.Drawing.Point(360, 291)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(117, 45)
-        Me.Button2.TabIndex = 15
+        Me.Button2.TabIndex = 7
         Me.Button2.Text = "CANCEL"
         Me.Button2.UseVisualStyleBackColor = False
         '
@@ -57,7 +58,7 @@ Partial Class FormAddUser
         Me.Button1.Location = New System.Drawing.Point(494, 291)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(117, 45)
-        Me.Button1.TabIndex = 16
+        Me.Button1.TabIndex = 6
         Me.Button1.Text = "SIMPAN"
         Me.Button1.UseVisualStyleBackColor = False
         '
@@ -94,23 +95,22 @@ Partial Class FormAddUser
         Me.Label3.TabIndex = 10
         Me.Label3.Text = ":"
         '
-        'TextBoxNIK
+        'TextBoxNama
         '
-        Me.TextBoxNIK.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBoxNIK.Location = New System.Drawing.Point(196, 94)
-        Me.TextBoxNIK.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.TextBoxNIK.Name = "TextBoxNIK"
-        Me.TextBoxNIK.Size = New System.Drawing.Size(415, 22)
-        Me.TextBoxNIK.TabIndex = 13
+        Me.TextBoxNama.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TextBoxNama.Location = New System.Drawing.Point(196, 94)
+        Me.TextBoxNama.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBoxNama.Name = "TextBoxNama"
+        Me.TextBoxNama.Size = New System.Drawing.Size(415, 22)
+        Me.TextBoxNama.TabIndex = 1
         '
-        'TextBox1
+        'TextBoxUsername
         '
-        Me.TextBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox1.Location = New System.Drawing.Point(196, 138)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(281, 22)
-        Me.TextBox1.TabIndex = 13
+        Me.TextBoxUsername.Location = New System.Drawing.Point(196, 138)
+        Me.TextBoxUsername.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBoxUsername.Name = "TextBoxUsername"
+        Me.TextBoxUsername.Size = New System.Drawing.Size(281, 22)
+        Me.TextBoxUsername.TabIndex = 2
         '
         'Label5
         '
@@ -134,14 +134,13 @@ Partial Class FormAddUser
         Me.Label6.TabIndex = 6
         Me.Label6.Text = "USERNAME"
         '
-        'TextBox2
+        'TextBoxPassword
         '
-        Me.TextBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox2.Location = New System.Drawing.Point(196, 184)
-        Me.TextBox2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(281, 22)
-        Me.TextBox2.TabIndex = 13
+        Me.TextBoxPassword.Location = New System.Drawing.Point(196, 184)
+        Me.TextBoxPassword.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBoxPassword.Name = "TextBoxPassword"
+        Me.TextBoxPassword.Size = New System.Drawing.Size(281, 22)
+        Me.TextBoxPassword.TabIndex = 3
         '
         'Label7
         '
@@ -165,15 +164,17 @@ Partial Class FormAddUser
         Me.Label9.TabIndex = 6
         Me.Label9.Text = "PASSWORD"
         '
-        'ComboBoxStatus
+        'ComboBoxDivisi
         '
-        Me.ComboBoxStatus.FormattingEnabled = True
-        Me.ComboBoxStatus.Items.AddRange(New Object() {"PKWT", "PEGAWAI TETAP"})
-        Me.ComboBoxStatus.Location = New System.Drawing.Point(196, 225)
-        Me.ComboBoxStatus.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.ComboBoxStatus.Name = "ComboBoxStatus"
-        Me.ComboBoxStatus.Size = New System.Drawing.Size(196, 24)
-        Me.ComboBoxStatus.TabIndex = 12
+        Me.ComboBoxDivisi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxDivisi.FormattingEnabled = True
+        Me.ComboBoxDivisi.ItemHeight = 16
+        Me.ComboBoxDivisi.Items.AddRange(New Object() {"PKWT", "PEGAWAI TETAP"})
+        Me.ComboBoxDivisi.Location = New System.Drawing.Point(196, 225)
+        Me.ComboBoxDivisi.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.ComboBoxDivisi.Name = "ComboBoxDivisi"
+        Me.ComboBoxDivisi.Size = New System.Drawing.Size(196, 24)
+        Me.ComboBoxDivisi.TabIndex = 5
         '
         'Label2
         '
@@ -197,15 +198,26 @@ Partial Class FormAddUser
         Me.Label8.TabIndex = 8
         Me.Label8.Text = "DIVISI"
         '
+        'LabelId
+        '
+        Me.LabelId.AutoSize = True
+        Me.LabelId.Location = New System.Drawing.Point(37, 319)
+        Me.LabelId.Name = "LabelId"
+        Me.LabelId.Size = New System.Drawing.Size(19, 17)
+        Me.LabelId.TabIndex = 33
+        Me.LabelId.Text = "id"
+        Me.LabelId.Visible = False
+        '
         'FormAddUser
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.PeachPuff
         Me.ClientSize = New System.Drawing.Size(671, 358)
+        Me.Controls.Add(Me.LabelId)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.ComboBoxStatus)
+        Me.Controls.Add(Me.ComboBoxDivisi)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label19)
@@ -215,9 +227,9 @@ Partial Class FormAddUser
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.TextBoxNIK)
+        Me.Controls.Add(Me.TextBoxPassword)
+        Me.Controls.Add(Me.TextBoxUsername)
+        Me.Controls.Add(Me.TextBoxNama)
         Me.Name = "FormAddUser"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FormAddUser"
@@ -231,14 +243,15 @@ Partial Class FormAddUser
     Friend WithEvents Label19 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents TextBoxNIK As TextBox
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TextBoxNama As TextBox
+    Friend WithEvents TextBoxUsername As TextBox
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBoxPassword As TextBox
     Friend WithEvents Label7 As Label
     Friend WithEvents Label9 As Label
-    Friend WithEvents ComboBoxStatus As ComboBox
+    Friend WithEvents ComboBoxDivisi As ComboBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label8 As Label
+    Friend WithEvents LabelId As Label
 End Class

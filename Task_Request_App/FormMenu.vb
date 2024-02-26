@@ -11,6 +11,7 @@
     End Sub
 
     Sub KondisiTertutup()
+        switchForm(FormHome)
         ButtonLogin.Text = "LOGIN"
         RequestToolStripMenuItem.Visible = False
         TaskToolStripMenuItem.Visible = False

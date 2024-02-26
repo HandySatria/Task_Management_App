@@ -4,6 +4,7 @@ Public Class FormMasterUser
     Dim baris As Integer
     Dim divisiDictionary As New Dictionary(Of Integer, String)()
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        FormAddUser.LabelId.Text = ""
         FormAddUser.ShowDialog()
     End Sub
 
@@ -21,8 +22,8 @@ Public Class FormMasterUser
     End Sub
 
     Private Sub FormMasterUser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ComboBoxDivisi.DataSource = Nothing
         Call Koneksi()
-        ComboBoxDivisi.Items.Clear()
         Cmd = New MySqlCommand("select divisi_id, divisi_name from divisi", Conn)
         Rd = Cmd.ExecuteReader
         divisiDictionary.Add(-1, "Pilih Divisi")
@@ -34,7 +35,6 @@ Public Class FormMasterUser
         ComboBoxDivisi.DisplayMember = "Value"
         ComboBoxDivisi.ValueMember = "Key"
         ComboBoxDivisi.DataSource = New BindingSource(divisiDictionary, Nothing)
-        ComboBoxDivisi.Text = ""
     End Sub
 
     Private Sub ButtonReset_Click(sender As Object, e As EventArgs) Handles ButtonReset.Click
@@ -105,8 +105,8 @@ Public Class FormMasterUser
                 DataGridView1.Columns(4).Width = 150
                 DataGridView1.Columns(5).Width = 100
                 DataGridView1.Columns(6).Width = 100
-                DataGridView1.Columns(7).Width = 100
-                DataGridView1.Columns(8).Width = 100
+                DataGridView1.Columns(7).Width = 150
+                DataGridView1.Columns(8).Width = 150
 
                 DataGridView1.Columns(0).HeaderText = "ID"
                 DataGridView1.Columns(1).HeaderText = "Nama Panjang"
@@ -150,11 +150,32 @@ Public Class FormMasterUser
         End Try
     End Sub
 
+    Sub hapusData()
+        Call Koneksi()
+        Cmd = New MySqlCommand("delete from user where user_id = '" & DataGridView1.CurrentRow.Cells(0).Value & "'", Conn)
+        Cmd.ExecuteNonQuery()
+        MsgBox("User " & DataGridView1.CurrentRow.Cells(1).Value & " telah dihapus", vbOKOnly, "Success Message")
+        resetForm()
+    End Sub
+
     Private Sub TextBoxNamaKeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBoxNama.KeyPress
         If e.KeyChar = Chr(13) Then
             GetData()
         End If
     End Sub
+
+    Private Sub EditDataToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditDataToolStripMenuItem.Click
+        FormAddUser.LabelId.Text = DataGridView1.CurrentRow.Cells(0).Value
+        FormAddUser.ShowDialog()
+    End Sub
+
+    Private Sub HapusDataToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HapusDataToolStripMenuItem.Click
+        Select Case MsgBox("Apakah anda yakin ingin menghapus User " & DataGridView1.CurrentRow.Cells(1).Value & " ?", MsgBoxStyle.YesNo, "MESSAGE")
+            Case MsgBoxResult.Yes
+                hapusData()
+        End Select
+    End Sub
+
     Private Sub TextBoxUsernameKeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBoxUsername.KeyPress
         If e.KeyChar = Chr(13) Then
             GetData()

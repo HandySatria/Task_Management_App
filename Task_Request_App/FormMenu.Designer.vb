@@ -26,6 +26,7 @@ Partial Class FormMenu
         Me.ButtonLogin = New System.Windows.Forms.Button()
         Me.PanelLogo = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.PictureBoxLogo = New System.Windows.Forms.PictureBox()
         Me.PanelJudul = New System.Windows.Forms.Panel()
         Me.LabelHeader = New System.Windows.Forms.Label()
         Me.PanelMenu = New System.Windows.Forms.Panel()
@@ -35,12 +36,11 @@ Partial Class FormMenu
         Me.SettingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MASTERUSERToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MASTERDIVISIToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PictureBoxLogo = New System.Windows.Forms.PictureBox()
         Me.PanelLogo.SuspendLayout()
+        CType(Me.PictureBoxLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelJudul.SuspendLayout()
         Me.PanelMenu.SuspendLayout()
         Me.MenuStrip2.SuspendLayout()
-        CType(Me.PictureBoxLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelDekstop
@@ -91,6 +91,18 @@ Partial Class FormMenu
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Task Management"
         '
+        'PictureBoxLogo
+        '
+        Me.PictureBoxLogo.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBoxLogo.Image = Global.Task_Request_App.My.Resources.Resources.LaRitta_removebg_preview
+        Me.PictureBoxLogo.Location = New System.Drawing.Point(28, 2)
+        Me.PictureBoxLogo.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.PictureBoxLogo.Name = "PictureBoxLogo"
+        Me.PictureBoxLogo.Size = New System.Drawing.Size(149, 126)
+        Me.PictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBoxLogo.TabIndex = 0
+        Me.PictureBoxLogo.TabStop = False
+        '
         'PanelJudul
         '
         Me.PanelJudul.BackColor = System.Drawing.Color.LightPink
@@ -106,11 +118,11 @@ Partial Class FormMenu
         'LabelHeader
         '
         Me.LabelHeader.AutoSize = True
-        Me.LabelHeader.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelHeader.Font = New System.Drawing.Font("Lucida Calligraphy", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelHeader.ForeColor = System.Drawing.SystemColors.GrayText
         Me.LabelHeader.Location = New System.Drawing.Point(36, 20)
         Me.LabelHeader.Name = "LabelHeader"
-        Me.LabelHeader.Size = New System.Drawing.Size(0, 25)
+        Me.LabelHeader.Size = New System.Drawing.Size(0, 27)
         Me.LabelHeader.TabIndex = 19
         '
         'PanelMenu
@@ -182,18 +194,6 @@ Partial Class FormMenu
         Me.MASTERDIVISIToolStripMenuItem.Size = New System.Drawing.Size(221, 32)
         Me.MASTERDIVISIToolStripMenuItem.Text = "MASTER DIVISI"
         '
-        'PictureBoxLogo
-        '
-        Me.PictureBoxLogo.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBoxLogo.Image = Global.Task_Request_App.My.Resources.Resources.LaRitta_removebg_preview
-        Me.PictureBoxLogo.Location = New System.Drawing.Point(28, 2)
-        Me.PictureBoxLogo.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.PictureBoxLogo.Name = "PictureBoxLogo"
-        Me.PictureBoxLogo.Size = New System.Drawing.Size(149, 126)
-        Me.PictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBoxLogo.TabIndex = 0
-        Me.PictureBoxLogo.TabStop = False
-        '
         'FormMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -209,12 +209,12 @@ Partial Class FormMenu
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.PanelLogo.ResumeLayout(False)
         Me.PanelLogo.PerformLayout()
+        CType(Me.PictureBoxLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelJudul.ResumeLayout(False)
         Me.PanelJudul.PerformLayout()
         Me.PanelMenu.ResumeLayout(False)
         Me.MenuStrip2.ResumeLayout(False)
         Me.MenuStrip2.PerformLayout()
-        CType(Me.PictureBoxLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
