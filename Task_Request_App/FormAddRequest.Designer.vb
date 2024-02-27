@@ -35,10 +35,14 @@ Partial Class FormAddRequest
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ButtonCancel = New System.Windows.Forms.Button()
         Me.LabelId = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.ComboBoxPrioritas = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
         'ComboBoxDivisi
         '
+        Me.ComboBoxDivisi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxDivisi.FormattingEnabled = True
         Me.ComboBoxDivisi.Location = New System.Drawing.Point(195, 74)
         Me.ComboBoxDivisi.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
@@ -134,7 +138,7 @@ Partial Class FormAddRequest
         '
         Me.ButtonSimpan.BackColor = System.Drawing.Color.Blue
         Me.ButtonSimpan.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.ButtonSimpan.Location = New System.Drawing.Point(493, 365)
+        Me.ButtonSimpan.Location = New System.Drawing.Point(493, 406)
         Me.ButtonSimpan.Name = "ButtonSimpan"
         Me.ButtonSimpan.Size = New System.Drawing.Size(117, 45)
         Me.ButtonSimpan.TabIndex = 4
@@ -156,7 +160,7 @@ Partial Class FormAddRequest
         '
         Me.ButtonCancel.BackColor = System.Drawing.Color.Yellow
         Me.ButtonCancel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.ButtonCancel.Location = New System.Drawing.Point(359, 365)
+        Me.ButtonCancel.Location = New System.Drawing.Point(359, 406)
         Me.ButtonCancel.Name = "ButtonCancel"
         Me.ButtonCancel.Size = New System.Drawing.Size(117, 45)
         Me.ButtonCancel.TabIndex = 4
@@ -166,26 +170,61 @@ Partial Class FormAddRequest
         'LabelId
         '
         Me.LabelId.AutoSize = True
-        Me.LabelId.Location = New System.Drawing.Point(23, 406)
+        Me.LabelId.Location = New System.Drawing.Point(12, 420)
         Me.LabelId.Name = "LabelId"
         Me.LabelId.Size = New System.Drawing.Size(19, 17)
         Me.LabelId.TabIndex = 34
         Me.LabelId.Text = "id"
         Me.LabelId.Visible = False
         '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.Black
+        Me.Label5.Location = New System.Drawing.Point(166, 359)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(15, 21)
+        Me.Label5.TabIndex = 0
+        Me.Label5.Text = ":"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.Black
+        Me.Label6.Location = New System.Drawing.Point(43, 359)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(81, 21)
+        Me.Label6.TabIndex = 0
+        Me.Label6.Text = "PRIORITAS"
+        '
+        'ComboBoxPrioritas
+        '
+        Me.ComboBoxPrioritas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxPrioritas.FormattingEnabled = True
+        Me.ComboBoxPrioritas.Location = New System.Drawing.Point(195, 359)
+        Me.ComboBoxPrioritas.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.ComboBoxPrioritas.Name = "ComboBoxPrioritas"
+        Me.ComboBoxPrioritas.Size = New System.Drawing.Size(160, 24)
+        Me.ComboBoxPrioritas.TabIndex = 1
+        '
         'FormAddRequest
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.PeachPuff
-        Me.ClientSize = New System.Drawing.Size(667, 446)
+        Me.ClientSize = New System.Drawing.Size(667, 474)
         Me.Controls.Add(Me.LabelId)
         Me.Controls.Add(Me.ButtonCancel)
         Me.Controls.Add(Me.ButtonSimpan)
+        Me.Controls.Add(Me.ComboBoxPrioritas)
         Me.Controls.Add(Me.ComboBoxDivisi)
         Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.Label19)
+        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TextBoxDeskripsi)
@@ -212,4 +251,7 @@ Partial Class FormAddRequest
     Friend WithEvents Label1 As Label
     Friend WithEvents ButtonCancel As Button
     Friend WithEvents LabelId As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents ComboBoxPrioritas As ComboBox
 End Class

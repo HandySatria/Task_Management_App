@@ -267,7 +267,7 @@ Partial Class FormTask
         Me.SetujuiToolStripMenuItem.BackColor = System.Drawing.Color.Yellow
         Me.SetujuiToolStripMenuItem.Name = "SetujuiToolStripMenuItem"
         Me.SetujuiToolStripMenuItem.Size = New System.Drawing.Size(159, 24)
-        Me.SetujuiToolStripMenuItem.Text = "Setujui"
+        Me.SetujuiToolStripMenuItem.Text = "Setuju"
         '
         'TidakSetujuToolStripMenuItem
         '

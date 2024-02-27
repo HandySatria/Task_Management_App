@@ -10,6 +10,7 @@ Public Class FormLogin
 
     Private Sub ButtonLogin_Click(sender As Object, e As EventArgs) Handles ButtonLogin.Click
         login()
+        Start_BotAsync()
     End Sub
 
     Sub login()

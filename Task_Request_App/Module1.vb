@@ -1,4 +1,10 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports System.Threading
+Imports Telegram.Bot
+Imports Telegram.Bot.Exceptions
+Imports Telegram.Bot.Types
+Imports Telegram.Bot.Types.Enums
+Imports Telegram.Bot.Types.ReplyMarkups
 Module Module1
     Public Conn As MySqlConnection
     Public Da As MySqlDataAdapter
@@ -7,6 +13,9 @@ Module Module1
     Public Ds As DataSet
     Public MyDB As String
     Public Nama_User, Divisi_Name, Divisi_Id_User, HasilEnkripsi As String
+    Public log As String
+    Public botClient As TelegramBotClient
+    Public cts As CancellationTokenSource
 
     Public Sub Koneksi()
         Try
@@ -224,5 +233,189 @@ Module Module1
             End Function
         End Class
     End Class
+
+    'Private Async Function KirimPesanKeOrangLainAsync(botClient As ITelegramBotClient, chatId As Long, pesan As String, cancellationToken As CancellationToken) As Task
+    '    Try
+    '        ' Mengirim pesan ke ID chat yang ditentukan
+    '        Await botClient.SendTextMessageAsync(chatId:=chatId, text:=pesan, cancellationToken:=cancellationToken)
+    '    Catch ex As Exception
+    '        ' Tangani kesalahan jika ada
+    '        Console.WriteLine(ex.ToString())
+    '    End Try
+    'End Function
+    Public Async Function HandleUpdateAsync(botClient As ITelegramBotClient, update As Update, cancellationToken As CancellationToken) As Task
+        Try
+            If update.Type = UpdateType.CallbackQuery Then
+                Dim callbackQuery = update.CallbackQuery
+                Dim data = callbackQuery.Data
+                Dim chatId = callbackQuery.Message.Chat.Id
+
+                ' Hapus pesan yang mengandung inline keyboard setelah tombol ditekan
+                Await botClient.DeleteMessageAsync(chatId, callbackQuery.Message.MessageId, cancellationToken)
+
+                Select Case data
+                    Case "Sticker"
+                        Await botClient.SendStickerAsync(chatId:=chatId, sticker:=InputFile.FromUri("https://github.com/TelegramBots/book/raw/master/src/docs/sticker-dali.webp"), cancellationToken:=cancellationToken)
+                        log = log & Environment.NewLine & "- Send Sticker"
+                    Case "Gambar"
+                        Await botClient.SendDocumentAsync(chatId:=chatId, document:=InputFile.FromUri("https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/2023/04/10/InShot_20230410_090633955_1-989862021.jpg"), cancellationToken:=cancellationToken)
+                        log = log & Environment.NewLine & "- Send Image"
+                    Case "Vidio"
+                        Await botClient.SendVideoAsync(chatId:=chatId, video:=InputFile.FromUri("https://github.com/TelegramBots/book/raw/master/src/docs/video-bulb.mp4"), cancellationToken:=cancellationToken)
+                        log = log & Environment.NewLine & "- Send Video"
+                    Case "GetData"
+                        ' Memanggil fungsi untuk mengambil data dari database
+                        Dim dataResult As String = ""
+                        Call Koneksi()
+
+                        Cmd = New MySqlCommand("Select Nama_Pekerjaan from list_pekerjaan", Conn)
+                        Rd = Cmd.ExecuteReader
+                        Rd.Read()
+                        If Rd.HasRows Then
+                            Do While Rd.Read
+                                dataResult = dataResult & Environment.NewLine & Rd.Item("Nama_Pekerjaan")
+                            Loop
+                        End If
+                        ' Mengirim hasil query ke chat
+                        Await botClient.SendTextMessageAsync(
+                        chatId:=chatId,
+                        text:="Hasil dari query ke database:" & Environment.NewLine & dataResult,
+                        cancellationToken:=cancellationToken
+                    )
+                        log = log & Environment.NewLine & "- Send Database Result"
+                    Case "ReplyKeyboard"
+                        Dim replyKeyboard = New ReplyKeyboardMarkup(New List(Of List(Of KeyboardButton))() From
+                       {
+                           New List(Of KeyboardButton)() From
+                           {
+                               New KeyboardButton("Sticker"),
+                               New KeyboardButton("Vidio")
+                           },
+                           New List(Of KeyboardButton)() From
+                           {
+                               New KeyboardButton("Gambar")
+                           }
+                       })
+
+                        Await botClient.SendTextMessageAsync(
+                            chatId:=chatId,
+                            text:="Pilih fungsi yang ingin Anda jalankan :",
+                            replyMarkup:=replyKeyboard,
+                            cancellationToken:=cancellationToken
+                        )
+                        log = log & Environment.NewLine & "- Send ReplyKeyboard"
+                End Select
+
+            Else
+                Dim message = update.Message
+                Dim messageText = message.Text
+                Dim chatId = message.Chat.Id
+
+                Select Case messageText
+                    Case "Sticker"
+                        Await botClient.SendStickerAsync(chatId:=chatId, sticker:=InputFile.FromUri("https://github.com/TelegramBots/book/raw/master/src/docs/sticker-dali.webp"), cancellationToken:=cancellationToken)
+                        log = log & Environment.NewLine & "- Send Sticker"
+                    Case "Vidio"
+                        Await botClient.SendVideoAsync(chatId:=chatId, video:=InputFile.FromUri("https://github.com/TelegramBots/book/raw/master/src/docs/video-bulb.mp4"), cancellationToken:=cancellationToken)
+                        log = log & Environment.NewLine & "- Send Video"
+                    Case "Gambar"
+                        Await botClient.SendDocumentAsync(chatId:=chatId, document:=InputFile.FromUri("https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/2023/04/10/InShot_20230410_090633955_1-989862021.jpg"), cancellationToken:=cancellationToken)
+                        log = log & Environment.NewLine & "- Send Image"
+                    Case Else
+
+                        Dim inlineKeyboard = New InlineKeyboardMarkup(
+                            {
+                                New InlineKeyboardButton() {
+                                    InlineKeyboardButton.WithCallbackData("Klik untuk Sticker", "Sticker"),
+                                    InlineKeyboardButton.WithCallbackData("Klik untuk Gambar", "Gambar"),
+                                    InlineKeyboardButton.WithCallbackData("Klik untuk Vidio", "Vidio")
+                                },
+                                New InlineKeyboardButton() {
+                                    InlineKeyboardButton.WithCallbackData("Klik untuk ReplyKeyboard", "ReplyKeyboard")
+                                },
+                                New InlineKeyboardButton() {
+                                    InlineKeyboardButton.WithCallbackData("Klik untuk Get Data", "GetData")
+                                }
+                            }
+                        )
+
+
+                        Await botClient.SendTextMessageAsync(
+                            chatId:=chatId,
+                            text:="Pilih fungsi yang ingin Anda jalankan:",
+                            replyMarkup:=inlineKeyboard,
+                            cancellationToken:=cancellationToken
+                        )
+                End Select
+                'Dim replyKeyboard = New ReplyKeyboardMarkup(New List(Of List(Of KeyboardButton))() From
+                '        {
+                '            New List(Of KeyboardButton)() From
+                '            {
+                '                New KeyboardButton("Sticker"),
+                '                New KeyboardButton("Vidio")
+                '            },
+                '            New List(Of KeyboardButton)() From
+                '            {
+                '                New KeyboardButton("Gambar")
+                '            }
+                '        })
+
+                'Await botClient.SendTextMessageAsync(
+                '    chatId:=chatId,
+                '    text:="Pilih Fungsi Dibawah Keyboard :",
+                '    replyMarkup:=replyKeyboard,
+                '    cancellationToken:=cancellationToken
+                ')
+            End If
+
+            'TextBox2.Invoke(Sub() UpdateTextBox(log))
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Dim st As New StackTrace(True)
+            st = New StackTrace(ex, True)
+            MessageBox.Show("Line: " & st.GetFrame(0).GetFileLineNumber().ToString, "Error")
+        End Try
+    End Function
+
+    Public Function HandlePollingErrorAsync(botClient As ITelegramBotClient, exception As Exception, cancellationToken As CancellationToken) As Task
+        Dim ErrorMessage As String = If(TypeOf exception Is ApiRequestException,
+                                        $"Telegram API Error:{vbCrLf}[{DirectCast(exception, ApiRequestException).ErrorCode}]{vbCrLf}{DirectCast(exception, ApiRequestException).Message}",
+                                        exception.ToString())
+
+        Console.WriteLine(ErrorMessage)
+        Return Task.CompletedTask
+    End Function
+    Public Async Function Start_BotAsync() As Task
+        Dim token As String = "6872091136:AAEW2qt4w9vcKFwxCzDzX5-_ecBBKcIc0p0"
+        botClient = New TelegramBotClient(token)
+        cts = New CancellationTokenSource()
+
+        Dim m = Await botClient.GetMeAsync()
+        Console.WriteLine($"Hello, World! I am user {m.Id} and my name is {m.FirstName}.")
+        'TextBox1.Text = $"Hello, World! I am user {m.Id} and my name is {m.FirstName}"
+
+        botClient.StartReceiving(
+            updateHandler:=AddressOf HandleUpdateAsync,
+            pollingErrorHandler:=AddressOf HandlePollingErrorAsync,
+            cancellationToken:=cts.Token
+        )
+
+        Dim mm = Await botClient.GetMeAsync()
+        Console.WriteLine($"Start listening for @{mm.Username}")
+        Console.ReadLine()
+        'Button1.Text = "Stop Bot"
+        log = "- Bot Start"
+    End Function
+
+    Public Async Function KirimPesanKeOrangLainAsync(botClient As ITelegramBotClient, chatId As Long, pesan As String, cancellationToken As CancellationToken) As Task
+        Try
+            ' Mengirim pesan ke ID chat yang ditentukan
+            Await botClient.SendTextMessageAsync(chatId:=chatId, text:=pesan, cancellationToken:=cancellationToken)
+        Catch ex As Exception
+            ' Tangani kesalahan jika ada
+            Console.WriteLine(ex.ToString())
+        End Try
+    End Function
 
 End Module
