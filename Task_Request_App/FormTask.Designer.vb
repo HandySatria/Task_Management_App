@@ -22,58 +22,56 @@ Partial Class FormTask
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.ButtonExport = New System.Windows.Forms.Button()
+        Me.ButtonReset = New System.Windows.Forms.Button()
+        Me.ButtonSearch = New System.Windows.Forms.Button()
+        Me.ComboBoxStatus = New System.Windows.Forms.ComboBox()
+        Me.ComboBoxDivisi = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBoxSubject = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TextBoxTaskId = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.LabelTotal = New System.Windows.Forms.Label()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.SetujuiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TidakSetujuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OnProgressToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DoneToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DateEdit2 = New DevExpress.XtraEditors.DateEdit()
         Me.DateEdit1 = New DevExpress.XtraEditors.DateEdit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip1.SuspendLayout()
         CType(Me.DateEdit2.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'DataGridView1
-        '
-        Me.DataGridView1.BackgroundColor = System.Drawing.Color.Lavender
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(50, 376)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(1361, 556)
-        Me.DataGridView1.TabIndex = 5
-        '
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.LightSteelBlue
         Me.GroupBox1.Controls.Add(Me.DateEdit2)
         Me.GroupBox1.Controls.Add(Me.DateEdit1)
-        Me.GroupBox1.Controls.Add(Me.Button3)
-        Me.GroupBox1.Controls.Add(Me.Button2)
-        Me.GroupBox1.Controls.Add(Me.Button1)
-        Me.GroupBox1.Controls.Add(Me.ComboBox2)
-        Me.GroupBox1.Controls.Add(Me.ComboBox1)
+        Me.GroupBox1.Controls.Add(Me.ButtonExport)
+        Me.GroupBox1.Controls.Add(Me.ButtonReset)
+        Me.GroupBox1.Controls.Add(Me.ButtonSearch)
+        Me.GroupBox1.Controls.Add(Me.ComboBoxStatus)
+        Me.GroupBox1.Controls.Add(Me.ComboBoxDivisi)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label5)
-        Me.GroupBox1.Controls.Add(Me.TextBox2)
+        Me.GroupBox1.Controls.Add(Me.TextBoxSubject)
         Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.TextBox1)
+        Me.GroupBox1.Controls.Add(Me.TextBoxTaskId)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.GroupBox1.Font = New System.Drawing.Font("Tahoma", 22.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -84,59 +82,59 @@ Partial Class FormTask
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "TASK"
         '
-        'Button3
+        'ButtonExport
         '
-        Me.Button3.BackColor = System.Drawing.Color.LimeGreen
-        Me.Button3.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Button3.Location = New System.Drawing.Point(810, 234)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(176, 43)
-        Me.Button3.TabIndex = 3
-        Me.Button3.Text = "EXPORT EXCEL"
-        Me.Button3.UseVisualStyleBackColor = False
+        Me.ButtonExport.BackColor = System.Drawing.Color.LimeGreen
+        Me.ButtonExport.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonExport.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.ButtonExport.Location = New System.Drawing.Point(810, 234)
+        Me.ButtonExport.Name = "ButtonExport"
+        Me.ButtonExport.Size = New System.Drawing.Size(176, 43)
+        Me.ButtonExport.TabIndex = 3
+        Me.ButtonExport.Text = "EXPORT EXCEL"
+        Me.ButtonExport.UseVisualStyleBackColor = False
         '
-        'Button2
+        'ButtonReset
         '
-        Me.Button2.BackColor = System.Drawing.Color.Yellow
-        Me.Button2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Button2.Location = New System.Drawing.Point(1015, 234)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(135, 43)
-        Me.Button2.TabIndex = 3
-        Me.Button2.Text = "RESET"
-        Me.Button2.UseVisualStyleBackColor = False
+        Me.ButtonReset.BackColor = System.Drawing.Color.Yellow
+        Me.ButtonReset.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonReset.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.ButtonReset.Location = New System.Drawing.Point(1015, 234)
+        Me.ButtonReset.Name = "ButtonReset"
+        Me.ButtonReset.Size = New System.Drawing.Size(135, 43)
+        Me.ButtonReset.TabIndex = 3
+        Me.ButtonReset.Text = "RESET"
+        Me.ButtonReset.UseVisualStyleBackColor = False
         '
-        'Button1
+        'ButtonSearch
         '
-        Me.Button1.BackColor = System.Drawing.Color.DodgerBlue
-        Me.Button1.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Button1.Location = New System.Drawing.Point(1180, 234)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(135, 43)
-        Me.Button1.TabIndex = 3
-        Me.Button1.Text = "SEARCH"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.ButtonSearch.BackColor = System.Drawing.Color.DodgerBlue
+        Me.ButtonSearch.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonSearch.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.ButtonSearch.Location = New System.Drawing.Point(1180, 234)
+        Me.ButtonSearch.Name = "ButtonSearch"
+        Me.ButtonSearch.Size = New System.Drawing.Size(135, 43)
+        Me.ButtonSearch.TabIndex = 3
+        Me.ButtonSearch.Text = "SEARCH"
+        Me.ButtonSearch.UseVisualStyleBackColor = False
         '
-        'ComboBox2
+        'ComboBoxStatus
         '
-        Me.ComboBox2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(951, 174)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(340, 32)
-        Me.ComboBox2.TabIndex = 1
+        Me.ComboBoxStatus.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBoxStatus.FormattingEnabled = True
+        Me.ComboBoxStatus.Location = New System.Drawing.Point(951, 174)
+        Me.ComboBoxStatus.Name = "ComboBoxStatus"
+        Me.ComboBoxStatus.Size = New System.Drawing.Size(340, 32)
+        Me.ComboBoxStatus.TabIndex = 1
         '
-        'ComboBox1
+        'ComboBoxDivisi
         '
-        Me.ComboBox1.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(951, 125)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(340, 32)
-        Me.ComboBox1.TabIndex = 1
+        Me.ComboBoxDivisi.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBoxDivisi.FormattingEnabled = True
+        Me.ComboBoxDivisi.Location = New System.Drawing.Point(951, 125)
+        Me.ComboBoxDivisi.Name = "ComboBoxDivisi"
+        Me.ComboBoxDivisi.Size = New System.Drawing.Size(340, 32)
+        Me.ComboBoxDivisi.TabIndex = 1
         '
         'Label3
         '
@@ -178,13 +176,13 @@ Partial Class FormTask
         Me.Label5.TabIndex = 0
         Me.Label5.Text = "Dari Divisi"
         '
-        'TextBox2
+        'TextBoxSubject
         '
-        Me.TextBox2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(951, 80)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(340, 32)
-        Me.TextBox2.TabIndex = 1
+        Me.TextBoxSubject.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxSubject.Location = New System.Drawing.Point(951, 80)
+        Me.TextBoxSubject.Name = "TextBoxSubject"
+        Me.TextBoxSubject.Size = New System.Drawing.Size(340, 32)
+        Me.TextBoxSubject.TabIndex = 1
         '
         'Label4
         '
@@ -196,13 +194,13 @@ Partial Class FormTask
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "Subjek"
         '
-        'TextBox1
+        'TextBoxTaskId
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(270, 77)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(340, 32)
-        Me.TextBox1.TabIndex = 1
+        Me.TextBoxTaskId.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxTaskId.Location = New System.Drawing.Point(270, 77)
+        Me.TextBoxTaskId.Name = "TextBoxTaskId"
+        Me.TextBoxTaskId.Size = New System.Drawing.Size(340, 32)
+        Me.TextBoxTaskId.TabIndex = 1
         '
         'Label1
         '
@@ -210,9 +208,71 @@ Partial Class FormTask
         Me.Label1.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(45, 80)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(82, 24)
+        Me.Label1.Size = New System.Drawing.Size(76, 24)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "No Task"
+        Me.Label1.Text = "Task Id"
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.AllowUserToResizeColumns = False
+        Me.DataGridView1.AllowUserToResizeRows = False
+        Me.DataGridView1.BackgroundColor = System.Drawing.Color.Lavender
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.ContextMenuStrip = Me.ContextMenuStrip1
+        Me.DataGridView1.Location = New System.Drawing.Point(50, 363)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.RowHeadersVisible = False
+        Me.DataGridView1.RowTemplate.Height = 24
+        Me.DataGridView1.Size = New System.Drawing.Size(1361, 477)
+        Me.DataGridView1.TabIndex = 13
+        '
+        'LabelTotal
+        '
+        Me.LabelTotal.AutoSize = True
+        Me.LabelTotal.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelTotal.Location = New System.Drawing.Point(52, 847)
+        Me.LabelTotal.Name = "LabelTotal"
+        Me.LabelTotal.Size = New System.Drawing.Size(0, 29)
+        Me.LabelTotal.TabIndex = 12
+        '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SetujuiToolStripMenuItem, Me.TidakSetujuToolStripMenuItem, Me.OnProgressToolStripMenuItem, Me.DoneToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(211, 128)
+        '
+        'SetujuiToolStripMenuItem
+        '
+        Me.SetujuiToolStripMenuItem.BackColor = System.Drawing.Color.Yellow
+        Me.SetujuiToolStripMenuItem.Name = "SetujuiToolStripMenuItem"
+        Me.SetujuiToolStripMenuItem.Size = New System.Drawing.Size(210, 24)
+        Me.SetujuiToolStripMenuItem.Text = "Setujui"
+        '
+        'TidakSetujuToolStripMenuItem
+        '
+        Me.TidakSetujuToolStripMenuItem.BackColor = System.Drawing.Color.LightCoral
+        Me.TidakSetujuToolStripMenuItem.Name = "TidakSetujuToolStripMenuItem"
+        Me.TidakSetujuToolStripMenuItem.Size = New System.Drawing.Size(210, 24)
+        Me.TidakSetujuToolStripMenuItem.Text = "Tidak Setuju"
+        '
+        'OnProgressToolStripMenuItem
+        '
+        Me.OnProgressToolStripMenuItem.BackColor = System.Drawing.Color.Blue
+        Me.OnProgressToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.OnProgressToolStripMenuItem.Name = "OnProgressToolStripMenuItem"
+        Me.OnProgressToolStripMenuItem.Size = New System.Drawing.Size(210, 24)
+        Me.OnProgressToolStripMenuItem.Text = "On Progress"
+        '
+        'DoneToolStripMenuItem
+        '
+        Me.DoneToolStripMenuItem.BackColor = System.Drawing.Color.LightGreen
+        Me.DoneToolStripMenuItem.Name = "DoneToolStripMenuItem"
+        Me.DoneToolStripMenuItem.Size = New System.Drawing.Size(210, 24)
+        Me.DoneToolStripMenuItem.Text = "Done"
         '
         'DateEdit2
         '
@@ -246,35 +306,43 @@ Partial Class FormTask
         Me.BackColor = System.Drawing.Color.GhostWhite
         Me.ClientSize = New System.Drawing.Size(1584, 866)
         Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.LabelTotal)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "FormTask"
         Me.Text = "FormTask"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         CType(Me.DateEdit2.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents DateEdit2 As DevExpress.XtraEditors.DateEdit
     Friend WithEvents DateEdit1 As DevExpress.XtraEditors.DateEdit
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button1 As Button
-    Friend WithEvents ComboBox2 As ComboBox
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents ButtonExport As Button
+    Friend WithEvents ButtonReset As Button
+    Friend WithEvents ButtonSearch As Button
+    Friend WithEvents ComboBoxStatus As ComboBox
+    Friend WithEvents ComboBoxDivisi As ComboBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBoxSubject As TextBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TextBoxTaskId As TextBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents LabelTotal As Label
+    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
+    Friend WithEvents SetujuiToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TidakSetujuToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents OnProgressToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DoneToolStripMenuItem As ToolStripMenuItem
 End Class

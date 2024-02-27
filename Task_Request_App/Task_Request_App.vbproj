@@ -192,6 +192,12 @@
     <Compile Include="FormSetting.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormSetuju.Designer.vb">
+      <DependentUpon>FormSetuju.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormSetuju.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormTask.Designer.vb">
       <DependentUpon>FormTask.vb</DependentUpon>
     </Compile>
@@ -251,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSetting.resx">
       <DependentUpon>FormSetting.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSetuju.resx">
+      <DependentUpon>FormSetuju.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTask.resx">
       <DependentUpon>FormTask.vb</DependentUpon>

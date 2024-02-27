@@ -22,29 +22,29 @@ Partial Class FormAddRequest
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.ComboBoxStatus = New System.Windows.Forms.ComboBox()
+        Me.ComboBoxDivisi = New System.Windows.Forms.ComboBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.TextBoxNama = New System.Windows.Forms.TextBox()
+        Me.TextBoxDeskripsi = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.TextBoxNIK = New System.Windows.Forms.TextBox()
+        Me.TextBoxSubject = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.ButtonSimpan = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.ButtonCancel = New System.Windows.Forms.Button()
+        Me.LabelId = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
-        'ComboBoxStatus
+        'ComboBoxDivisi
         '
-        Me.ComboBoxStatus.FormattingEnabled = True
-        Me.ComboBoxStatus.Items.AddRange(New Object() {"PKWT", "PEGAWAI TETAP"})
-        Me.ComboBoxStatus.Location = New System.Drawing.Point(195, 74)
-        Me.ComboBoxStatus.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.ComboBoxStatus.Name = "ComboBoxStatus"
-        Me.ComboBoxStatus.Size = New System.Drawing.Size(160, 24)
-        Me.ComboBoxStatus.TabIndex = 1
+        Me.ComboBoxDivisi.FormattingEnabled = True
+        Me.ComboBoxDivisi.Location = New System.Drawing.Point(195, 74)
+        Me.ComboBoxDivisi.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.ComboBoxDivisi.Name = "ComboBoxDivisi"
+        Me.ComboBoxDivisi.Size = New System.Drawing.Size(160, 24)
+        Me.ComboBoxDivisi.TabIndex = 1
         '
         'Label8
         '
@@ -90,15 +90,14 @@ Partial Class FormAddRequest
         Me.Label4.TabIndex = 0
         Me.Label4.Text = ":"
         '
-        'TextBoxNama
+        'TextBoxDeskripsi
         '
-        Me.TextBoxNama.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBoxNama.Location = New System.Drawing.Point(195, 141)
-        Me.TextBoxNama.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.TextBoxNama.Multiline = True
-        Me.TextBoxNama.Name = "TextBoxNama"
-        Me.TextBoxNama.Size = New System.Drawing.Size(415, 204)
-        Me.TextBoxNama.TabIndex = 3
+        Me.TextBoxDeskripsi.Location = New System.Drawing.Point(195, 141)
+        Me.TextBoxDeskripsi.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBoxDeskripsi.Multiline = True
+        Me.TextBoxDeskripsi.Name = "TextBoxDeskripsi"
+        Me.TextBoxDeskripsi.Size = New System.Drawing.Size(415, 204)
+        Me.TextBoxDeskripsi.TabIndex = 3
         '
         'Label16
         '
@@ -111,14 +110,14 @@ Partial Class FormAddRequest
         Me.Label16.TabIndex = 0
         Me.Label16.Text = "DESKRIPSI"
         '
-        'TextBoxNIK
+        'TextBoxSubject
         '
-        Me.TextBoxNIK.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBoxNIK.Location = New System.Drawing.Point(195, 108)
-        Me.TextBoxNIK.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.TextBoxNIK.Name = "TextBoxNIK"
-        Me.TextBoxNIK.Size = New System.Drawing.Size(415, 22)
-        Me.TextBoxNIK.TabIndex = 2
+        Me.TextBoxSubject.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TextBoxSubject.Location = New System.Drawing.Point(195, 108)
+        Me.TextBoxSubject.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBoxSubject.Name = "TextBoxSubject"
+        Me.TextBoxSubject.Size = New System.Drawing.Size(415, 22)
+        Me.TextBoxSubject.TabIndex = 2
         '
         'Label2
         '
@@ -131,16 +130,16 @@ Partial Class FormAddRequest
         Me.Label2.TabIndex = 0
         Me.Label2.Text = ":"
         '
-        'Button1
+        'ButtonSimpan
         '
-        Me.Button1.BackColor = System.Drawing.Color.Blue
-        Me.Button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Button1.Location = New System.Drawing.Point(493, 365)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(117, 45)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = "SIMPAN"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.ButtonSimpan.BackColor = System.Drawing.Color.Blue
+        Me.ButtonSimpan.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.ButtonSimpan.Location = New System.Drawing.Point(493, 365)
+        Me.ButtonSimpan.Name = "ButtonSimpan"
+        Me.ButtonSimpan.Size = New System.Drawing.Size(117, 45)
+        Me.ButtonSimpan.TabIndex = 4
+        Me.ButtonSimpan.Text = "SIMPAN"
+        Me.ButtonSimpan.UseVisualStyleBackColor = False
         '
         'Label1
         '
@@ -153,16 +152,26 @@ Partial Class FormAddRequest
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "ADD REQUEST"
         '
-        'Button2
+        'ButtonCancel
         '
-        Me.Button2.BackColor = System.Drawing.Color.Yellow
-        Me.Button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Button2.Location = New System.Drawing.Point(359, 365)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(117, 45)
-        Me.Button2.TabIndex = 4
-        Me.Button2.Text = "CANCEL"
-        Me.Button2.UseVisualStyleBackColor = False
+        Me.ButtonCancel.BackColor = System.Drawing.Color.Yellow
+        Me.ButtonCancel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.ButtonCancel.Location = New System.Drawing.Point(359, 365)
+        Me.ButtonCancel.Name = "ButtonCancel"
+        Me.ButtonCancel.Size = New System.Drawing.Size(117, 45)
+        Me.ButtonCancel.TabIndex = 4
+        Me.ButtonCancel.Text = "CANCEL"
+        Me.ButtonCancel.UseVisualStyleBackColor = False
+        '
+        'LabelId
+        '
+        Me.LabelId.AutoSize = True
+        Me.LabelId.Location = New System.Drawing.Point(23, 406)
+        Me.LabelId.Name = "LabelId"
+        Me.LabelId.Size = New System.Drawing.Size(19, 17)
+        Me.LabelId.TabIndex = 34
+        Me.LabelId.Text = "id"
+        Me.LabelId.Visible = False
         '
         'FormAddRequest
         '
@@ -170,17 +179,18 @@ Partial Class FormAddRequest
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.PeachPuff
         Me.ClientSize = New System.Drawing.Size(667, 446)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.ComboBoxStatus)
+        Me.Controls.Add(Me.LabelId)
+        Me.Controls.Add(Me.ButtonCancel)
+        Me.Controls.Add(Me.ButtonSimpan)
+        Me.Controls.Add(Me.ComboBoxDivisi)
         Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.Label19)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.TextBoxNama)
+        Me.Controls.Add(Me.TextBoxDeskripsi)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.TextBoxNIK)
+        Me.Controls.Add(Me.TextBoxSubject)
         Me.Controls.Add(Me.Label4)
         Me.Name = "FormAddRequest"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -189,16 +199,17 @@ Partial Class FormAddRequest
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents ComboBoxStatus As ComboBox
+    Friend WithEvents ComboBoxDivisi As ComboBox
     Friend WithEvents Label8 As Label
     Friend WithEvents Label19 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents TextBoxNama As TextBox
+    Friend WithEvents TextBoxDeskripsi As TextBox
     Friend WithEvents Label16 As Label
-    Friend WithEvents TextBoxNIK As TextBox
+    Friend WithEvents TextBoxSubject As TextBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents Button1 As Button
+    Friend WithEvents ButtonSimpan As Button
     Friend WithEvents Label1 As Label
-    Friend WithEvents Button2 As Button
+    Friend WithEvents ButtonCancel As Button
+    Friend WithEvents LabelId As Label
 End Class

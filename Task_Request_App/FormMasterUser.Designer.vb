@@ -200,20 +200,22 @@ Partial Class FormMasterUser
         Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditDataToolStripMenuItem, Me.HapusDataToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(157, 52)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(161, 56)
         '
         'EditDataToolStripMenuItem
         '
         Me.EditDataToolStripMenuItem.BackColor = System.Drawing.Color.Linen
+        Me.EditDataToolStripMenuItem.Image = Global.Task_Request_App.My.Resources.Resources.pngegg__1_
         Me.EditDataToolStripMenuItem.Name = "EditDataToolStripMenuItem"
-        Me.EditDataToolStripMenuItem.Size = New System.Drawing.Size(210, 24)
+        Me.EditDataToolStripMenuItem.Size = New System.Drawing.Size(160, 26)
         Me.EditDataToolStripMenuItem.Text = "Edit Data"
         '
         'HapusDataToolStripMenuItem
         '
         Me.HapusDataToolStripMenuItem.BackColor = System.Drawing.Color.Linen
+        Me.HapusDataToolStripMenuItem.Image = Global.Task_Request_App.My.Resources.Resources.pngegg__2_
         Me.HapusDataToolStripMenuItem.Name = "HapusDataToolStripMenuItem"
-        Me.HapusDataToolStripMenuItem.Size = New System.Drawing.Size(210, 24)
+        Me.HapusDataToolStripMenuItem.Size = New System.Drawing.Size(160, 26)
         Me.HapusDataToolStripMenuItem.Text = "Hapus Data"
         '
         'FormMasterUser

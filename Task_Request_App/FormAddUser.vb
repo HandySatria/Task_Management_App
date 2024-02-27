@@ -100,11 +100,16 @@ Public Class FormAddUser
                 Do While Rd.Read
                     TextBoxNama.Text = Rd.Item("fullname")
                     TextBoxUsername.Text = Rd.Item("username")
-                    TextBoxPassword.Text = Rd.Item("password")
+                    TextBoxPassword.Text = ""
                     ComboBoxDivisi.SelectedValue = Rd.Item("divisi_id")
                 Loop
             End If
         End If
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        resetForm()
+        Me.Close()
     End Sub
 
     Sub setComboBoxDivisiValue()
