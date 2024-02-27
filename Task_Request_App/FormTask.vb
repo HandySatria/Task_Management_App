@@ -178,8 +178,13 @@ Public Class FormTask
         statusDictionary.Add(-1, "Pilih Status")
         ComboBoxStatus.Items.Add(statusDictionary)
         Do While Rd.Read
-            statusDictionary.Add(Rd.Item("ref_status_id"), Rd.Item("status_name"))
-            ComboBoxStatus.Items.Add(statusDictionary)
+            Dim statusId As String
+            statusId = Rd.Item("ref_status_id")
+            If statusId = 3 Or statusId = 2 Then
+            Else
+                statusDictionary.Add(Rd.Item("ref_status_id"), Rd.Item("status_name"))
+                ComboBoxStatus.Items.Add(statusDictionary)
+            End If
         Loop
         ComboBoxStatus.DisplayMember = "Value"
         ComboBoxStatus.ValueMember = "Key"
@@ -308,6 +313,19 @@ Public Class FormTask
                 GetData()
         End Select
     End Sub
+
+    Private Sub TextBoxTaskIdKeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBoxTaskId.KeyPress
+        If e.KeyChar = Chr(13) Then
+            GetData()
+        End If
+    End Sub
+
+    Private Sub TextBoxSubjectKeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBoxSubject.KeyPress
+        If e.KeyChar = Chr(13) Then
+            GetData()
+        End If
+    End Sub
+
 
     Private Sub ButtonSearch_Click(sender As Object, e As EventArgs) Handles ButtonSearch.Click
         'Try

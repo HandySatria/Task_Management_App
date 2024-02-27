@@ -9,6 +9,10 @@ Public Class FormLogin
     End Sub
 
     Private Sub ButtonLogin_Click(sender As Object, e As EventArgs) Handles ButtonLogin.Click
+        login()
+    End Sub
+
+    Sub login()
         If TextBoxNama.Text = "" Or TextBoxPassword.Text = "" Then
             MsgBox("Silahkan Isi Nama dan Password Terlebih Dahulu")
         Else
@@ -52,6 +56,7 @@ Public Class FormLogin
         End If
     End Sub
 
+
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
         If CheckBox1.Checked = True Then
             TextBoxPassword.PasswordChar = ""
@@ -68,4 +73,18 @@ Public Class FormLogin
         TextBoxNama.Text = "admin01"
         TextBoxPassword.Text = "admin01"
     End Sub
+
+
+    Private Sub TextBoxNamaKeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBoxNama.KeyPress
+        If e.KeyChar = Chr(13) Then
+            login()
+        End If
+    End Sub
+
+    Private Sub TextBoxPasswordKeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBoxPassword.KeyPress
+        If e.KeyChar = Chr(13) Then
+            login()
+        End If
+    End Sub
+
 End Class

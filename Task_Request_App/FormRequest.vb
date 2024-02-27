@@ -19,7 +19,7 @@ Public Class FormRequest
         Do While Rd.Read
             Dim divisiId As String
             divisiId = Rd.Item("divisi_id")
-            If divisiId = Divisi_Id_User Then
+            If divisiId = Divisi_Id_User Or divisiId = 3 Or divisiId = 2 Then
             Else
                 divisiDictionary.Add(Rd.Item("divisi_id"), Rd.Item("divisi_name"))
                 ComboBoxDivisi.Items.Add(divisiDictionary)
@@ -37,8 +37,13 @@ Public Class FormRequest
         statusDictionary.Add(-1, "Pilih Status")
         ComboBoxStatus.Items.Add(statusDictionary)
         Do While Rd.Read
-            statusDictionary.Add(Rd.Item("ref_status_id"), Rd.Item("status_name"))
-            ComboBoxStatus.Items.Add(statusDictionary)
+            Dim statusId As String
+            statusId = Rd.Item("ref_status_id")
+            If statusId = 3 Or statusId = 2 Then
+            Else
+                statusDictionary.Add(Rd.Item("ref_status_id"), Rd.Item("status_name"))
+                ComboBoxStatus.Items.Add(statusDictionary)
+            End If
         Loop
         ComboBoxStatus.DisplayMember = "Value"
         ComboBoxStatus.ValueMember = "Key"
@@ -250,6 +255,22 @@ Public Class FormRequest
                 MsgBox("Update Status Berhasil", vbOKOnly, "Success Message")
                 GetData()
         End Select
+    End Sub
+
+    Private Sub TextBoxRequestIdKeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBoxRequestId.KeyPress
+        If e.KeyChar = Chr(13) Then
+            GetData()
+        End If
+    End Sub
+
+    Private Sub TextBoxSubjectKeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBoxSubject.KeyPress
+        If e.KeyChar = Chr(13) Then
+            GetData()
+        End If
+    End Sub
+
+    Private Sub ComboBoxDivisi_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxDivisi.SelectedIndexChanged
+
     End Sub
 
     Private Sub ButtonAdd_Click(sender As Object, e As EventArgs) Handles ButtonAdd.Click

@@ -23,6 +23,11 @@
         ElseIf ButtonLogin.Text = "LOGOUT" Then
             Select Case MsgBox("Apakah Anda Yakin Ingin Logout ?", MsgBoxStyle.YesNo, "MESSAGE")
                 Case MsgBoxResult.Yes
+                    FormRequest.Close()
+                    FormTask.Close()
+                    FormMasterDivisi.Close()
+                    FormMasterUser.Close()
+                    LabelHeader.Text = ""
                     KondisiTertutup()
             End Select
         End If

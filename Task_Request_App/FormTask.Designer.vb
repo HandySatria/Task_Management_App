@@ -24,6 +24,8 @@ Partial Class FormTask
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.DateEdit2 = New DevExpress.XtraEditors.DateEdit()
+        Me.DateEdit1 = New DevExpress.XtraEditors.DateEdit()
         Me.ButtonExport = New System.Windows.Forms.Button()
         Me.ButtonReset = New System.Windows.Forms.Button()
         Me.ButtonSearch = New System.Windows.Forms.Button()
@@ -38,21 +40,19 @@ Partial Class FormTask
         Me.TextBoxTaskId = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.LabelTotal = New System.Windows.Forms.Label()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.SetujuiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TidakSetujuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OnProgressToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DoneToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DateEdit2 = New DevExpress.XtraEditors.DateEdit()
-        Me.DateEdit1 = New DevExpress.XtraEditors.DateEdit()
+        Me.LabelTotal = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ContextMenuStrip1.SuspendLayout()
         CType(Me.DateEdit2.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -81,6 +81,30 @@ Partial Class FormTask
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "TASK"
+        '
+        'DateEdit2
+        '
+        Me.DateEdit2.EditValue = Nothing
+        Me.DateEdit2.Location = New System.Drawing.Point(270, 176)
+        Me.DateEdit2.Name = "DateEdit2"
+        Me.DateEdit2.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateEdit2.Properties.Appearance.Options.UseFont = True
+        Me.DateEdit2.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateEdit2.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateEdit2.Size = New System.Drawing.Size(340, 30)
+        Me.DateEdit2.TabIndex = 4
+        '
+        'DateEdit1
+        '
+        Me.DateEdit1.EditValue = Nothing
+        Me.DateEdit1.Location = New System.Drawing.Point(270, 128)
+        Me.DateEdit1.Name = "DateEdit1"
+        Me.DateEdit1.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateEdit1.Properties.Appearance.Options.UseFont = True
+        Me.DateEdit1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateEdit1.Size = New System.Drawing.Size(340, 30)
+        Me.DateEdit1.TabIndex = 4
         '
         'ButtonExport
         '
@@ -120,6 +144,7 @@ Partial Class FormTask
         '
         'ComboBoxStatus
         '
+        Me.ComboBoxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxStatus.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBoxStatus.FormattingEnabled = True
         Me.ComboBoxStatus.Location = New System.Drawing.Point(951, 174)
@@ -129,6 +154,7 @@ Partial Class FormTask
         '
         'ComboBoxDivisi
         '
+        Me.ComboBoxDivisi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxDivisi.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBoxDivisi.FormattingEnabled = True
         Me.ComboBoxDivisi.Location = New System.Drawing.Point(951, 125)
@@ -229,6 +255,42 @@ Partial Class FormTask
         Me.DataGridView1.Size = New System.Drawing.Size(1361, 477)
         Me.DataGridView1.TabIndex = 13
         '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SetujuiToolStripMenuItem, Me.TidakSetujuToolStripMenuItem, Me.OnProgressToolStripMenuItem, Me.DoneToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(160, 100)
+        '
+        'SetujuiToolStripMenuItem
+        '
+        Me.SetujuiToolStripMenuItem.BackColor = System.Drawing.Color.Yellow
+        Me.SetujuiToolStripMenuItem.Name = "SetujuiToolStripMenuItem"
+        Me.SetujuiToolStripMenuItem.Size = New System.Drawing.Size(159, 24)
+        Me.SetujuiToolStripMenuItem.Text = "Setujui"
+        '
+        'TidakSetujuToolStripMenuItem
+        '
+        Me.TidakSetujuToolStripMenuItem.BackColor = System.Drawing.Color.LightCoral
+        Me.TidakSetujuToolStripMenuItem.Name = "TidakSetujuToolStripMenuItem"
+        Me.TidakSetujuToolStripMenuItem.Size = New System.Drawing.Size(159, 24)
+        Me.TidakSetujuToolStripMenuItem.Text = "Tidak Setuju"
+        '
+        'OnProgressToolStripMenuItem
+        '
+        Me.OnProgressToolStripMenuItem.BackColor = System.Drawing.Color.Blue
+        Me.OnProgressToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.OnProgressToolStripMenuItem.Name = "OnProgressToolStripMenuItem"
+        Me.OnProgressToolStripMenuItem.Size = New System.Drawing.Size(159, 24)
+        Me.OnProgressToolStripMenuItem.Text = "On Progress"
+        '
+        'DoneToolStripMenuItem
+        '
+        Me.DoneToolStripMenuItem.BackColor = System.Drawing.Color.LightGreen
+        Me.DoneToolStripMenuItem.Name = "DoneToolStripMenuItem"
+        Me.DoneToolStripMenuItem.Size = New System.Drawing.Size(159, 24)
+        Me.DoneToolStripMenuItem.Text = "Done"
+        '
         'LabelTotal
         '
         Me.LabelTotal.AutoSize = True
@@ -237,66 +299,6 @@ Partial Class FormTask
         Me.LabelTotal.Name = "LabelTotal"
         Me.LabelTotal.Size = New System.Drawing.Size(0, 29)
         Me.LabelTotal.TabIndex = 12
-        '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SetujuiToolStripMenuItem, Me.TidakSetujuToolStripMenuItem, Me.OnProgressToolStripMenuItem, Me.DoneToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(211, 128)
-        '
-        'SetujuiToolStripMenuItem
-        '
-        Me.SetujuiToolStripMenuItem.BackColor = System.Drawing.Color.Yellow
-        Me.SetujuiToolStripMenuItem.Name = "SetujuiToolStripMenuItem"
-        Me.SetujuiToolStripMenuItem.Size = New System.Drawing.Size(210, 24)
-        Me.SetujuiToolStripMenuItem.Text = "Setujui"
-        '
-        'TidakSetujuToolStripMenuItem
-        '
-        Me.TidakSetujuToolStripMenuItem.BackColor = System.Drawing.Color.LightCoral
-        Me.TidakSetujuToolStripMenuItem.Name = "TidakSetujuToolStripMenuItem"
-        Me.TidakSetujuToolStripMenuItem.Size = New System.Drawing.Size(210, 24)
-        Me.TidakSetujuToolStripMenuItem.Text = "Tidak Setuju"
-        '
-        'OnProgressToolStripMenuItem
-        '
-        Me.OnProgressToolStripMenuItem.BackColor = System.Drawing.Color.Blue
-        Me.OnProgressToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.OnProgressToolStripMenuItem.Name = "OnProgressToolStripMenuItem"
-        Me.OnProgressToolStripMenuItem.Size = New System.Drawing.Size(210, 24)
-        Me.OnProgressToolStripMenuItem.Text = "On Progress"
-        '
-        'DoneToolStripMenuItem
-        '
-        Me.DoneToolStripMenuItem.BackColor = System.Drawing.Color.LightGreen
-        Me.DoneToolStripMenuItem.Name = "DoneToolStripMenuItem"
-        Me.DoneToolStripMenuItem.Size = New System.Drawing.Size(210, 24)
-        Me.DoneToolStripMenuItem.Text = "Done"
-        '
-        'DateEdit2
-        '
-        Me.DateEdit2.EditValue = Nothing
-        Me.DateEdit2.Location = New System.Drawing.Point(270, 176)
-        Me.DateEdit2.Name = "DateEdit2"
-        Me.DateEdit2.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateEdit2.Properties.Appearance.Options.UseFont = True
-        Me.DateEdit2.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.DateEdit2.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.DateEdit2.Size = New System.Drawing.Size(340, 30)
-        Me.DateEdit2.TabIndex = 4
-        '
-        'DateEdit1
-        '
-        Me.DateEdit1.EditValue = Nothing
-        Me.DateEdit1.Location = New System.Drawing.Point(270, 128)
-        Me.DateEdit1.Name = "DateEdit1"
-        Me.DateEdit1.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateEdit1.Properties.Appearance.Options.UseFont = True
-        Me.DateEdit1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.DateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.DateEdit1.Size = New System.Drawing.Size(340, 30)
-        Me.DateEdit1.TabIndex = 4
         '
         'FormTask
         '
@@ -312,12 +314,12 @@ Partial Class FormTask
         Me.Text = "FormTask"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ContextMenuStrip1.ResumeLayout(False)
         CType(Me.DateEdit2.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

@@ -42,10 +42,10 @@ Partial Class FormRequest
         Me.ButtonAdd = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.KonfirmasiSelesaiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HapusDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LabelTotal = New System.Windows.Forms.Label()
-        Me.KonfirmasiSelesaiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DateEdit2.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -281,20 +281,27 @@ Partial Class FormRequest
         Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.KonfirmasiSelesaiToolStripMenuItem, Me.EditDataToolStripMenuItem, Me.HapusDataToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(215, 110)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(204, 82)
+        '
+        'KonfirmasiSelesaiToolStripMenuItem
+        '
+        Me.KonfirmasiSelesaiToolStripMenuItem.BackColor = System.Drawing.Color.SpringGreen
+        Me.KonfirmasiSelesaiToolStripMenuItem.Name = "KonfirmasiSelesaiToolStripMenuItem"
+        Me.KonfirmasiSelesaiToolStripMenuItem.Size = New System.Drawing.Size(203, 26)
+        Me.KonfirmasiSelesaiToolStripMenuItem.Text = "Konfirmasi Selesai"
         '
         'EditDataToolStripMenuItem
         '
         Me.EditDataToolStripMenuItem.Image = Global.Task_Request_App.My.Resources.Resources.pngegg__1_
         Me.EditDataToolStripMenuItem.Name = "EditDataToolStripMenuItem"
-        Me.EditDataToolStripMenuItem.Size = New System.Drawing.Size(124, 26)
+        Me.EditDataToolStripMenuItem.Size = New System.Drawing.Size(203, 26)
         Me.EditDataToolStripMenuItem.Text = "Edit"
         '
         'HapusDataToolStripMenuItem
         '
         Me.HapusDataToolStripMenuItem.Image = Global.Task_Request_App.My.Resources.Resources.pngegg__2_
         Me.HapusDataToolStripMenuItem.Name = "HapusDataToolStripMenuItem"
-        Me.HapusDataToolStripMenuItem.Size = New System.Drawing.Size(124, 26)
+        Me.HapusDataToolStripMenuItem.Size = New System.Drawing.Size(203, 26)
         Me.HapusDataToolStripMenuItem.Text = "Hapus"
         '
         'LabelTotal
@@ -305,13 +312,6 @@ Partial Class FormRequest
         Me.LabelTotal.Name = "LabelTotal"
         Me.LabelTotal.Size = New System.Drawing.Size(0, 29)
         Me.LabelTotal.TabIndex = 10
-        '
-        'KonfirmasiSelesaiToolStripMenuItem
-        '
-        Me.KonfirmasiSelesaiToolStripMenuItem.BackColor = System.Drawing.Color.SpringGreen
-        Me.KonfirmasiSelesaiToolStripMenuItem.Name = "KonfirmasiSelesaiToolStripMenuItem"
-        Me.KonfirmasiSelesaiToolStripMenuItem.Size = New System.Drawing.Size(214, 26)
-        Me.KonfirmasiSelesaiToolStripMenuItem.Text = "Konfirmasi Selesai"
         '
         'FormRequest
         '
