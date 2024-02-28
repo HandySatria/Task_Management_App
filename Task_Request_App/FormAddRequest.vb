@@ -26,7 +26,7 @@ Public Class FormAddRequest
         Do While Rd.Read
             Dim divisiId As String
             divisiId = Rd.Item("divisi_id")
-            If divisiId = Divisi_Id_User Then
+            If divisiId = activeUserData.getDivisionId Then
             Else
                 divisiDictionary.Add(Rd.Item("divisi_id"), Rd.Item("divisi_name"))
                 ComboBoxDivisi.Items.Add(divisiDictionary)
@@ -110,28 +110,41 @@ Public Class FormAddRequest
                             Dim chatIdTujuan As Long = Rd.Item("chat_id_telegram")
                             Dim pesan As String
                             pesan = "** TASK BARU **" & Environment.NewLine & Environment.NewLine & Environment.NewLine &
-                                "- Dari Divisi : " & Divisi_Name & Environment.NewLine & Environment.NewLine &
+                                "- Dari Divisi : " & activeUserData.getDivisionName & Environment.NewLine & Environment.NewLine &
                                 "- Subject : " & TextBoxSubject.Text & Environment.NewLine & Environment.NewLine &
                                 "- Deskripsi : " & TextBoxDeskripsi.Text & Environment.NewLine & Environment.NewLine &
                                 "- Prioritas : " & ComboBoxPrioritas.Text & Environment.NewLine & Environment.NewLine &
-                                "- User : " & Nama_User & Environment.NewLine & Environment.NewLine
+                                "- User : " & activeUserData.getFullName & Environment.NewLine & Environment.NewLine
                             Await KirimPesanKeOrangLainAsync(botClient, chatIdTujuan, pesan, cts.Token)
                         Loop
                     End If
 
+                    ' add request
                     Call Koneksi()
                     Cmd = New MySqlCommand("INSERT INTO request(subject, from_divisi, to_divisi, description, status, prioritas, user_crt, user_upd, dtm_crt, dtm_upd) values(@subject,  @from_divisi, @to_divisi, @description, @status, @prioritas, @user_crt, @user_upd, @dtm_crt, @dtm_upd) ", Conn)
                     Cmd.Parameters.Add("@subject", MySqlDbType.VarChar).Value = TextBoxSubject.Text
-                    Cmd.Parameters.Add("@from_divisi", MySqlDbType.VarChar).Value = Divisi_Id_User
+                    Cmd.Parameters.Add("@from_divisi", MySqlDbType.VarChar).Value = activeUserData.getDivisionId
                     Cmd.Parameters.Add("@to_divisi", MySqlDbType.VarChar).Value = ComboBoxDivisi.SelectedValue
                     Cmd.Parameters.Add("@prioritas", MySqlDbType.VarChar).Value = ComboBoxPrioritas.SelectedValue
                     Cmd.Parameters.Add("@description", MySqlDbType.VarChar).Value = TextBoxDeskripsi.Text
                     Cmd.Parameters.Add("@status", MySqlDbType.VarChar).Value = 1
-                    Cmd.Parameters.Add("@user_crt", MySqlDbType.VarChar).Value = Nama_User
-                    Cmd.Parameters.Add("@user_upd", MySqlDbType.VarChar).Value = Nama_User
+                    Cmd.Parameters.Add("@user_crt", MySqlDbType.VarChar).Value = activeUserData.getUserName
+                    Cmd.Parameters.Add("@user_upd", MySqlDbType.VarChar).Value = activeUserData.getUserName
                     Cmd.Parameters.Add("@dtm_crt", MySqlDbType.DateTime).Value = DateTime.Now
                     Cmd.Parameters.Add("@dtm_upd", MySqlDbType.DateTime).Value = DateTime.Now
 
+                    Cmd.ExecuteNonQuery()
+                    Cmd = New MySqlCommand("SELECT LAST_INSERT_ID()", Conn)
+                    Dim requestId As Integer = Convert.ToInt32(Cmd.ExecuteScalar())
+
+                    Call Koneksi()
+                    Cmd = New MySqlCommand("INSERT INTO hist_request(request_id, ref_status_id, user_crt, user_upd, dtm_crt, dtm_upd) values( @request_id, @ref_status_id, @user_crt, @user_upd, @dtm_crt, @dtm_upd) ", Conn)
+                    Cmd.Parameters.Add("@request_id", MySqlDbType.VarChar).Value = requestId
+                    Cmd.Parameters.Add("@ref_status_id", MySqlDbType.VarChar).Value = "1"
+                    Cmd.Parameters.Add("@user_crt", MySqlDbType.VarChar).Value = activeUserData.getUserName
+                    Cmd.Parameters.Add("@user_upd", MySqlDbType.VarChar).Value = activeUserData.getUserName
+                    Cmd.Parameters.Add("@dtm_crt", MySqlDbType.DateTime).Value = DateTime.Now
+                    Cmd.Parameters.Add("@dtm_upd", MySqlDbType.DateTime).Value = DateTime.Now
                     Cmd.ExecuteNonQuery()
                     MsgBox("Input Data Berhasil", vbOKOnly, "Success Message")
 
@@ -145,11 +158,11 @@ Public Class FormAddRequest
                             Dim chatIdTujuan As Long = Rd.Item("chat_id_telegram")
                             Dim pesan As String
                             pesan = "** EDIT TASK DENGAN ID : " & LabelId.Text & "  **" & Environment.NewLine & Environment.NewLine & Environment.NewLine &
-                                "- Dari Divisi : " & Divisi_Name & Environment.NewLine & Environment.NewLine &
+                                "- Dari Divisi : " & activeUserData.getDivisionName & Environment.NewLine & Environment.NewLine &
                                 "- Subject : " & TextBoxSubject.Text & Environment.NewLine & Environment.NewLine &
                                 "- Deskripsi : " & TextBoxDeskripsi.Text & Environment.NewLine & Environment.NewLine &
                                 "- Prioritas : " & ComboBoxPrioritas.Text & Environment.NewLine & Environment.NewLine &
-                                "- User : " & Nama_User & Environment.NewLine & Environment.NewLine
+                                "- User : " & activeUserData.getFullName & Environment.NewLine & Environment.NewLine
                             Await KirimPesanKeOrangLainAsync(botClient, chatIdTujuan, pesan, cts.Token)
                         Loop
                     End If
@@ -161,7 +174,7 @@ Public Class FormAddRequest
                     Cmd.Parameters.Add("@description", MySqlDbType.VarChar).Value = TextBoxDeskripsi.Text
                     Cmd.Parameters.Add("@divisi_id", MySqlDbType.VarChar).Value = ComboBoxDivisi.SelectedValue
                     Cmd.Parameters.Add("@prioritas", MySqlDbType.VarChar).Value = ComboBoxPrioritas.SelectedValue
-                    Cmd.Parameters.Add("@user_upd", MySqlDbType.VarChar).Value = Nama_User
+                    Cmd.Parameters.Add("@user_upd", MySqlDbType.VarChar).Value = activeUserData.getUserName
                     Cmd.Parameters.Add("@dtm_upd", MySqlDbType.DateTime).Value = DateTime.Now
                     Cmd.ExecuteNonQuery()
                     MsgBox("Edit Data Berhasil", vbOKOnly, "Success Message")

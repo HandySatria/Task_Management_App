@@ -140,6 +140,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\UserData.vb" />
+    <Compile Include="Controls\HistoryCard.vb" />
     <Compile Include="FormAddDivisi.Designer.vb">
       <DependentUpon>FormAddDivisi.vb</DependentUpon>
     </Compile>
@@ -189,6 +191,18 @@
       <DependentUpon>FormMenu.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormNotApprove.Designer.vb">
+      <DependentUpon>FormNotApprove.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormNotApprove.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRealisasi.Designer.vb">
+      <DependentUpon>FormRealisasi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormRealisasi.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormRequest.Designer.vb">
       <DependentUpon>FormRequest.vb</DependentUpon>
     </Compile>
@@ -207,10 +221,10 @@
     <Compile Include="FormSetting.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormSetuju.Designer.vb">
-      <DependentUpon>FormSetuju.vb</DependentUpon>
+    <Compile Include="FormEstimasi.Designer.vb">
+      <DependentUpon>FormEstimasi.vb</DependentUpon>
     </Compile>
-    <Compile Include="FormSetuju.vb">
+    <Compile Include="FormEstimasi.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormTask.Designer.vb">
@@ -267,6 +281,12 @@
     <EmbeddedResource Include="FormMenu.resx">
       <DependentUpon>FormMenu.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormNotApprove.resx">
+      <DependentUpon>FormNotApprove.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRealisasi.resx">
+      <DependentUpon>FormRealisasi.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormRequest.resx">
       <DependentUpon>FormRequest.vb</DependentUpon>
     </EmbeddedResource>
@@ -276,8 +296,8 @@
     <EmbeddedResource Include="FormSetting.resx">
       <DependentUpon>FormSetting.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormSetuju.resx">
-      <DependentUpon>FormSetuju.vb</DependentUpon>
+    <EmbeddedResource Include="FormEstimasi.resx">
+      <DependentUpon>FormEstimasi.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTask.resx">
       <DependentUpon>FormTask.vb</DependentUpon>
@@ -340,5 +360,6 @@
   <ItemGroup>
     <None Include="Resources\pngegg %282%29.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

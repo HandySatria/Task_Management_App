@@ -20,16 +20,19 @@ Public Class FormLogin
             Try
                 Call Enkripsi(TextBoxPassword.Text)
                 Call Koneksi()
-                Cmd = New MySqlCommand("SELECT u.user_id as user_id, u.fullname as fullname, u.username as username, u.password as password, d.divisi_name as divisi_name, d.divisi_id as divisi_id FROM user u left join divisi d on u.divisi_id = d.divisi_id where u.username = '" & TextBoxNama.Text & "' and u.password = '" & HasilEnkripsi & "'", Conn)
+                'Cmd = New MySqlCommand("SELECT u.user_id as user_id, u.fullname as fullname, u.username as username, u.password as password, d.divisi_name as divisi_name, d.divisi_id as divisi_id FROM user u left join divisi d on u.divisi_id = d.divisi_id where u.username = '" & TextBoxNama.Text & "' and u.password = '" & HasilEnkripsi & "'", Conn)
+                Cmd = New MySqlCommand("SELECT u.user_id as user_id, u.fullname as fullname, u.username as username, u.password as password, d.divisi_name as divisi_name, d.divisi_id as divisi_id FROM user u left join divisi d on u.divisi_id = d.divisi_id where u.username = @username and u.password = @password", Conn)
+                Cmd.Parameters.AddWithValue("@username", TextBoxNama.Text)
+                Cmd.Parameters.AddWithValue("@password", HasilEnkripsi)
+
                 Rd = Cmd.ExecuteReader
                 Rd.Read()
                 If Not Rd.HasRows Then
                     MsgBox("Username atau Password Salah!")
                 Else
-                    Nama_User = Rd.Item("UserName")
-                    Divisi_Id_User = Rd.Item("divisi_id")
-                    Divisi_Name = Rd.Item("divisi_name")
-                    FormMenu.LabelHeader.Text = "Welcome, " & Nama_User & " dari Divisi " & Divisi_Name
+                    'Divisi_Name = Rd.Item("divisi_name")
+                    activeUserData = New UserData(CInt(Rd.Item("divisi_id")), Rd.Item("divisi_name"), CInt(Rd.Item("user_id")), Rd.Item("username"), Rd.Item("fullname"))
+                    FormMenu.LabelHeader.Text = "Welcome, " & activeUserData.getFullName & " dari Divisi " & activeUserData.getDivisionName
                     Me.Close()
                     Call KondisiTerbuka()
 

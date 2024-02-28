@@ -32,7 +32,7 @@ Public Class FormTask
     'End Sub
     Private Sub GetData()
         Try
-            Condition = " Where dTo.divisi_id = " & Divisi_Id_User
+            Condition = " Where dTo.divisi_id = " & activeUserData.getDivisionId
             If TextBoxTaskId.Text IsNot "" Then
                 Condition = Condition & " and r.request_id = '" & TextBoxTaskId.Text & "'"
             End If
@@ -138,6 +138,8 @@ Public Class FormTask
                         DataGridView1(5, baris).Style.BackColor = Color.LawnGreen
                     ElseIf Rd.Item("ref_status_id") = 8 Then
                         DataGridView1(5, baris).Style.BackColor = Color.Green
+                    ElseIf Rd.Item("ref_status_id") = 9 Then
+                        DataGridView1(5, baris).Style.BackColor = Color.MediumSlateBlue
                     End If
 
                     If Rd.Item("ref_prioritas_id") = 1 Then
@@ -179,7 +181,7 @@ Public Class FormTask
         Do While Rd.Read
             Dim divisiId As String
             divisiId = Rd.Item("divisi_id")
-            If divisiId = Divisi_Id_User Then
+            If divisiId = activeUserData.getDivisionId Then
             Else
                 divisiDictionary.Add(Rd.Item("divisi_id"), Rd.Item("divisi_name"))
                 ComboBoxDivisi.Items.Add(divisiDictionary)
@@ -221,6 +223,7 @@ Public Class FormTask
     End Sub
 
     Private Sub FormTask_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        resetForm()
         setComboBoxValue()
     End Sub
 
@@ -255,35 +258,8 @@ Public Class FormTask
     End Sub
 
     Private Async Sub SetujuiToolStripMenuItem_ClickAsync(sender As Object, e As EventArgs) Handles SetujuiToolStripMenuItem.Click
-        Select Case MsgBox("Apakah anda yakin akan menyetujui request ini ?", MsgBoxStyle.YesNo, "MESSAGE")
-            Case MsgBoxResult.Yes
-                Call Koneksi()
-                Cmd = New MySqlCommand("Update request set status=@status, user_upd=@user_upd, dtm_upd=@dtm_upd where request_id = '" & DataGridView1.CurrentRow.Cells(0).Value & "'", Conn)
-                Cmd.Parameters.Add("@status", MySqlDbType.VarChar).Value = 5
-                Cmd.Parameters.Add("@user_upd", MySqlDbType.VarChar).Value = Nama_User
-                Cmd.Parameters.Add("@dtm_upd", MySqlDbType.DateTime).Value = DateTime.Now
-                Cmd.ExecuteNonQuery()
-
-                Call Koneksi()
-                Cmd = New MySqlCommand("SELECT user_id, divisi_id, chat_id_telegram FROM user where divisi_id = '" & DataGridView1.CurrentRow.Cells(DataGridView1.ColumnCount - 2).Value & "'", Conn)
-                Rd = Cmd.ExecuteReader
-                '  Rd.Read()
-                If Rd.HasRows Then
-                    Do While Rd.Read
-                        Dim chatIdTujuan As Long = Rd.Item("chat_id_telegram")
-                        Dim pesan As String
-                        pesan = "** REQUEST DENGAN ID : " & DataGridView1.CurrentRow.Cells(0).Value & " DISETUJUI **" & Environment.NewLine & Environment.NewLine & Environment.NewLine &
-                                "- Untuk Divisi : " & Divisi_Name & Environment.NewLine & Environment.NewLine &
-                                "- Subject : " & DataGridView1.CurrentRow.Cells(3).Value & Environment.NewLine & Environment.NewLine &
-                                "- Deskripsi : " & DataGridView1.CurrentRow.Cells(4).Value & Environment.NewLine & Environment.NewLine &
-                                "- Prioritas : " & DataGridView1.CurrentRow.Cells(6).Value & Environment.NewLine & Environment.NewLine &
-                                "- User : " & Nama_User & Environment.NewLine & Environment.NewLine
-                        Await KirimPesanKeOrangLainAsync(botClient, chatIdTujuan, pesan, cts.Token)
-                    Loop
-                End If
-                MsgBox("Update Status Berhasil", vbOKOnly, "Success Message")
-                GetData()
-        End Select
+        FormEstimasi.LabelId.Text = DataGridView1.CurrentRow.Cells(0).Value
+        FormEstimasi.ShowDialog()
     End Sub
 
     Private Sub ContextMenuStrip1_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip1.Opening
@@ -315,7 +291,7 @@ Public Class FormTask
                 Call Koneksi()
                 Cmd = New MySqlCommand("Update request set status=@status, user_upd=@user_upd, dtm_upd=@dtm_upd where request_id = '" & DataGridView1.CurrentRow.Cells(0).Value & "'", Conn)
                 Cmd.Parameters.Add("@status", MySqlDbType.VarChar).Value = 4
-                Cmd.Parameters.Add("@user_upd", MySqlDbType.VarChar).Value = Nama_User
+                Cmd.Parameters.Add("@user_upd", MySqlDbType.VarChar).Value = activeUserData.getUserName
                 Cmd.Parameters.Add("@dtm_upd", MySqlDbType.DateTime).Value = DateTime.Now
                 Cmd.ExecuteNonQuery()
 
@@ -328,11 +304,11 @@ Public Class FormTask
                         Dim chatIdTujuan As Long = Rd.Item("chat_id_telegram")
                         Dim pesan As String
                         pesan = "** REQUEST DENGAN ID : " & DataGridView1.CurrentRow.Cells(0).Value & " TIDAK DISETUJUI **" & Environment.NewLine & Environment.NewLine & Environment.NewLine &
-                                "- Untuk Divisi : " & Divisi_Name & Environment.NewLine & Environment.NewLine &
+                                "- Untuk Divisi : " & activeUserData.getDivisionName & Environment.NewLine & Environment.NewLine &
                                 "- Subject : " & DataGridView1.CurrentRow.Cells(3).Value & Environment.NewLine & Environment.NewLine &
                                 "- Deskripsi : " & DataGridView1.CurrentRow.Cells(4).Value & Environment.NewLine & Environment.NewLine &
                                 "- Prioritas : " & DataGridView1.CurrentRow.Cells(6).Value & Environment.NewLine & Environment.NewLine &
-                                "- User : " & Nama_User & Environment.NewLine & Environment.NewLine
+                                "- User : " & activeUserData.getUserName & Environment.NewLine & Environment.NewLine
                         Await KirimPesanKeOrangLainAsync(botClient, chatIdTujuan, pesan, cts.Token)
                     Loop
                 End If
@@ -342,66 +318,15 @@ Public Class FormTask
     End Sub
 
     Private Async Sub OnProgressToolStripMenuItem_ClickAsync(sender As Object, e As EventArgs) Handles OnProgressToolStripMenuItem.Click
-        Select Case MsgBox("Apakah anda yakin akan memproses request ini sekarang ?", MsgBoxStyle.YesNo, "MESSAGE")
-            Case MsgBoxResult.Yes
-                Call Koneksi()
-                Cmd = New MySqlCommand("Update request set status=@status, user_upd=@user_upd, dtm_upd=@dtm_upd where request_id = '" & DataGridView1.CurrentRow.Cells(0).Value & "'", Conn)
-                Cmd.Parameters.Add("@status", MySqlDbType.VarChar).Value = 6
-                Cmd.Parameters.Add("@user_upd", MySqlDbType.VarChar).Value = Nama_User
-                Cmd.Parameters.Add("@dtm_upd", MySqlDbType.DateTime).Value = DateTime.Now
-                Cmd.ExecuteNonQuery()
-
-                Call Koneksi()
-                Cmd = New MySqlCommand("SELECT user_id, divisi_id, chat_id_telegram FROM user where divisi_id = '" & DataGridView1.CurrentRow.Cells(DataGridView1.ColumnCount - 2).Value & "'", Conn)
-                Rd = Cmd.ExecuteReader
-                '  Rd.Read()
-                If Rd.HasRows Then
-                    Do While Rd.Read
-                        Dim chatIdTujuan As Long = Rd.Item("chat_id_telegram")
-                        Dim pesan As String
-                        pesan = "** REQUEST DENGAN ID : " & DataGridView1.CurrentRow.Cells(0).Value & " ON PROGRESS **" & Environment.NewLine & Environment.NewLine & Environment.NewLine &
-                                "- Untuk Divisi : " & Divisi_Name & Environment.NewLine & Environment.NewLine &
-                                "- Subject : " & DataGridView1.CurrentRow.Cells(3).Value & Environment.NewLine & Environment.NewLine &
-                                "- Deskripsi : " & DataGridView1.CurrentRow.Cells(4).Value & Environment.NewLine & Environment.NewLine &
-                                "- Prioritas : " & DataGridView1.CurrentRow.Cells(6).Value & Environment.NewLine & Environment.NewLine &
-                                "- User : " & Nama_User & Environment.NewLine & Environment.NewLine
-                        Await KirimPesanKeOrangLainAsync(botClient, chatIdTujuan, pesan, cts.Token)
-                    Loop
-                End If
-                MsgBox("Update Status Berhasil", vbOKOnly, "Success Message")
-                GetData()
-        End Select
+        FormRealisasi.LabelId.Text = DataGridView1.CurrentRow.Cells(0).Value
+        FormRealisasi.LabelTgl.Text = "TGL MULAI"
+        FormRealisasi.ShowDialog()
     End Sub
 
     Private Async Sub DoneToolStripMenuItem_ClickAsync(sender As Object, e As EventArgs) Handles DoneToolStripMenuItem.Click
-        Select Case MsgBox("Apakah anda yakin sudah menyelesaikan request ini ?", MsgBoxStyle.YesNo, "MESSAGE")
-            Case MsgBoxResult.Yes
-                Call Koneksi()
-                Cmd = New MySqlCommand("Update request set status=@status, user_upd=@user_upd, dtm_upd=@dtm_upd where request_id = '" & DataGridView1.CurrentRow.Cells(0).Value & "'", Conn)
-                Cmd.Parameters.Add("@status", MySqlDbType.VarChar).Value = 7
-                Cmd.Parameters.Add("@user_upd", MySqlDbType.VarChar).Value = Nama_User
-                Cmd.Parameters.Add("@dtm_upd", MySqlDbType.DateTime).Value = DateTime.Now
-                Cmd.ExecuteNonQuery()
-                Call Koneksi()
-                Cmd = New MySqlCommand("SELECT user_id, divisi_id, chat_id_telegram FROM user where divisi_id = '" & DataGridView1.CurrentRow.Cells(DataGridView1.ColumnCount - 2).Value & "'", Conn)
-                Rd = Cmd.ExecuteReader
-                '  Rd.Read()
-                If Rd.HasRows Then
-                    Do While Rd.Read
-                        Dim chatIdTujuan As Long = Rd.Item("chat_id_telegram")
-                        Dim pesan As String
-                        pesan = "** REQUEST DENGAN ID : " & DataGridView1.CurrentRow.Cells(0).Value & " DONE **" & Environment.NewLine & Environment.NewLine & Environment.NewLine &
-                                "- Untuk Divisi : " & Divisi_Name & Environment.NewLine & Environment.NewLine &
-                                "- Subject : " & DataGridView1.CurrentRow.Cells(3).Value & Environment.NewLine & Environment.NewLine &
-                                "- Deskripsi : " & DataGridView1.CurrentRow.Cells(4).Value & Environment.NewLine & Environment.NewLine &
-                                "- Prioritas : " & DataGridView1.CurrentRow.Cells(6).Value & Environment.NewLine & Environment.NewLine &
-                                "- User : " & Nama_User & Environment.NewLine & Environment.NewLine
-                        Await KirimPesanKeOrangLainAsync(botClient, chatIdTujuan, pesan, cts.Token)
-                    Loop
-                End If
-                MsgBox("Update Status Berhasil", vbOKOnly, "Success Message")
-                GetData()
-        End Select
+        FormRealisasi.LabelId.Text = DataGridView1.CurrentRow.Cells(0).Value
+        FormRealisasi.LabelTgl.Text = "TGL SELESAI"
+        FormRealisasi.ShowDialog()
     End Sub
 
     Private Sub TextBoxTaskIdKeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBoxTaskId.KeyPress

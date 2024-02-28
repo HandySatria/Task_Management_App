@@ -12,7 +12,8 @@ Module Module1
     Public Cmd As MySqlCommand
     Public Ds As DataSet
     Public MyDB As String
-    Public Nama_User, Divisi_Name, Divisi_Id_User, HasilEnkripsi As String
+    Public HasilEnkripsi As String
+    Public activeUserData As UserData = Nothing
     Public log As String
     Public botClient As TelegramBotClient
     Public cts As CancellationTokenSource

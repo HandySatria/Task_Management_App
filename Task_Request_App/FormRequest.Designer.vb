@@ -24,8 +24,6 @@ Partial Class FormRequest
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.DateEdit2 = New DevExpress.XtraEditors.DateEdit()
-        Me.DateEdit1 = New DevExpress.XtraEditors.DateEdit()
         Me.ButtonExport = New System.Windows.Forms.Button()
         Me.ButtonReset = New System.Windows.Forms.Button()
         Me.ButtonSearch = New System.Windows.Forms.Button()
@@ -43,16 +41,19 @@ Partial Class FormRequest
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.KonfirmasiSelesaiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LabelTotal = New System.Windows.Forms.Label()
+        Me.NotApproveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HapusDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LabelTotal = New System.Windows.Forms.Label()
+        Me.DateEdit2 = New DevExpress.XtraEditors.DateEdit()
+        Me.DateEdit1 = New DevExpress.XtraEditors.DateEdit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip1.SuspendLayout()
         CType(Me.DateEdit2.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -81,39 +82,6 @@ Partial Class FormRequest
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Request"
-        '
-        'DateEdit2
-        '
-        Me.DateEdit2.EditValue = Nothing
-        Me.DateEdit2.Location = New System.Drawing.Point(270, 176)
-        Me.DateEdit2.Name = "DateEdit2"
-        Me.DateEdit2.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateEdit2.Properties.Appearance.Options.UseFont = True
-        Me.DateEdit2.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.DateEdit2.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.DateEdit2.Properties.MaskSettings.Set("mask", "yyyy-MM-dd")
-        Me.DateEdit2.Properties.UseMaskAsDisplayFormat = True
-        Me.DateEdit2.Size = New System.Drawing.Size(340, 30)
-        Me.DateEdit2.TabIndex = 4
-        '
-        'DateEdit1
-        '
-        Me.DateEdit1.EditValue = Nothing
-        Me.DateEdit1.Location = New System.Drawing.Point(270, 128)
-        Me.DateEdit1.Name = "DateEdit1"
-        Me.DateEdit1.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateEdit1.Properties.Appearance.Options.UseFont = True
-        Me.DateEdit1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.DateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.DateEdit1.Properties.DisplayFormat.FormatString = "yyyy-MM-dd"
-        Me.DateEdit1.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.DateEdit1.Properties.EditFormat.FormatString = "yyyy-MM-dd"
-        Me.DateEdit1.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.DateEdit1.Properties.MaskSettings.Set("mask", "yyyy-MM-dd")
-        Me.DateEdit1.Properties.UseMaskAsDisplayFormat = True
-        Me.DateEdit1.Size = New System.Drawing.Size(340, 30)
-        Me.DateEdit1.SyncSelectionWithEditValue = False
-        Me.DateEdit1.TabIndex = 4
         '
         'ButtonExport
         '
@@ -269,6 +237,7 @@ Partial Class FormRequest
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.ContextMenuStrip = Me.ContextMenuStrip1
         Me.DataGridView1.Location = New System.Drawing.Point(38, 402)
+        Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
@@ -279,30 +248,16 @@ Partial Class FormRequest
         'ContextMenuStrip1
         '
         Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.KonfirmasiSelesaiToolStripMenuItem, Me.EditDataToolStripMenuItem, Me.HapusDataToolStripMenuItem})
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.KonfirmasiSelesaiToolStripMenuItem, Me.NotApproveToolStripMenuItem, Me.EditDataToolStripMenuItem, Me.HapusDataToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(204, 82)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(169, 108)
         '
         'KonfirmasiSelesaiToolStripMenuItem
         '
         Me.KonfirmasiSelesaiToolStripMenuItem.BackColor = System.Drawing.Color.SpringGreen
         Me.KonfirmasiSelesaiToolStripMenuItem.Name = "KonfirmasiSelesaiToolStripMenuItem"
-        Me.KonfirmasiSelesaiToolStripMenuItem.Size = New System.Drawing.Size(203, 26)
-        Me.KonfirmasiSelesaiToolStripMenuItem.Text = "Konfirmasi Selesai"
-        '
-        'EditDataToolStripMenuItem
-        '
-        Me.EditDataToolStripMenuItem.Image = Global.Task_Request_App.My.Resources.Resources.pngegg__1_
-        Me.EditDataToolStripMenuItem.Name = "EditDataToolStripMenuItem"
-        Me.EditDataToolStripMenuItem.Size = New System.Drawing.Size(203, 26)
-        Me.EditDataToolStripMenuItem.Text = "Edit"
-        '
-        'HapusDataToolStripMenuItem
-        '
-        Me.HapusDataToolStripMenuItem.Image = Global.Task_Request_App.My.Resources.Resources.pngegg__2_
-        Me.HapusDataToolStripMenuItem.Name = "HapusDataToolStripMenuItem"
-        Me.HapusDataToolStripMenuItem.Size = New System.Drawing.Size(203, 26)
-        Me.HapusDataToolStripMenuItem.Text = "Hapus"
+        Me.KonfirmasiSelesaiToolStripMenuItem.Size = New System.Drawing.Size(168, 26)
+        Me.KonfirmasiSelesaiToolStripMenuItem.Text = "Approve"
         '
         'LabelTotal
         '
@@ -312,6 +267,60 @@ Partial Class FormRequest
         Me.LabelTotal.Name = "LabelTotal"
         Me.LabelTotal.Size = New System.Drawing.Size(0, 29)
         Me.LabelTotal.TabIndex = 10
+        '
+        'NotApproveToolStripMenuItem
+        '
+        Me.NotApproveToolStripMenuItem.BackColor = System.Drawing.Color.PeachPuff
+        Me.NotApproveToolStripMenuItem.Name = "NotApproveToolStripMenuItem"
+        Me.NotApproveToolStripMenuItem.Size = New System.Drawing.Size(168, 26)
+        Me.NotApproveToolStripMenuItem.Text = "Not Approve"
+        '
+        'EditDataToolStripMenuItem
+        '
+        Me.EditDataToolStripMenuItem.Image = Global.Task_Request_App.My.Resources.Resources.pngegg__1_
+        Me.EditDataToolStripMenuItem.Name = "EditDataToolStripMenuItem"
+        Me.EditDataToolStripMenuItem.Size = New System.Drawing.Size(168, 26)
+        Me.EditDataToolStripMenuItem.Text = "Edit"
+        '
+        'HapusDataToolStripMenuItem
+        '
+        Me.HapusDataToolStripMenuItem.Image = Global.Task_Request_App.My.Resources.Resources.pngegg__2_
+        Me.HapusDataToolStripMenuItem.Name = "HapusDataToolStripMenuItem"
+        Me.HapusDataToolStripMenuItem.Size = New System.Drawing.Size(168, 26)
+        Me.HapusDataToolStripMenuItem.Text = "Hapus"
+        '
+        'DateEdit2
+        '
+        Me.DateEdit2.EditValue = Nothing
+        Me.DateEdit2.Location = New System.Drawing.Point(270, 176)
+        Me.DateEdit2.Name = "DateEdit2"
+        Me.DateEdit2.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateEdit2.Properties.Appearance.Options.UseFont = True
+        Me.DateEdit2.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateEdit2.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateEdit2.Properties.MaskSettings.Set("mask", "yyyy-MM-dd")
+        Me.DateEdit2.Properties.UseMaskAsDisplayFormat = True
+        Me.DateEdit2.Size = New System.Drawing.Size(340, 30)
+        Me.DateEdit2.TabIndex = 4
+        '
+        'DateEdit1
+        '
+        Me.DateEdit1.EditValue = Nothing
+        Me.DateEdit1.Location = New System.Drawing.Point(270, 128)
+        Me.DateEdit1.Name = "DateEdit1"
+        Me.DateEdit1.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateEdit1.Properties.Appearance.Options.UseFont = True
+        Me.DateEdit1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateEdit1.Properties.DisplayFormat.FormatString = "yyyy-MM-dd"
+        Me.DateEdit1.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.DateEdit1.Properties.EditFormat.FormatString = "yyyy-MM-dd"
+        Me.DateEdit1.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.DateEdit1.Properties.MaskSettings.Set("mask", "yyyy-MM-dd")
+        Me.DateEdit1.Properties.UseMaskAsDisplayFormat = True
+        Me.DateEdit1.Size = New System.Drawing.Size(340, 30)
+        Me.DateEdit1.SyncSelectionWithEditValue = False
+        Me.DateEdit1.TabIndex = 4
         '
         'FormRequest
         '
@@ -328,12 +337,12 @@ Partial Class FormRequest
         Me.Text = "FormRequest"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         CType(Me.DateEdit2.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -362,4 +371,5 @@ Partial Class FormRequest
     Friend WithEvents EditDataToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HapusDataToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents KonfirmasiSelesaiToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents NotApproveToolStripMenuItem As ToolStripMenuItem
 End Class

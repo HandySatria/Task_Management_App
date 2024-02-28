@@ -58,8 +58,8 @@ Public Class FormAddUser
                     Cmd.Parameters.Add("@password", MySqlDbType.VarChar).Value = HasilEnkripsi
                     Cmd.Parameters.Add("@fullname", MySqlDbType.VarChar).Value = TextBoxNama.Text
                     Cmd.Parameters.Add("@divisi_id", MySqlDbType.VarChar).Value = ComboBoxDivisi.SelectedValue
-                    Cmd.Parameters.Add("@user_crt", MySqlDbType.VarChar).Value = Nama_User
-                    Cmd.Parameters.Add("@user_upd", MySqlDbType.VarChar).Value = Nama_User
+                    Cmd.Parameters.Add("@user_crt", MySqlDbType.VarChar).Value = activeUserData.getUserName
+                    Cmd.Parameters.Add("@user_upd", MySqlDbType.VarChar).Value = activeUserData.getUserName
                     Cmd.Parameters.Add("@dtm_crt", MySqlDbType.DateTime).Value = DateTime.Now
                     Cmd.Parameters.Add("@dtm_upd", MySqlDbType.DateTime).Value = DateTime.Now
                     Cmd.ExecuteNonQuery()
@@ -72,7 +72,7 @@ Public Class FormAddUser
                     Cmd.Parameters.Add("@password", MySqlDbType.VarChar).Value = HasilEnkripsi
                     Cmd.Parameters.Add("@fullname", MySqlDbType.VarChar).Value = TextBoxNama.Text
                     Cmd.Parameters.Add("@divisi_id", MySqlDbType.VarChar).Value = ComboBoxDivisi.SelectedValue
-                    Cmd.Parameters.Add("@user_upd", MySqlDbType.VarChar).Value = Nama_User
+                    Cmd.Parameters.Add("@user_upd", MySqlDbType.VarChar).Value = activeUserData.getUserName
                     Cmd.Parameters.Add("@dtm_upd", MySqlDbType.DateTime).Value = DateTime.Now
                     Cmd.ExecuteNonQuery()
                     MsgBox("Edit Data Berhasil", vbOKOnly, "Success Message")

@@ -28,6 +28,7 @@
                     FormMasterDivisi.Close()
                     FormMasterUser.Close()
                     LabelHeader.Text = ""
+                    DisableButtonColor()
                     KondisiTertutup()
             End Select
         End If
