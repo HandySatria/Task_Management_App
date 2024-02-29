@@ -24,6 +24,8 @@ Partial Class FormTask
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.DateEdit2 = New DevExpress.XtraEditors.DateEdit()
+        Me.DateEdit1 = New DevExpress.XtraEditors.DateEdit()
         Me.ButtonExport = New System.Windows.Forms.Button()
         Me.ButtonReset = New System.Windows.Forms.Button()
         Me.ButtonSearch = New System.Windows.Forms.Button()
@@ -43,16 +45,15 @@ Partial Class FormTask
         Me.TidakSetujuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OnProgressToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DoneToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LabelTotal = New System.Windows.Forms.Label()
-        Me.DateEdit2 = New DevExpress.XtraEditors.DateEdit()
-        Me.DateEdit1 = New DevExpress.XtraEditors.DateEdit()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ContextMenuStrip1.SuspendLayout()
         CType(Me.DateEdit2.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -81,6 +82,30 @@ Partial Class FormTask
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "TASK"
+        '
+        'DateEdit2
+        '
+        Me.DateEdit2.EditValue = Nothing
+        Me.DateEdit2.Location = New System.Drawing.Point(270, 176)
+        Me.DateEdit2.Name = "DateEdit2"
+        Me.DateEdit2.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateEdit2.Properties.Appearance.Options.UseFont = True
+        Me.DateEdit2.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateEdit2.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateEdit2.Size = New System.Drawing.Size(340, 30)
+        Me.DateEdit2.TabIndex = 4
+        '
+        'DateEdit1
+        '
+        Me.DateEdit1.EditValue = Nothing
+        Me.DateEdit1.Location = New System.Drawing.Point(270, 128)
+        Me.DateEdit1.Name = "DateEdit1"
+        Me.DateEdit1.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateEdit1.Properties.Appearance.Options.UseFont = True
+        Me.DateEdit1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateEdit1.Size = New System.Drawing.Size(340, 30)
+        Me.DateEdit1.TabIndex = 4
         '
         'ButtonExport
         '
@@ -235,22 +260,22 @@ Partial Class FormTask
         'ContextMenuStrip1
         '
         Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SetujuiToolStripMenuItem, Me.TidakSetujuToolStripMenuItem, Me.OnProgressToolStripMenuItem, Me.DoneToolStripMenuItem})
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SetujuiToolStripMenuItem, Me.TidakSetujuToolStripMenuItem, Me.OnProgressToolStripMenuItem, Me.DoneToolStripMenuItem, Me.ViewToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(158, 100)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(215, 162)
         '
         'SetujuiToolStripMenuItem
         '
         Me.SetujuiToolStripMenuItem.BackColor = System.Drawing.Color.Yellow
         Me.SetujuiToolStripMenuItem.Name = "SetujuiToolStripMenuItem"
-        Me.SetujuiToolStripMenuItem.Size = New System.Drawing.Size(157, 24)
+        Me.SetujuiToolStripMenuItem.Size = New System.Drawing.Size(214, 26)
         Me.SetujuiToolStripMenuItem.Text = "Accept"
         '
         'TidakSetujuToolStripMenuItem
         '
         Me.TidakSetujuToolStripMenuItem.BackColor = System.Drawing.Color.LightCoral
         Me.TidakSetujuToolStripMenuItem.Name = "TidakSetujuToolStripMenuItem"
-        Me.TidakSetujuToolStripMenuItem.Size = New System.Drawing.Size(157, 24)
+        Me.TidakSetujuToolStripMenuItem.Size = New System.Drawing.Size(214, 26)
         Me.TidakSetujuToolStripMenuItem.Text = "Reject"
         '
         'OnProgressToolStripMenuItem
@@ -258,15 +283,23 @@ Partial Class FormTask
         Me.OnProgressToolStripMenuItem.BackColor = System.Drawing.Color.Blue
         Me.OnProgressToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.OnProgressToolStripMenuItem.Name = "OnProgressToolStripMenuItem"
-        Me.OnProgressToolStripMenuItem.Size = New System.Drawing.Size(157, 24)
+        Me.OnProgressToolStripMenuItem.Size = New System.Drawing.Size(214, 26)
         Me.OnProgressToolStripMenuItem.Text = "On Progress"
         '
         'DoneToolStripMenuItem
         '
         Me.DoneToolStripMenuItem.BackColor = System.Drawing.Color.LightGreen
         Me.DoneToolStripMenuItem.Name = "DoneToolStripMenuItem"
-        Me.DoneToolStripMenuItem.Size = New System.Drawing.Size(157, 24)
+        Me.DoneToolStripMenuItem.Size = New System.Drawing.Size(214, 26)
         Me.DoneToolStripMenuItem.Text = "Done"
+        '
+        'ViewToolStripMenuItem
+        '
+        Me.ViewToolStripMenuItem.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.ViewToolStripMenuItem.Image = Global.Task_Request_App.My.Resources.Resources.file_search_1
+        Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
+        Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(214, 26)
+        Me.ViewToolStripMenuItem.Text = "View"
         '
         'LabelTotal
         '
@@ -276,30 +309,6 @@ Partial Class FormTask
         Me.LabelTotal.Name = "LabelTotal"
         Me.LabelTotal.Size = New System.Drawing.Size(0, 29)
         Me.LabelTotal.TabIndex = 12
-        '
-        'DateEdit2
-        '
-        Me.DateEdit2.EditValue = Nothing
-        Me.DateEdit2.Location = New System.Drawing.Point(270, 176)
-        Me.DateEdit2.Name = "DateEdit2"
-        Me.DateEdit2.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateEdit2.Properties.Appearance.Options.UseFont = True
-        Me.DateEdit2.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.DateEdit2.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.DateEdit2.Size = New System.Drawing.Size(340, 30)
-        Me.DateEdit2.TabIndex = 4
-        '
-        'DateEdit1
-        '
-        Me.DateEdit1.EditValue = Nothing
-        Me.DateEdit1.Location = New System.Drawing.Point(270, 128)
-        Me.DateEdit1.Name = "DateEdit1"
-        Me.DateEdit1.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateEdit1.Properties.Appearance.Options.UseFont = True
-        Me.DateEdit1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.DateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.DateEdit1.Size = New System.Drawing.Size(340, 30)
-        Me.DateEdit1.TabIndex = 4
         '
         'FormTask
         '
@@ -315,12 +324,12 @@ Partial Class FormTask
         Me.Text = "FormTask"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ContextMenuStrip1.ResumeLayout(False)
         CType(Me.DateEdit2.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -348,4 +357,5 @@ Partial Class FormTask
     Friend WithEvents TidakSetujuToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OnProgressToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DoneToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ViewToolStripMenuItem As ToolStripMenuItem
 End Class

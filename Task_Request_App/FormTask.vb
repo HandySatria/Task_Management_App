@@ -5,31 +5,6 @@ Public Class FormTask
     Dim baris As Integer
     Dim divisiDictionary As New Dictionary(Of Integer, String)()
     Dim statusDictionary As New Dictionary(Of Integer, String)()
-    'Private Sub send()
-    '    Try
-    '        Dim SMTPclient As New SmtpClient
-    '        Dim SendMail As New MailMessage()
-    '        Dim Email As String
-    '        Email = "it.laritta@gmail.com"
-    '        Dim password As String
-    '        password = "@laritta11"
-    '        SMTPclient.UseDefaultCredentials = False
-    '        SMTPclient.Credentials = New Net.NetworkCredential(Email, password)
-    '        SMTPclient.Port = 587
-    '        SMTPclient.EnableSsl = True
-    '        SMTPclient.Host = "smtp.gmail.com"
-    '        SendMail = New MailMessage()
-    '        SendMail.From = New MailAddress("it.laritta@gmail.com")
-    '        SendMail.To.Add("satriahandy455@gmail.com")
-    '        SendMail.Subject = "Hai"
-    '        SendMail.IsBodyHtml = False
-    '        SendMail.Body = "Coba kirim pesan"
-    '        SMTPclient.Send(SendMail)
-    '        MsgBox("Email Sudah Terkirim")
-    '    Catch ex As Exception
-    '        MsgBox(ex.ToString)
-    '    End Try
-    'End Sub
     Private Sub GetData()
         Try
             Condition = " Where dTo.divisi_id = " & activeUserData.getDivisionId
@@ -55,8 +30,6 @@ Public Class FormTask
             If DateEdit2.Text IsNot "" Then
                 Condition = Condition & " and date(r.dtm_crt) <= '" & DateEdit2.Text & "'"
             End If
-
-
 
             Call Koneksi()
             Cari_Data = "select r.request_id as request_id, r.subject as subject, r.description description, dTo.divisi_name as to_divisi, dFrom.divisi_name as from_divisi, dFrom.divisi_id as from_divisi_id,
@@ -263,7 +236,7 @@ Public Class FormTask
     End Sub
 
     Private Sub ContextMenuStrip1_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip1.Opening
-        If DataGridView1.CurrentRow.Cells(DataGridView1.ColumnCount - 1).Value = 1 Or DataGridView1.CurrentRow.Cells(DataGridView1.ColumnCount - 1).Value = 2 Then
+        If DataGridView1.CurrentRow.Cells(DataGridView1.ColumnCount - 1).Value = 1 Or DataGridView1.CurrentRow.Cells(DataGridView1.ColumnCount - 1).Value = 2 Or DataGridView1.CurrentRow.Cells(DataGridView1.ColumnCount - 1).Value = 9 Then
             SetujuiToolStripMenuItem.Visible = True
             TidakSetujuToolStripMenuItem.Visible = True
         Else
@@ -286,35 +259,10 @@ Public Class FormTask
     End Sub
 
     Private Async Sub TidakSetujuToolStripMenuItem_ClickAsync(sender As Object, e As EventArgs) Handles TidakSetujuToolStripMenuItem.Click
-        Select Case MsgBox("Apakah anda yakin tidak menyetujui request ini ?", MsgBoxStyle.YesNo, "MESSAGE")
-            Case MsgBoxResult.Yes
-                Call Koneksi()
-                Cmd = New MySqlCommand("Update request set status=@status, user_upd=@user_upd, dtm_upd=@dtm_upd where request_id = '" & DataGridView1.CurrentRow.Cells(0).Value & "'", Conn)
-                Cmd.Parameters.Add("@status", MySqlDbType.VarChar).Value = 4
-                Cmd.Parameters.Add("@user_upd", MySqlDbType.VarChar).Value = activeUserData.getUserName
-                Cmd.Parameters.Add("@dtm_upd", MySqlDbType.DateTime).Value = DateTime.Now
-                Cmd.ExecuteNonQuery()
-
-                Call Koneksi()
-                Cmd = New MySqlCommand("SELECT user_id, divisi_id, chat_id_telegram FROM user where divisi_id = '" & DataGridView1.CurrentRow.Cells(DataGridView1.ColumnCount - 2).Value & "'", Conn)
-                Rd = Cmd.ExecuteReader
-                '  Rd.Read()
-                If Rd.HasRows Then
-                    Do While Rd.Read
-                        Dim chatIdTujuan As Long = Rd.Item("chat_id_telegram")
-                        Dim pesan As String
-                        pesan = "** REQUEST DENGAN ID : " & DataGridView1.CurrentRow.Cells(0).Value & " TIDAK DISETUJUI **" & Environment.NewLine & Environment.NewLine & Environment.NewLine &
-                                "- Untuk Divisi : " & activeUserData.getDivisionName & Environment.NewLine & Environment.NewLine &
-                                "- Subject : " & DataGridView1.CurrentRow.Cells(3).Value & Environment.NewLine & Environment.NewLine &
-                                "- Deskripsi : " & DataGridView1.CurrentRow.Cells(4).Value & Environment.NewLine & Environment.NewLine &
-                                "- Prioritas : " & DataGridView1.CurrentRow.Cells(6).Value & Environment.NewLine & Environment.NewLine &
-                                "- User : " & activeUserData.getUserName & Environment.NewLine & Environment.NewLine
-                        Await KirimPesanKeOrangLainAsync(botClient, chatIdTujuan, pesan, cts.Token)
-                    Loop
-                End If
-                MsgBox("Update Status Berhasil", vbOKOnly, "Success Message")
-                GetData()
-        End Select
+        FormNotApprove.LabelId.Text = DataGridView1.CurrentRow.Cells(0).Value
+        FormNotApprove.LabelTitle.Text = "DATA REJECT"
+        FormNotApprove.LabelCatatan.Text = "ALASAN REJECT"
+        FormNotApprove.ShowDialog()
     End Sub
 
     Private Async Sub OnProgressToolStripMenuItem_ClickAsync(sender As Object, e As EventArgs) Handles OnProgressToolStripMenuItem.Click
@@ -341,28 +289,22 @@ Public Class FormTask
         End If
     End Sub
 
+    Private Sub ViewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewToolStripMenuItem.Click
+        FormRequestDetail.LabelId.Text = DataGridView1.CurrentRow.Cells(0).Value
+        FormRequestDetail.LabelFromDivisi.Text = DataGridView1.CurrentRow.Cells(1).Value
+        FormRequestDetail.LabelToDivisi.Text = DataGridView1.CurrentRow.Cells(2).Value
+        FormRequestDetail.LabelSubject.Text = DataGridView1.CurrentRow.Cells(3).Value
+        FormRequestDetail.TextBoxDescription.Text = DataGridView1.CurrentRow.Cells(4).Value
+        FormRequestDetail.LabelStatus.Text = DataGridView1.CurrentRow.Cells(5).Value
+        FormRequestDetail.LabelPriority.Text = DataGridView1.CurrentRow.Cells(6).Value
+        FormRequestDetail.LabelStatus.BackColor = DataGridView1.CurrentRow.Cells(5).Style.BackColor
+        FormRequestDetail.LabelPriority.ForeColor = DataGridView1.CurrentRow.Cells(6).Style.ForeColor
+        FormRequestDetail.getHistoryRequest()
+        FormMenu.switchForm(FormRequestDetail)
+    End Sub
 
     Private Sub ButtonSearch_Click(sender As Object, e As EventArgs) Handles ButtonSearch.Click
-        'Try
-        '    Dim web As New WebBrowser
-        '    web.Navigate("whatsapp://send?phone=+6281235537927&text=" & TextBoxTaskId.Text.Replace(" ", "+") & "")
-        '    Timer1.Start()
-        'Catch ex As Exception
-        '    Timer1.Stop()
-        'End Try
-        'send()
         GetData()
-
-
     End Sub
-    'Dim sec As Integer = 0
-    'Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-    '    sec += 1
-    '    If sec = 10 Then
-    '        SendKeys.Send("{ENTER}")
-    '        Timer1.Stop()
-    '        sec = 0
-    '    End If
 
-    'End Sub
 End Class

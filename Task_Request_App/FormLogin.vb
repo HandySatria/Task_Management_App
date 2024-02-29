@@ -4,13 +4,15 @@ Public Class FormLogin
     Sub KondisiTerbuka()
         FormMenu.RequestToolStripMenuItem.Visible = True
         FormMenu.TaskToolStripMenuItem.Visible = True
-        FormMenu.SettingToolStripMenuItem.Visible = True
+        If activeUserData.getIsAdmin Then
+            FormMenu.SettingToolStripMenuItem.Visible = True
+        End If
         FormMenu.ButtonLogin.Text = "LOGOUT"
     End Sub
 
     Private Sub ButtonLogin_Click(sender As Object, e As EventArgs) Handles ButtonLogin.Click
         login()
-        Start_BotAsync()
+
     End Sub
 
     Sub login()
@@ -21,7 +23,7 @@ Public Class FormLogin
                 Call Enkripsi(TextBoxPassword.Text)
                 Call Koneksi()
                 'Cmd = New MySqlCommand("SELECT u.user_id as user_id, u.fullname as fullname, u.username as username, u.password as password, d.divisi_name as divisi_name, d.divisi_id as divisi_id FROM user u left join divisi d on u.divisi_id = d.divisi_id where u.username = '" & TextBoxNama.Text & "' and u.password = '" & HasilEnkripsi & "'", Conn)
-                Cmd = New MySqlCommand("SELECT u.user_id as user_id, u.fullname as fullname, u.username as username, u.password as password, d.divisi_name as divisi_name, d.divisi_id as divisi_id FROM user u left join divisi d on u.divisi_id = d.divisi_id where u.username = @username and u.password = @password", Conn)
+                Cmd = New MySqlCommand("SELECT u.user_id as user_id, u.fullname as fullname, u.username as username, u.password as password, d.divisi_name as divisi_name, d.divisi_id as divisi_id, u.is_admin as is_admin FROM user u left join divisi d on u.divisi_id = d.divisi_id where u.username = @username and u.password = @password", Conn)
                 Cmd.Parameters.AddWithValue("@username", TextBoxNama.Text)
                 Cmd.Parameters.AddWithValue("@password", HasilEnkripsi)
 
@@ -31,10 +33,11 @@ Public Class FormLogin
                     MsgBox("Username atau Password Salah!")
                 Else
                     'Divisi_Name = Rd.Item("divisi_name")
-                    activeUserData = New UserData(CInt(Rd.Item("divisi_id")), Rd.Item("divisi_name"), CInt(Rd.Item("user_id")), Rd.Item("username"), Rd.Item("fullname"))
-                    FormMenu.LabelHeader.Text = "Welcome, " & activeUserData.getFullName & " dari Divisi " & activeUserData.getDivisionName
+                    activeUserData = New UserData(CInt(Rd.Item("divisi_id")), Rd.Item("divisi_name"), CInt(Rd.Item("user_id")), Rd.Item("username"), Rd.Item("fullname"), Rd.Item("is_admin"))
+                    FormMenu.LabelHeader.Text = "Welcome, " & activeUserData.getFullName & " Dari Divisi " & activeUserData.getDivisionName
                     Me.Close()
                     Call KondisiTerbuka()
+                    Start_BotAsync()
 
                     'Call Koneksi()
                     'Cmd = New MySqlCommand("select * from hak_akses where Level='" & Level_User & "'", Conn)

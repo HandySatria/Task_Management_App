@@ -20,15 +20,29 @@ Public Class FormRequest
         Do While Rd.Read
             Dim divisiId As String
             divisiId = Rd.Item("divisi_id")
-            If divisiId = activeUserData.getDivisionId Or divisiId = 3 Or divisiId = 2 Then
-            Else
+
+            If activeUserData.getIsAdmin Then
                 divisiDictionary.Add(Rd.Item("divisi_id"), Rd.Item("divisi_name"))
                 ComboBoxDivisi.Items.Add(divisiDictionary)
+            Else
+                If divisiId = activeUserData.getDivisionId Then
+                Else
+                    divisiDictionary.Add(Rd.Item("divisi_id"), Rd.Item("divisi_name"))
+                    ComboBoxDivisi.Items.Add(divisiDictionary)
+                End If
             End If
         Loop
         ComboBoxDivisi.DisplayMember = "Value"
         ComboBoxDivisi.ValueMember = "Key"
         ComboBoxDivisi.DataSource = New BindingSource(divisiDictionary, Nothing)
+
+        If activeUserData.getIsAdmin Then
+            Label7.Visible = True
+            ComboBoxFromDivisi.Visible = True
+            ComboBoxFromDivisi.DisplayMember = "Value"
+            ComboBoxFromDivisi.ValueMember = "Key"
+            ComboBoxFromDivisi.DataSource = New BindingSource(divisiDictionary, Nothing)
+        End If
 
         statusDictionary.Clear()
         ComboBoxStatus.DataSource = Nothing
@@ -53,7 +67,17 @@ Public Class FormRequest
 
     Private Sub GetData()
         Try
-            Condition = " Where dFrom.divisi_id = " & activeUserData.getDivisionId
+            If activeUserData.getIsAdmin Then
+                Condition = " Where 1=1 "
+                If ComboBoxFromDivisi.SelectedItem IsNot Nothing Then
+                    If DirectCast(ComboBoxFromDivisi.SelectedValue, Integer) >= 0 Then
+                        Condition = Condition & " and dFrom.divisi_id = '" & DirectCast(ComboBoxFromDivisi.SelectedValue, Integer) & "'"
+                    End If
+                End If
+            Else
+                Condition = " Where dFrom.divisi_id = " & activeUserData.getDivisionId
+            End If
+
             If TextBoxRequestId.Text IsNot "" Then
                 Condition = Condition & " and r.request_id = '" & TextBoxRequestId.Text & "'"
             End If
@@ -201,6 +225,9 @@ Public Class FormRequest
         ComboBoxDivisi.SelectedValue = -1
         ComboBoxStatus.SelectedValue = -1
         ButtonExport.Enabled = False
+        If activeUserData.getIsAdmin Then
+            ComboBoxFromDivisi.SelectedValue = -1
+        End If
     End Sub
 
     Private Sub ButtonSearch_Click(sender As Object, e As EventArgs) Handles ButtonSearch.Click
@@ -257,10 +284,12 @@ Public Class FormRequest
     End Sub
 
     Private Sub ContextMenuStrip1_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip1.Opening
-        If DataGridView1.CurrentRow.Cells(DataGridView1.ColumnCount - 1).Value = 7 Then
+        If DataGridView1.CurrentRow.Cells(DataGridView1.ColumnCount - 1).Value = 7  Then
             KonfirmasiSelesaiToolStripMenuItem.Visible = True
+            NotApproveToolStripMenuItem.Visible = True
         Else
             KonfirmasiSelesaiToolStripMenuItem.Visible = False
+            NotApproveToolStripMenuItem.Visible = False
         End If
     End Sub
 
@@ -308,13 +337,29 @@ Public Class FormRequest
         End If
     End Sub
 
-    Private Sub ComboBoxDivisi_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxDivisi.SelectedIndexChanged
+    Private Sub ComboBoxDivisi_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxDivisi.SelectedIndexChanged, ComboBoxFromDivisi.SelectedIndexChanged
 
     End Sub
 
     Private Sub NotApproveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NotApproveToolStripMenuItem.Click
         FormNotApprove.LabelId.Text = DataGridView1.CurrentRow.Cells(0).Value
+        FormNotApprove.LabelTitle.Text = "DATA REVISI"
+        FormNotApprove.LabelCatatan.Text = "ALASAN TIDAK APPROVE"
         FormNotApprove.ShowDialog()
+    End Sub
+
+    Private Sub ViewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewToolStripMenuItem.Click
+        FormRequestDetail.LabelId.Text = DataGridView1.CurrentRow.Cells(0).Value
+        FormRequestDetail.LabelFromDivisi.Text = DataGridView1.CurrentRow.Cells(1).Value
+        FormRequestDetail.LabelToDivisi.Text = DataGridView1.CurrentRow.Cells(2).Value
+        FormRequestDetail.LabelSubject.Text = DataGridView1.CurrentRow.Cells(3).Value
+        FormRequestDetail.TextBoxDescription.Text = DataGridView1.CurrentRow.Cells(4).Value
+        FormRequestDetail.LabelStatus.Text = DataGridView1.CurrentRow.Cells(5).Value
+        FormRequestDetail.LabelPriority.Text = DataGridView1.CurrentRow.Cells(6).Value
+        FormRequestDetail.LabelStatus.BackColor = DataGridView1.CurrentRow.Cells(5).Style.BackColor
+        FormRequestDetail.LabelPriority.ForeColor = DataGridView1.CurrentRow.Cells(6).Style.ForeColor
+        FormRequestDetail.getHistoryRequest()
+        FormMenu.switchForm(FormRequestDetail)
     End Sub
 
     Private Async Function ButtonAdd_ClickAsync(sender As Object, e As EventArgs) As Task Handles ButtonAdd.Click

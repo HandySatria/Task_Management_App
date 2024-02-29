@@ -4,12 +4,15 @@
     Private userId As Integer
     Private userName As String
     Private fullName As String
-    Sub New(ByVal divId As Integer, ByVal divName As String, ByVal uId As Integer, ByVal uName As String, ByVal fName As String)
+    Private isAdmin As Boolean
+
+    Sub New(ByVal divId As Integer, ByVal divName As String, ByVal uId As Integer, ByVal uName As String, ByVal fName As String, ByVal isAdm As Boolean)
         divisionId = divId
         divisionName = divName
         userId = uId
         userName = uName
         fullName = fName
+        isAdmin = isAdm
     End Sub
 
     Function getUserId() As Integer
@@ -26,6 +29,10 @@
 
     Function getDivisionId() As Integer
         Return divisionId
+    End Function
+
+    Function getIsAdmin() As Integer
+        Return isAdmin
     End Function
 
     Function getDivisionName() As String

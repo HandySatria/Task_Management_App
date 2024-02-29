@@ -141,7 +141,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\UserData.vb" />
-    <Compile Include="Controls\HistoryCard.vb" />
+    <Compile Include="Controls\HistoryCard.Designer.vb">
+      <DependentUpon>HistoryCard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HistoryCard.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="FormAddDivisi.Designer.vb">
       <DependentUpon>FormAddDivisi.vb</DependentUpon>
     </Compile>
@@ -257,6 +262,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\HistoryCard.resx">
+      <DependentUpon>HistoryCard.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAddDivisi.resx">
       <DependentUpon>FormAddDivisi.vb</DependentUpon>
     </EmbeddedResource>
@@ -360,6 +368,8 @@
   <ItemGroup>
     <None Include="Resources\pngegg %282%29.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\file-search_1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

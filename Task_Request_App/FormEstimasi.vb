@@ -2,6 +2,11 @@
 Public Class FormEstimasi
     Dim Cari_Data, to_divisi, from_divisi, from_divisi_id, subjek, deskripsi, prioritas As String
 
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        resetForm()
+        Me.Close()
+    End Sub
+
     Sub resetForm()
         TextBoxCatatan.Text = ""
         DateEdit1.Text = ""
@@ -38,7 +43,7 @@ Public Class FormEstimasi
                     Dim chatIdTujuan As Long = Rd.Item("chat_id_telegram")
                     Dim pesan As String
                     pesan = "** REQUEST DENGAN ID : " & LabelId.Text & " DISETUJUI **" & Environment.NewLine & Environment.NewLine & Environment.NewLine &
-                        "- Untuk Divisi : " & activeUserData.getDivisionName & Environment.NewLine & Environment.NewLine &
+                        "- Untuk Divisi : " & to_divisi & Environment.NewLine & Environment.NewLine &
                         "- Subject : " & subjek & Environment.NewLine & Environment.NewLine &
                         "- Deskripsi : " & deskripsi & Environment.NewLine & Environment.NewLine &
                         "- Prioritas : " & prioritas & Environment.NewLine & Environment.NewLine &
@@ -50,6 +55,7 @@ Public Class FormEstimasi
                 Loop
             End If
             MsgBox("Update Status Berhasil", vbOKOnly, "Success Message")
+            resetForm()
             FormTask.resetForm()
             Me.Close()
         Catch ex As Exception

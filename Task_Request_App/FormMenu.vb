@@ -73,4 +73,5 @@
         MASTERDIVISIToolStripMenuItem.BackColor = Color.GhostWhite
         SettingToolStripMenuItem.BackColor = Color.GhostWhite
     End Sub
+
 End Class

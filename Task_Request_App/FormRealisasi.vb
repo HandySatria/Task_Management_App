@@ -1,6 +1,16 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class FormRealisasi
     Dim Cari_Data, to_divisi, from_divisi, from_divisi_id, subjek, deskripsi, prioritas As String
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        resetForm()
+        Me.Close()
+    End Sub
+
+    Sub resetForm()
+        DateEdit1.Text = ""
+        TextBoxCatatan.Text = ""
+    End Sub
     Private Sub FormRealisasi_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             Call Koneksi()
@@ -60,7 +70,7 @@ Public Class FormRealisasi
                         Dim chatIdTujuan As Long = Rd.Item("chat_id_telegram")
                         Dim pesan As String
                         pesan = "** REQUEST DENGAN ID : " & LabelId.Text & " ON PROGRESS **" & Environment.NewLine & Environment.NewLine & Environment.NewLine &
-                        "- Untuk Divisi : " & activeUserData.getDivisionName & Environment.NewLine & Environment.NewLine &
+                        "- Untuk Divisi : " & to_divisi & Environment.NewLine & Environment.NewLine &
                         "- Subject : " & subjek & Environment.NewLine & Environment.NewLine &
                         "- Deskripsi : " & deskripsi & Environment.NewLine & Environment.NewLine &
                         "- Prioritas : " & prioritas & Environment.NewLine & Environment.NewLine &
@@ -70,9 +80,7 @@ Public Class FormRealisasi
                         Await KirimPesanKeOrangLainAsync(botClient, chatIdTujuan, pesan, cts.Token)
                     Loop
                 End If
-                MsgBox("Update Status Berhasil", vbOKOnly, "Success Message")
-                FormTask.resetForm()
-                Me.Close()
+
             Else
                 Call Koneksi()
                 Cmd = New MySqlCommand("Update request set status=@status, user_upd=@user_upd, dtm_upd=@dtm_upd where request_id = '" & LabelId.Text & "'", Conn)
@@ -112,10 +120,11 @@ Public Class FormRealisasi
                         Await KirimPesanKeOrangLainAsync(botClient, chatIdTujuan, pesan, cts.Token)
                     Loop
                 End If
-                MsgBox("Update Status Berhasil", vbOKOnly, "Success Message")
-                FormTask.resetForm()
-                Me.Close()
             End If
+            MsgBox("Update Status Berhasil", vbOKOnly, "Success Message")
+            resetForm()
+            FormTask.resetForm()
+            Me.Close()
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
