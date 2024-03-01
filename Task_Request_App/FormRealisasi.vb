@@ -41,6 +41,7 @@ Public Class FormRealisasi
 
     Private Async Sub Button1_ClickAsync(sender As Object, e As EventArgs) Handles Button1.Click
         Try
+            ProgressPanelUtil.ShowProgressPanel(Me)
             If LabelTgl.Text = "TGL MULAI" Then
                 Call Koneksi()
                 Cmd = New MySqlCommand("Update request set status=@status, user_upd=@user_upd, dtm_upd=@dtm_upd where request_id = '" & LabelId.Text & "'", Conn)
@@ -122,12 +123,14 @@ Public Class FormRealisasi
                 End If
             End If
             MsgBox("Update Status Berhasil", vbOKOnly, "Success Message")
+            ProgressPanelUtil.HideProgressPanel()
             resetForm()
             FormTask.resetForm()
             Me.Close()
         Catch ex As Exception
             MsgBox(ex.Message)
+            ProgressPanelUtil.HideProgressPanel()
         End Try
-
+        ProgressPanelUtil.HideProgressPanel()
     End Sub
 End Class

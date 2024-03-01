@@ -2,12 +2,15 @@
 Public Class FormAddUser
     Dim tString, mode As String
     Dim cek_simpan As Integer
-    Dim divisiDictionary As New Dictionary(Of Integer, String)()
+    Dim divisiDictionary, cabangDictionary As New Dictionary(Of Integer, String)()
     Sub resetForm()
         TextBoxNama.Text = ""
         TextBoxUsername.Text = ""
         TextBoxPassword.Text = ""
+        TextBoxIdTelegram.Text = ""
+        CheckBox1.Checked = False
         ComboBoxDivisi.SelectedValue = -1
+        ComboBoxCabang.SelectedValue = -1
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         cek_simpan = 0
@@ -24,11 +27,48 @@ Public Class FormAddUser
             For j = 0 To tString.Length - 1
                 If tString.Chars(j) = "'" Then
                     MsgBox("Tidak Boleh Ada Tanda " & "( ' )" & " Pada Username", vbOKOnly, "MESSAGE")
+                    TextBoxUsername.Focus()
+                    cek_simpan = 1
+                End If
+            Next
+        End If
+        If cek_simpan = 0 Then
+            tString = TextBoxPassword.Text
+            For j = 0 To tString.Length - 1
+                If tString.Chars(j) = "'" Then
+                    MsgBox("Tidak Boleh Ada Tanda " & "( ' )" & " Pada Password", vbOKOnly, "MESSAGE")
+                    TextBoxPassword.Focus()
+                    cek_simpan = 1
+                End If
+            Next
+        End If
+
+        If cek_simpan = 0 Then
+            tString = TextBoxIdTelegram.Text
+            For j = 0 To tString.Length - 1
+                If tString.Chars(j) = "'" Then
+                    MsgBox("Tidak Boleh Ada Tanda " & "( ' )" & " Pada ID Telegram", vbOKOnly, "MESSAGE")
                     TextBoxNama.Focus()
                     cek_simpan = 1
                 End If
             Next
         End If
+
+        If cek_simpan = 0 Then
+            If TextBoxIdTelegram.Text <> "" Then
+                If IsNumeric(TextBoxIdTelegram.Text) = False Then
+                    MsgBox("Id Telegram Harus Angka", vbOKOnly, "MESSAGE")
+                    TextBoxIdTelegram.Focus()
+                    cek_simpan = 1
+                End If
+            Else
+                If TextBoxIdTelegram.Text = "" Then
+                    MsgBox("ID Telegram Tidak Boleh Kosong", vbOKOnly, "MESSAGE")
+                    cek_simpan = 1
+                End If
+            End If
+        End If
+
         If cek_simpan = 0 Then
             If TextBoxNama.Text = "" Then
                 MsgBox("Nama Lengkap Tidak Boleh Kosong", vbOKOnly, "MESSAGE")
@@ -42,8 +82,20 @@ Public Class FormAddUser
             End If
         End If
         If cek_simpan = 0 Then
+            If TextBoxPassword.Text = "" Then
+                MsgBox("Password Tidak Boleh Kosong", vbOKOnly, "MESSAGE")
+                cek_simpan = 1
+            End If
+        End If
+        If cek_simpan = 0 Then
             If ComboBoxDivisi.SelectedValue = -1 Then
                 MsgBox("Harap Pilih Divisi", vbOKOnly, "MESSAGE")
+                cek_simpan = 1
+            End If
+        End If
+        If cek_simpan = 0 Then
+            If ComboBoxCabang.SelectedValue = -1 Then
+                MsgBox("Harap Pilih Cabang", vbOKOnly, "MESSAGE")
                 cek_simpan = 1
             End If
         End If
@@ -53,25 +105,30 @@ Public Class FormAddUser
                 Call Enkripsi(TextBoxPassword.Text)
                 If LabelId.Text = "" Then
                     Call Koneksi()
-                    Cmd = New MySqlCommand("INSERT INTO user(username,  password, fullname, divisi_id, user_crt, user_upd, dtm_crt,dtm_upd) values(@username,  @password, @fullname, @divisi_id, @user_crt, @user_upd, @dtm_crt, @dtm_upd) ", Conn)
+                    Cmd = New MySqlCommand("INSERT INTO user(username,  password, fullname, divisi_id, chat_id_telegram, is_admin, id_cabang, user_crt, user_upd, dtm_crt,dtm_upd) values(@username,  @password, @fullname, @divisi_id, @chat_id_telegram, @is_admin, @id_cabang, @user_crt, @user_upd, @dtm_crt, @dtm_upd) ", Conn)
                     Cmd.Parameters.Add("@username", MySqlDbType.VarChar).Value = TextBoxUsername.Text
                     Cmd.Parameters.Add("@password", MySqlDbType.VarChar).Value = HasilEnkripsi
                     Cmd.Parameters.Add("@fullname", MySqlDbType.VarChar).Value = TextBoxNama.Text
                     Cmd.Parameters.Add("@divisi_id", MySqlDbType.VarChar).Value = ComboBoxDivisi.SelectedValue
+                    Cmd.Parameters.Add("@chat_id_telegram", MySqlDbType.VarChar).Value = TextBoxIdTelegram.Text
+                    Cmd.Parameters.Add("@is_admin", MySqlDbType.Bit).Value = If(CheckBox1.Checked, 1, 0)
+                    Cmd.Parameters.Add("@id_cabang", MySqlDbType.VarChar).Value = ComboBoxCabang.SelectedValue
                     Cmd.Parameters.Add("@user_crt", MySqlDbType.VarChar).Value = activeUserData.getUserName
                     Cmd.Parameters.Add("@user_upd", MySqlDbType.VarChar).Value = activeUserData.getUserName
                     Cmd.Parameters.Add("@dtm_crt", MySqlDbType.DateTime).Value = DateTime.Now
                     Cmd.Parameters.Add("@dtm_upd", MySqlDbType.DateTime).Value = DateTime.Now
                     Cmd.ExecuteNonQuery()
                     MsgBox("Input Data Berhasil", vbOKOnly, "Success Message")
-
                 Else
                     Call Koneksi()
-                    Cmd = New MySqlCommand("Update user set username=@username, password=@password, fullname=@fullname, divisi_id=@divisi_id, user_upd=@user_upd, dtm_upd=@dtm_upd where user_id = '" & LabelId.Text & "'", Conn)
+                    Cmd = New MySqlCommand("Update user set username=@username, password=@password, fullname=@fullname, divisi_id=@divisi_id, chat_id_telegram=@chat_id_telegram, is_admin=@is_admin, id_cabang=@id_cabang, user_upd=@user_upd, dtm_upd=@dtm_upd where user_id = '" & LabelId.Text & "'", Conn)
                     Cmd.Parameters.Add("@username", MySqlDbType.VarChar).Value = TextBoxUsername.Text
                     Cmd.Parameters.Add("@password", MySqlDbType.VarChar).Value = HasilEnkripsi
                     Cmd.Parameters.Add("@fullname", MySqlDbType.VarChar).Value = TextBoxNama.Text
                     Cmd.Parameters.Add("@divisi_id", MySqlDbType.VarChar).Value = ComboBoxDivisi.SelectedValue
+                    Cmd.Parameters.Add("@chat_id_telegram", MySqlDbType.VarChar).Value = TextBoxIdTelegram.Text
+                    Cmd.Parameters.Add("@is_admin", MySqlDbType.Bit).Value = If(CheckBox1.Checked, 1, 0)
+                    Cmd.Parameters.Add("@id_cabang", MySqlDbType.VarChar).Value = ComboBoxCabang.SelectedValue
                     Cmd.Parameters.Add("@user_upd", MySqlDbType.VarChar).Value = activeUserData.getUserName
                     Cmd.Parameters.Add("@dtm_upd", MySqlDbType.DateTime).Value = DateTime.Now
                     Cmd.ExecuteNonQuery()
@@ -87,21 +144,28 @@ Public Class FormAddUser
     End Sub
 
     Private Sub FormAddUser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        setComboBoxDivisiValue()
+        setComboBoxValue()
         If LabelId.Text = "" Then
             mode = "add"
             resetForm()
         Else
             mode = "edit"
             Call Koneksi()
-            Cmd = New MySqlCommand("SELECT u.user_id as user_id, u.fullname as fullname, u.username as username, u.password as password, d.divisi_name as divisi_name, d.divisi_id as divisi_id FROM user u left join divisi d on u.divisi_id = d.divisi_id where u.user_id ='" & LabelId.Text & "'", Conn)
+            Cmd = New MySqlCommand("SELECT u.user_id as user_id, u.fullname as fullname, u.username as username, u.password as password, d.divisi_name as divisi_name, d.divisi_id as divisi_id, u.chat_id_telegram as chat_id_telegram, u.is_admin as is_admin, u.id_cabang as id_cabang FROM user u left join divisi d on u.divisi_id = d.divisi_id where u.user_id ='" & LabelId.Text & "'", Conn)
             Rd = Cmd.ExecuteReader
             If Rd.HasRows Then
                 Do While Rd.Read
                     TextBoxNama.Text = Rd.Item("fullname")
                     TextBoxUsername.Text = Rd.Item("username")
                     TextBoxPassword.Text = ""
+                    TextBoxIdTelegram.Text = Rd.Item("chat_id_telegram")
+                    ComboBoxCabang.SelectedValue = Rd.Item("id_cabang")
                     ComboBoxDivisi.SelectedValue = Rd.Item("divisi_id")
+                    If Rd.Item("is_admin") Then
+                        CheckBox1.Checked = True
+                    Else
+                        CheckBox1.Checked = False
+                    End If
                 Loop
             End If
         End If
@@ -112,7 +176,9 @@ Public Class FormAddUser
         Me.Close()
     End Sub
 
-    Sub setComboBoxDivisiValue()
+
+
+    Sub setComboBoxValue()
         divisiDictionary.Clear()
         ComboBoxDivisi.DataSource = Nothing
         Call Koneksi()
@@ -127,6 +193,21 @@ Public Class FormAddUser
         ComboBoxDivisi.DisplayMember = "Value"
         ComboBoxDivisi.ValueMember = "Key"
         ComboBoxDivisi.DataSource = New BindingSource(divisiDictionary, Nothing)
+
+        cabangDictionary.Clear()
+        ComboBoxCabang.DataSource = Nothing
+        Call Koneksi()
+        Cmd = New MySqlCommand("select id, nama from mcabang", Conn)
+        Rd = Cmd.ExecuteReader
+        cabangDictionary.Add(-1, "Pilih Cabang")
+        ComboBoxCabang.Items.Add(cabangDictionary)
+        Do While Rd.Read
+            cabangDictionary.Add(Rd.Item("id"), Rd.Item("nama"))
+            ComboBoxCabang.Items.Add(cabangDictionary)
+        Loop
+        ComboBoxCabang.DisplayMember = "Value"
+        ComboBoxCabang.ValueMember = "Key"
+        ComboBoxCabang.DataSource = New BindingSource(cabangDictionary, Nothing)
     End Sub
 
 End Class

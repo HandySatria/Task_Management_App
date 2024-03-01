@@ -32,20 +32,22 @@ Public Class FormTask
             End If
 
             Call Koneksi()
-            Cari_Data = "select r.request_id as request_id, r.subject as subject, r.description description, dTo.divisi_name as to_divisi, dFrom.divisi_name as from_divisi, dFrom.divisi_id as from_divisi_id,
-                                 rp.prioritas_name as prioritas_name, rp.ref_prioritas_id as ref_prioritas_id, rs.status_name as status_name, rs.ref_status_id as ref_status_id, 
+            Cari_Data = "select r.request_id as request_id, r.request_no as request_no, r.subject as subject, r.description description, dTo.divisi_name as to_divisi, dFrom.divisi_name as from_divisi, dFrom.divisi_id as from_divisi_id,
+                                 rp.prioritas_name as prioritas_name, rp.ref_prioritas_id as ref_prioritas_id, rs.status_name as status_name, rs.ref_status_id as ref_status_id, mc.id as cabang_id, mc.nama as cabang_name,
                                  r.user_crt as user_crt, r.user_upd as user_upd, r.dtm_crt as dtm_crt, r.dtm_upd as dtm_upd 
                         from request r 
                             left join divisi dTo on dTo.divisi_id = r.to_divisi 
                             left join divisi dFrom on dFrom.divisi_id = r.from_divisi 
                             left join ref_status rs on rs.ref_status_id = r.status
-                            left join ref_prioritas rp on rp.ref_prioritas_id = r.prioritas" & Condition
+                            left join ref_prioritas rp on rp.ref_prioritas_id = r.prioritas
+                            left join user u on u.user_id = r.user_id
+                            left join mcabang mc on mc.id = u.id_cabang" & Condition
             Cmd = New MySqlCommand(Cari_Data, Conn)
             Rd = Cmd.ExecuteReader
             DataGridView1.Columns.Clear()
 
             'Call format_dgv(DataGridView1)
-            DataGridView1.ColumnCount = 13
+            DataGridView1.ColumnCount = 15
             baris = 0
             If Rd.HasRows Then
                 DataGridView1.ColumnHeadersDefaultCellStyle.Font = New Font("sanserif", 10, FontStyle.Regular)
@@ -53,74 +55,81 @@ Public Class FormTask
                 DataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
                 DataGridView1.DefaultCellStyle.Font = New Font("sanserif", 10, FontStyle.Regular)
                 DataGridView1.DefaultCellStyle.ForeColor = Color.Black
-                DataGridView1.Columns(5).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
                 DataGridView1.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                DataGridView1.Columns(7).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                DataGridView1.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
                 DataGridView1.Columns(0).Width = 40
-                DataGridView1.Columns(1).Width = 150
+                DataGridView1.Columns(1).Width = 120
                 DataGridView1.Columns(2).Width = 150
-                DataGridView1.Columns(3).Width = 250
-                DataGridView1.Columns(4).Width = 150
+                DataGridView1.Columns(3).Width = 150
+                DataGridView1.Columns(4).Width = 250
                 DataGridView1.Columns(5).Width = 150
                 DataGridView1.Columns(6).Width = 150
-                DataGridView1.Columns(7).Width = 100
-                DataGridView1.Columns(8).Width = 100
-                DataGridView1.Columns(9).Width = 150
-                DataGridView1.Columns(10).Width = 150
+                DataGridView1.Columns(7).Width = 150
+                DataGridView1.Columns(8).Width = 150
+                DataGridView1.Columns(9).Width = 100
+                DataGridView1.Columns(10).Width = 100
+                DataGridView1.Columns(11).Width = 150
+                DataGridView1.Columns(12).Width = 150
 
                 DataGridView1.Columns(0).HeaderText = "ID"
-                DataGridView1.Columns(1).HeaderText = "Dari Divisi"
-                DataGridView1.Columns(2).HeaderText = "Ke Divisi    "
-                DataGridView1.Columns(3).HeaderText = "Subjek"
-                DataGridView1.Columns(4).HeaderText = "Deskripsi"
-                DataGridView1.Columns(5).HeaderText = "Status"
-                DataGridView1.Columns(6).HeaderText = "Prioritas"
-                DataGridView1.Columns(7).HeaderText = "User Create"
-                DataGridView1.Columns(8).HeaderText = "User Update"
-                DataGridView1.Columns(9).HeaderText = "DateTime Create"
-                DataGridView1.Columns(10).HeaderText = "DateTime Update"
-                DataGridView1.Columns(11).HeaderText = "From Divisi ID"
-                DataGridView1.Columns(12).HeaderText = "Id Status"
+                DataGridView1.Columns(1).HeaderText = "No Request"
+                DataGridView1.Columns(2).HeaderText = "Dari Divisi"
+                DataGridView1.Columns(3).HeaderText = "Ke Divisi    "
+                DataGridView1.Columns(4).HeaderText = "Subjek"
+                DataGridView1.Columns(5).HeaderText = "Deskripsi"
+                DataGridView1.Columns(6).HeaderText = "Status"
+                DataGridView1.Columns(7).HeaderText = "Prioritas"
+                DataGridView1.Columns(8).HeaderText = "Cabang"
+                DataGridView1.Columns(8).HeaderText = "User Create"
+                DataGridView1.Columns(9).HeaderText = "User Update"
+                DataGridView1.Columns(10).HeaderText = "DateTime Create"
+                DataGridView1.Columns(11).HeaderText = "DateTime Update"
+                DataGridView1.Columns(12).HeaderText = "From Divisi ID"
+                DataGridView1.Columns(13).HeaderText = "Id Status"
                 DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
                 Do While Rd.Read
                     DataGridView1.Rows.Add()
                     DataGridView1(0, baris).Value = Rd.Item("request_id")
-                    DataGridView1(1, baris).Value = Rd.Item("from_divisi")
-                    DataGridView1(2, baris).Value = Rd.Item("to_divisi")
-                    DataGridView1(3, baris).Value = Rd.Item("subject")
-                    DataGridView1(4, baris).Value = Rd.Item("description")
-                    DataGridView1(5, baris).Value = Rd.Item("status_name")
-                    DataGridView1(6, baris).Value = Rd.Item("prioritas_name")
-                    DataGridView1(7, baris).Value = Rd.Item("user_crt")
-                    DataGridView1(8, baris).Value = Rd.Item("user_upd")
-                    DataGridView1(9, baris).Value = Rd.Item("dtm_crt")
-                    DataGridView1(10, baris).Value = Rd.Item("dtm_upd")
-                    DataGridView1(11, baris).Value = Rd.Item("from_divisi_id")
-                    DataGridView1(12, baris).Value = Rd.Item("ref_status_id")
+                    DataGridView1(1, baris).Value = Rd.Item("request_no")
+                    DataGridView1(2, baris).Value = Rd.Item("from_divisi")
+                    DataGridView1(3, baris).Value = Rd.Item("to_divisi")
+                    DataGridView1(4, baris).Value = Rd.Item("subject")
+                    DataGridView1(5, baris).Value = Rd.Item("description")
+                    DataGridView1(6, baris).Value = Rd.Item("status_name")
+                    DataGridView1(7, baris).Value = Rd.Item("prioritas_name")
+                    DataGridView1(8, baris).Value = Rd.Item("cabang_name")
+                    DataGridView1(9, baris).Value = Rd.Item("user_crt")
+                    DataGridView1(10, baris).Value = Rd.Item("user_upd")
+                    DataGridView1(11, baris).Value = Rd.Item("dtm_crt")
+                    DataGridView1(12, baris).Value = Rd.Item("dtm_upd")
+                    DataGridView1(13, baris).Value = Rd.Item("from_divisi_id")
+                    DataGridView1(14, baris).Value = Rd.Item("ref_status_id")
                     If Rd.Item("ref_status_id") = 1 Then
-                        DataGridView1(5, baris).Style.BackColor = Color.LightYellow
+                        DataGridView1(6, baris).Style.BackColor = Color.LightYellow
                     ElseIf Rd.Item("ref_status_id") = 2 Then
-                        DataGridView1(5, baris).Style.BackColor = Color.Yellow
+                        DataGridView1(6, baris).Style.BackColor = Color.Yellow
                     ElseIf Rd.Item("ref_status_id") = 4 Then
-                        DataGridView1(5, baris).Style.BackColor = Color.Red
+                        DataGridView1(6, baris).Style.BackColor = Color.Red
                     ElseIf Rd.Item("ref_status_id") = 5 Then
-                        DataGridView1(5, baris).Style.BackColor = Color.LightBlue
+                        DataGridView1(6, baris).Style.BackColor = Color.LightBlue
                     ElseIf Rd.Item("ref_status_id") = 6 Then
-                        DataGridView1(5, baris).Style.BackColor = Color.Blue
+                        DataGridView1(6, baris).Style.BackColor = Color.Blue
                     ElseIf Rd.Item("ref_status_id") = 7 Then
-                        DataGridView1(5, baris).Style.BackColor = Color.LawnGreen
+                        DataGridView1(6, baris).Style.BackColor = Color.LawnGreen
                     ElseIf Rd.Item("ref_status_id") = 8 Then
-                        DataGridView1(5, baris).Style.BackColor = Color.Green
+                        DataGridView1(6, baris).Style.BackColor = Color.Green
                     ElseIf Rd.Item("ref_status_id") = 9 Then
-                        DataGridView1(5, baris).Style.BackColor = Color.MediumSlateBlue
+                        DataGridView1(6, baris).Style.BackColor = Color.MediumSlateBlue
                     End If
 
                     If Rd.Item("ref_prioritas_id") = 1 Then
-                        DataGridView1(6, baris).Style.ForeColor = Color.Red
+                        DataGridView1(7, baris).Style.ForeColor = Color.Red
                     ElseIf Rd.Item("ref_prioritas_id") = 2 Then
-                        DataGridView1(6, baris).Style.ForeColor = Color.Blue
+                        DataGridView1(7, baris).Style.ForeColor = Color.Blue
                     ElseIf Rd.Item("ref_prioritas_id") = 3 Then
-                        DataGridView1(6, baris).Style.ForeColor = Color.Green
+                        DataGridView1(7, baris).Style.ForeColor = Color.Green
                     End If
                     baris = baris + 1
                 Loop
@@ -291,14 +300,16 @@ Public Class FormTask
 
     Private Sub ViewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewToolStripMenuItem.Click
         FormRequestDetail.LabelId.Text = DataGridView1.CurrentRow.Cells(0).Value
-        FormRequestDetail.LabelFromDivisi.Text = DataGridView1.CurrentRow.Cells(1).Value
-        FormRequestDetail.LabelToDivisi.Text = DataGridView1.CurrentRow.Cells(2).Value
-        FormRequestDetail.LabelSubject.Text = DataGridView1.CurrentRow.Cells(3).Value
-        FormRequestDetail.TextBoxDescription.Text = DataGridView1.CurrentRow.Cells(4).Value
-        FormRequestDetail.LabelStatus.Text = DataGridView1.CurrentRow.Cells(5).Value
-        FormRequestDetail.LabelPriority.Text = DataGridView1.CurrentRow.Cells(6).Value
-        FormRequestDetail.LabelStatus.BackColor = DataGridView1.CurrentRow.Cells(5).Style.BackColor
-        FormRequestDetail.LabelPriority.ForeColor = DataGridView1.CurrentRow.Cells(6).Style.ForeColor
+        FormRequestDetail.LabelNoRequest.Text = DataGridView1.CurrentRow.Cells(1).Value
+        FormRequestDetail.LabelFromDivisi.Text = DataGridView1.CurrentRow.Cells(2).Value
+        FormRequestDetail.LabelToDivisi.Text = DataGridView1.CurrentRow.Cells(3).Value
+        FormRequestDetail.LabelSubject.Text = DataGridView1.CurrentRow.Cells(4).Value
+        FormRequestDetail.TextBoxDescription.Text = DataGridView1.CurrentRow.Cells(5).Value
+        FormRequestDetail.LabelStatus.Text = DataGridView1.CurrentRow.Cells(6).Value
+        FormRequestDetail.LabelPriority.Text = DataGridView1.CurrentRow.Cells(7).Value
+        FormRequestDetail.LabelTempat.Text = DataGridView1.CurrentRow.Cells(8).Value
+        FormRequestDetail.LabelStatus.BackColor = DataGridView1.CurrentRow.Cells(6).Style.BackColor
+        FormRequestDetail.LabelPriority.ForeColor = DataGridView1.CurrentRow.Cells(7).Style.ForeColor
         FormRequestDetail.getHistoryRequest()
         FormMenu.switchForm(FormRequestDetail)
     End Sub

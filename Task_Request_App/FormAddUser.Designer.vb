@@ -38,16 +38,25 @@ Partial Class FormAddUser
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.LabelId = New System.Windows.Forms.Label()
+        Me.TextBoxIdTelegram = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.ComboBoxCabang = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
         'Button2
         '
         Me.Button2.BackColor = System.Drawing.Color.Yellow
         Me.Button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Button2.Location = New System.Drawing.Point(360, 291)
+        Me.Button2.Location = New System.Drawing.Point(360, 435)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(117, 45)
-        Me.Button2.TabIndex = 7
+        Me.Button2.TabIndex = 9
         Me.Button2.Text = "CANCEL"
         Me.Button2.UseVisualStyleBackColor = False
         '
@@ -55,10 +64,10 @@ Partial Class FormAddUser
         '
         Me.Button1.BackColor = System.Drawing.Color.Blue
         Me.Button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Button1.Location = New System.Drawing.Point(494, 291)
+        Me.Button1.Location = New System.Drawing.Point(494, 435)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(117, 45)
-        Me.Button1.TabIndex = 6
+        Me.Button1.TabIndex = 8
         Me.Button1.Text = "SIMPAN"
         Me.Button1.UseVisualStyleBackColor = False
         '
@@ -174,7 +183,7 @@ Partial Class FormAddUser
         Me.ComboBoxDivisi.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.ComboBoxDivisi.Name = "ComboBoxDivisi"
         Me.ComboBoxDivisi.Size = New System.Drawing.Size(196, 24)
-        Me.ComboBoxDivisi.TabIndex = 5
+        Me.ComboBoxDivisi.TabIndex = 4
         '
         'Label2
         '
@@ -201,32 +210,136 @@ Partial Class FormAddUser
         'LabelId
         '
         Me.LabelId.AutoSize = True
-        Me.LabelId.Location = New System.Drawing.Point(37, 319)
+        Me.LabelId.Location = New System.Drawing.Point(37, 463)
         Me.LabelId.Name = "LabelId"
         Me.LabelId.Size = New System.Drawing.Size(19, 17)
         Me.LabelId.TabIndex = 33
         Me.LabelId.Text = "id"
         Me.LabelId.Visible = False
         '
+        'TextBoxIdTelegram
+        '
+        Me.TextBoxIdTelegram.Location = New System.Drawing.Point(196, 316)
+        Me.TextBoxIdTelegram.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBoxIdTelegram.Name = "TextBoxIdTelegram"
+        Me.TextBoxIdTelegram.Size = New System.Drawing.Size(196, 22)
+        Me.TextBoxIdTelegram.TabIndex = 6
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.Black
+        Me.Label4.Location = New System.Drawing.Point(168, 316)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(15, 21)
+        Me.Label4.TabIndex = 10
+        Me.Label4.Text = ":"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.ForeColor = System.Drawing.Color.Black
+        Me.Label10.Location = New System.Drawing.Point(46, 316)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(104, 21)
+        Me.Label10.TabIndex = 6
+        Me.Label10.Text = "ID TELEGRAM"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.ForeColor = System.Drawing.Color.Black
+        Me.Label11.Location = New System.Drawing.Point(168, 365)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(15, 21)
+        Me.Label11.TabIndex = 10
+        Me.Label11.Text = ":"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.ForeColor = System.Drawing.Color.Black
+        Me.Label12.Location = New System.Drawing.Point(46, 365)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(124, 21)
+        Me.Label12.TabIndex = 6
+        Me.Label12.Text = "SEBAGAI ADMIN"
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(195, 368)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(18, 17)
+        Me.CheckBox1.TabIndex = 7
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.ForeColor = System.Drawing.Color.Black
+        Me.Label13.Location = New System.Drawing.Point(167, 271)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(15, 21)
+        Me.Label13.TabIndex = 9
+        Me.Label13.Text = ":"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.ForeColor = System.Drawing.Color.Black
+        Me.Label14.Location = New System.Drawing.Point(46, 271)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(70, 21)
+        Me.Label14.TabIndex = 8
+        Me.Label14.Text = "CABANG"
+        '
+        'ComboBoxCabang
+        '
+        Me.ComboBoxCabang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxCabang.FormattingEnabled = True
+        Me.ComboBoxCabang.ItemHeight = 16
+        Me.ComboBoxCabang.Items.AddRange(New Object() {"PKWT", "PEGAWAI TETAP"})
+        Me.ComboBoxCabang.Location = New System.Drawing.Point(196, 271)
+        Me.ComboBoxCabang.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.ComboBoxCabang.Name = "ComboBoxCabang"
+        Me.ComboBoxCabang.Size = New System.Drawing.Size(196, 24)
+        Me.ComboBoxCabang.TabIndex = 5
+        '
         'FormAddUser
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.PeachPuff
-        Me.ClientSize = New System.Drawing.Size(671, 358)
+        Me.ClientSize = New System.Drawing.Size(671, 567)
+        Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.LabelId)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.ComboBoxCabang)
         Me.Controls.Add(Me.ComboBoxDivisi)
+        Me.Controls.Add(Me.Label12)
+        Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label19)
+        Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.TextBoxIdTelegram)
         Me.Controls.Add(Me.TextBoxPassword)
         Me.Controls.Add(Me.TextBoxUsername)
         Me.Controls.Add(Me.TextBoxNama)
@@ -254,4 +367,13 @@ Partial Class FormAddUser
     Friend WithEvents Label2 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents LabelId As Label
+    Friend WithEvents TextBoxIdTelegram As TextBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label11 As Label
+    Friend WithEvents Label12 As Label
+    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents Label13 As Label
+    Friend WithEvents Label14 As Label
+    Friend WithEvents ComboBoxCabang As ComboBox
 End Class

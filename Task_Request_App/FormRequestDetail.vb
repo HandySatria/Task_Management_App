@@ -2,6 +2,10 @@
 Public Class FormRequestDetail
     Dim hist_request_id, request_id, ref_status_id, status_name, catatan, estimation_start_dt, estimation_end_dt, realisation_start_dt, realisation_end_dt, dtm_crt As String
 
+    Private Sub FormRequestDetail_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
     Dim baris As Integer
 
 
@@ -69,6 +73,7 @@ Public Class FormRequestDetail
         Label23.Visible = False
         Label18.Visible = False
         Label14.Visible = False
+        TextBoxCatatan.Visible = False
     End Sub
 
     Sub showTgl1()

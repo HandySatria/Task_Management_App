@@ -52,8 +52,17 @@ Public Class FormAddRequest
         ComboBoxPrioritas.DataSource = New BindingSource(prioritasDictionary, Nothing)
     End Sub
 
-    Private Async Function ButtonSimpan_ClickAsync(sender As Object, e As EventArgs) As Task Handles ButtonSimpan.Click
+
+    Private Sub ButtonCancel_Click(sender As Object, e As EventArgs) Handles ButtonCancel.Click
+        resetForm()
+        Me.Close()
+    End Sub
+
+    Private Async Sub ButtonSimpan_ClickAsync(sender As Object, e As EventArgs) Handles ButtonSimpan.Click
         Try
+            ProgressPanelUtil.ShowProgressPanel(Me)
+            ButtonSimpan.Enabled = False
+            ButtonCancel.Enabled = False
             cek_simpan = 0
             tString = TextBoxSubject.Text
             For j = 0 To tString.Length - 1
@@ -101,33 +110,20 @@ Public Class FormAddRequest
             If cek_simpan = 0 Then
 
                 If LabelId.Text = "" Then
-                    Call Koneksi()
-                    Cmd = New MySqlCommand("SELECT user_id, divisi_id, chat_id_telegram FROM user where divisi_id = '" & ComboBoxDivisi.SelectedValue & "'", Conn)
-                    Rd = Cmd.ExecuteReader
-                    '  Rd.Read()
-                    If Rd.HasRows Then
-                        Do While Rd.Read
-                            Dim chatIdTujuan As Long = Rd.Item("chat_id_telegram")
-                            Dim pesan As String
-                            pesan = "** TASK BARU **" & Environment.NewLine & Environment.NewLine & Environment.NewLine &
-                                "- Dari Divisi : " & activeUserData.getDivisionName & Environment.NewLine & Environment.NewLine &
-                                "- Subject : " & TextBoxSubject.Text & Environment.NewLine & Environment.NewLine &
-                                "- Deskripsi : " & TextBoxDeskripsi.Text & Environment.NewLine & Environment.NewLine &
-                                "- Prioritas : " & ComboBoxPrioritas.Text & Environment.NewLine & Environment.NewLine &
-                                "- User : " & activeUserData.getFullName & Environment.NewLine & Environment.NewLine
-                            Await KirimPesanKeOrangLainAsync(botClient, chatIdTujuan, pesan, cts.Token)
-                        Loop
-                    End If
+                    Dim reqNo As String
+                    reqNo = GenerteRequestNo()
 
                     ' add request
                     Call Koneksi()
-                    Cmd = New MySqlCommand("INSERT INTO request(subject, from_divisi, to_divisi, description, status, prioritas, user_crt, user_upd, dtm_crt, dtm_upd) values(@subject,  @from_divisi, @to_divisi, @description, @status, @prioritas, @user_crt, @user_upd, @dtm_crt, @dtm_upd) ", Conn)
+                    Cmd = New MySqlCommand("INSERT INTO request(request_no, subject, from_divisi, to_divisi, description, status, prioritas, user_id, user_crt, user_upd, dtm_crt, dtm_upd) values(@request_no, @subject,  @from_divisi, @to_divisi, @description, @status, @prioritas, @user_id, @user_crt, @user_upd, @dtm_crt, @dtm_upd) ", Conn)
+                    Cmd.Parameters.Add("@request_no", MySqlDbType.VarChar).Value = reqNo
                     Cmd.Parameters.Add("@subject", MySqlDbType.VarChar).Value = TextBoxSubject.Text
                     Cmd.Parameters.Add("@from_divisi", MySqlDbType.VarChar).Value = activeUserData.getDivisionId
                     Cmd.Parameters.Add("@to_divisi", MySqlDbType.VarChar).Value = ComboBoxDivisi.SelectedValue
                     Cmd.Parameters.Add("@prioritas", MySqlDbType.VarChar).Value = ComboBoxPrioritas.SelectedValue
                     Cmd.Parameters.Add("@description", MySqlDbType.VarChar).Value = TextBoxDeskripsi.Text
                     Cmd.Parameters.Add("@status", MySqlDbType.VarChar).Value = 1
+                    Cmd.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = activeUserData.getUserId
                     Cmd.Parameters.Add("@user_crt", MySqlDbType.VarChar).Value = activeUserData.getUserName
                     Cmd.Parameters.Add("@user_upd", MySqlDbType.VarChar).Value = activeUserData.getUserName
                     Cmd.Parameters.Add("@dtm_crt", MySqlDbType.DateTime).Value = DateTime.Now
@@ -146,6 +142,24 @@ Public Class FormAddRequest
                     Cmd.Parameters.Add("@dtm_crt", MySqlDbType.DateTime).Value = DateTime.Now
                     Cmd.Parameters.Add("@dtm_upd", MySqlDbType.DateTime).Value = DateTime.Now
                     Cmd.ExecuteNonQuery()
+
+                    Call Koneksi()
+                    Cmd = New MySqlCommand("SELECT user_id, divisi_id, chat_id_telegram FROM user where divisi_id = '" & ComboBoxDivisi.SelectedValue & "'", Conn)
+                    Rd = Cmd.ExecuteReader
+                    '  Rd.Read()
+                    If Rd.HasRows Then
+                        Do While Rd.Read
+                            Dim chatIdTujuan As Long = Rd.Item("chat_id_telegram")
+                            Dim pesan As String
+                            pesan = "** TASK BARU DENGAN N0MOR " & reqNo & " **" & Environment.NewLine & Environment.NewLine & Environment.NewLine &
+                                "- Dari Divisi : " & activeUserData.getDivisionName & Environment.NewLine & Environment.NewLine &
+                                "- Subject : " & TextBoxSubject.Text & Environment.NewLine & Environment.NewLine &
+                                "- Deskripsi : " & TextBoxDeskripsi.Text & Environment.NewLine & Environment.NewLine &
+                                "- Prioritas : " & ComboBoxPrioritas.Text & Environment.NewLine & Environment.NewLine &
+                                "- User : " & activeUserData.getFullName & Environment.NewLine & Environment.NewLine
+                            Await KirimPesanKeOrangLainAsync(botClient, chatIdTujuan, pesan, cts.Token)
+                        Loop
+                    End If
                     MsgBox("Input Data Berhasil", vbOKOnly, "Success Message")
 
                 Else
@@ -183,14 +197,21 @@ Public Class FormAddRequest
                 FormRequest.resetForm()
                 Me.Close()
             End If
+            ProgressPanelUtil.HideProgressPanel()
+            ButtonSimpan.Enabled = True
+            ButtonCancel.Enabled = True
         Catch ex As Exception
+            ProgressPanelUtil.HideProgressPanel()
             MsgBox(ex.Message)
         End Try
-    End Function
+    End Sub
 
-    Private Sub ButtonCancel_Click(sender As Object, e As EventArgs) Handles ButtonCancel.Click
-        resetForm()
-        Me.Close()
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
+        ProgressPanelUtil.ShowProgressPanel(Me)
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs)
+        ProgressPanelUtil.HideProgressPanel()
     End Sub
 
     Private Sub FormAddRequest_Load(sender As Object, e As EventArgs) Handles MyBase.Load

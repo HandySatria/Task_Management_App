@@ -13,6 +13,7 @@ Public Class FormEstimasi
         DateEdit2.Text = ""
     End Sub
     Private Async Sub Button1_ClickAsync(sender As Object, e As EventArgs) Handles Button1.Click
+        ProgressPanelUtil.ShowProgressPanel(Me)
         Try
             Call Koneksi()
             Cmd = New MySqlCommand("Update request set status=@status, user_upd=@user_upd, dtm_upd=@dtm_upd where request_id = '" & LabelId.Text & "'", Conn)
@@ -25,8 +26,12 @@ Public Class FormEstimasi
             Cmd = New MySqlCommand("INSERT INTO hist_request(request_id, ref_status_id, estimation_start_dt, estimation_end_dt, catatan, user_crt, user_upd, dtm_crt, dtm_upd) values( @request_id, @ref_status_id, @estimation_start_dt, @estimation_end_dt, @catatan, @user_crt, @user_upd, @dtm_crt, @dtm_upd) ", Conn)
             Cmd.Parameters.Add("@request_id", MySqlDbType.VarChar).Value = LabelId.Text
             Cmd.Parameters.Add("@ref_status_id", MySqlDbType.VarChar).Value = 5
-            Cmd.Parameters.Add("@estimation_start_dt", MySqlDbType.Date).Value = DateEdit1.Text
-            Cmd.Parameters.Add("@estimation_end_dt", MySqlDbType.Date).Value = DateEdit2.Text
+            If DateEdit1.Text <> "" Then
+                Cmd.Parameters.Add("@estimation_start_dt", MySqlDbType.Date).Value = DateEdit1.Text
+            End If
+            If DateEdit2.Text <> "" Then
+                Cmd.Parameters.Add("@estimation_end_dt", MySqlDbType.Date).Value = DateEdit2.Text
+            End If
             Cmd.Parameters.Add("@catatan", MySqlDbType.VarChar).Value = TextBoxCatatan.Text
             Cmd.Parameters.Add("@user_crt", MySqlDbType.VarChar).Value = activeUserData.getUserName
             Cmd.Parameters.Add("@user_upd", MySqlDbType.VarChar).Value = activeUserData.getUserName
@@ -55,13 +60,15 @@ Public Class FormEstimasi
                 Loop
             End If
             MsgBox("Update Status Berhasil", vbOKOnly, "Success Message")
+            ProgressPanelUtil.HideProgressPanel()
             resetForm()
             FormTask.resetForm()
             Me.Close()
         Catch ex As Exception
             MsgBox(ex.Message)
+            ProgressPanelUtil.HideProgressPanel()
         End Try
-
+        ProgressPanelUtil.HideProgressPanel()
     End Sub
 
     Private Sub FormTerima_Load(sender As Object, e As EventArgs) Handles MyBase.Load

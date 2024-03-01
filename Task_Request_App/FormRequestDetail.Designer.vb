@@ -72,6 +72,12 @@ Partial Class FormRequestDetail
         Me.LabelStatusBawah = New System.Windows.Forms.Label()
         Me.LabelTgl1 = New System.Windows.Forms.Label()
         Me.LabelTglText1 = New System.Windows.Forms.Label()
+        Me.LabelTempat = New System.Windows.Forms.Label()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.LabelNoRequest = New System.Windows.Forms.Label()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.Label28 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -126,7 +132,7 @@ Partial Class FormRequestDetail
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.ForeColor = System.Drawing.Color.Black
-        Me.Label16.Location = New System.Drawing.Point(29, 133)
+        Me.Label16.Location = New System.Drawing.Point(29, 153)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(79, 21)
         Me.Label16.TabIndex = 4
@@ -137,7 +143,7 @@ Partial Class FormRequestDetail
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label19.ForeColor = System.Drawing.Color.Black
-        Me.Label19.Location = New System.Drawing.Point(29, 100)
+        Me.Label19.Location = New System.Drawing.Point(29, 120)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(60, 21)
         Me.Label19.TabIndex = 5
@@ -148,7 +154,7 @@ Partial Class FormRequestDetail
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(593, 38)
+        Me.Label6.Location = New System.Drawing.Point(593, 64)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(81, 21)
         Me.Label6.TabIndex = 6
@@ -170,7 +176,7 @@ Partial Class FormRequestDetail
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(729, 38)
+        Me.Label5.Location = New System.Drawing.Point(729, 64)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(15, 21)
         Me.Label5.TabIndex = 8
@@ -181,7 +187,7 @@ Partial Class FormRequestDetail
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.Black
-        Me.Label8.Location = New System.Drawing.Point(29, 69)
+        Me.Label8.Location = New System.Drawing.Point(29, 89)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(71, 21)
         Me.Label8.TabIndex = 9
@@ -192,7 +198,7 @@ Partial Class FormRequestDetail
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(165, 69)
+        Me.Label2.Location = New System.Drawing.Point(165, 89)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(15, 21)
         Me.Label2.TabIndex = 10
@@ -203,7 +209,7 @@ Partial Class FormRequestDetail
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(166, 103)
+        Me.Label3.Location = New System.Drawing.Point(166, 123)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(15, 21)
         Me.Label3.TabIndex = 11
@@ -214,7 +220,7 @@ Partial Class FormRequestDetail
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.Black
-        Me.Label4.Location = New System.Drawing.Point(166, 136)
+        Me.Label4.Location = New System.Drawing.Point(166, 156)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(15, 21)
         Me.Label4.TabIndex = 12
@@ -225,7 +231,7 @@ Partial Class FormRequestDetail
         Me.LabelToDivisi.AutoSize = True
         Me.LabelToDivisi.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelToDivisi.ForeColor = System.Drawing.Color.Black
-        Me.LabelToDivisi.Location = New System.Drawing.Point(208, 69)
+        Me.LabelToDivisi.Location = New System.Drawing.Point(208, 89)
         Me.LabelToDivisi.Name = "LabelToDivisi"
         Me.LabelToDivisi.Size = New System.Drawing.Size(43, 21)
         Me.LabelToDivisi.TabIndex = 9
@@ -236,7 +242,7 @@ Partial Class FormRequestDetail
         Me.LabelSubject.AutoSize = True
         Me.LabelSubject.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelSubject.ForeColor = System.Drawing.Color.Black
-        Me.LabelSubject.Location = New System.Drawing.Point(208, 100)
+        Me.LabelSubject.Location = New System.Drawing.Point(208, 120)
         Me.LabelSubject.Name = "LabelSubject"
         Me.LabelSubject.Size = New System.Drawing.Size(43, 21)
         Me.LabelSubject.TabIndex = 9
@@ -247,7 +253,7 @@ Partial Class FormRequestDetail
         Me.LabelPriority.AutoSize = True
         Me.LabelPriority.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelPriority.ForeColor = System.Drawing.Color.Black
-        Me.LabelPriority.Location = New System.Drawing.Point(772, 38)
+        Me.LabelPriority.Location = New System.Drawing.Point(772, 64)
         Me.LabelPriority.Name = "LabelPriority"
         Me.LabelPriority.Size = New System.Drawing.Size(43, 21)
         Me.LabelPriority.TabIndex = 9
@@ -258,7 +264,7 @@ Partial Class FormRequestDetail
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.ForeColor = System.Drawing.Color.Black
-        Me.Label12.Location = New System.Drawing.Point(165, 38)
+        Me.Label12.Location = New System.Drawing.Point(165, 58)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(15, 21)
         Me.Label12.TabIndex = 10
@@ -269,7 +275,7 @@ Partial Class FormRequestDetail
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.ForeColor = System.Drawing.Color.Black
-        Me.Label13.Location = New System.Drawing.Point(29, 38)
+        Me.Label13.Location = New System.Drawing.Point(29, 58)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(87, 21)
         Me.Label13.TabIndex = 9
@@ -280,7 +286,7 @@ Partial Class FormRequestDetail
         Me.LabelFromDivisi.AutoSize = True
         Me.LabelFromDivisi.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelFromDivisi.ForeColor = System.Drawing.Color.Black
-        Me.LabelFromDivisi.Location = New System.Drawing.Point(208, 38)
+        Me.LabelFromDivisi.Location = New System.Drawing.Point(208, 58)
         Me.LabelFromDivisi.Name = "LabelFromDivisi"
         Me.LabelFromDivisi.Size = New System.Drawing.Size(43, 21)
         Me.LabelFromDivisi.TabIndex = 9
@@ -291,18 +297,18 @@ Partial Class FormRequestDetail
         Me.TextBoxDescription.BackColor = System.Drawing.Color.Lavender
         Me.TextBoxDescription.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBoxDescription.Font = New System.Drawing.Font("Calibri", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxDescription.Location = New System.Drawing.Point(208, 136)
+        Me.TextBoxDescription.Location = New System.Drawing.Point(208, 156)
         Me.TextBoxDescription.Multiline = True
         Me.TextBoxDescription.Name = "TextBoxDescription"
         Me.TextBoxDescription.ReadOnly = True
-        Me.TextBoxDescription.Size = New System.Drawing.Size(373, 198)
+        Me.TextBoxDescription.Size = New System.Drawing.Size(347, 198)
         Me.TextBoxDescription.TabIndex = 13
         Me.TextBoxDescription.Text = "TEXT"
         '
         'LabelId
         '
         Me.LabelId.AutoSize = True
-        Me.LabelId.Location = New System.Drawing.Point(8, 167)
+        Me.LabelId.Location = New System.Drawing.Point(8, 187)
         Me.LabelId.Name = "LabelId"
         Me.LabelId.Size = New System.Drawing.Size(19, 17)
         Me.LabelId.TabIndex = 52
@@ -314,7 +320,7 @@ Partial Class FormRequestDetail
         Me.LabelStatus.AutoSize = True
         Me.LabelStatus.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelStatus.ForeColor = System.Drawing.Color.Black
-        Me.LabelStatus.Location = New System.Drawing.Point(772, 74)
+        Me.LabelStatus.Location = New System.Drawing.Point(772, 100)
         Me.LabelStatus.Name = "LabelStatus"
         Me.LabelStatus.Size = New System.Drawing.Size(43, 21)
         Me.LabelStatus.TabIndex = 9
@@ -325,7 +331,7 @@ Partial Class FormRequestDetail
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.Black
-        Me.Label9.Location = New System.Drawing.Point(729, 74)
+        Me.Label9.Location = New System.Drawing.Point(729, 100)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(15, 21)
         Me.Label9.TabIndex = 8
@@ -336,7 +342,7 @@ Partial Class FormRequestDetail
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.Black
-        Me.Label10.Location = New System.Drawing.Point(593, 74)
+        Me.Label10.Location = New System.Drawing.Point(593, 100)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(123, 21)
         Me.Label10.TabIndex = 6
@@ -345,6 +351,7 @@ Partial Class FormRequestDetail
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Lavender
+        Me.GroupBox1.Controls.Add(Me.Label28)
         Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.LabelId)
         Me.GroupBox1.Controls.Add(Me.Label4)
@@ -355,18 +362,23 @@ Partial Class FormRequestDetail
         Me.GroupBox1.Controls.Add(Me.Label19)
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.Label10)
+        Me.GroupBox1.Controls.Add(Me.Label27)
         Me.GroupBox1.Controls.Add(Me.Label12)
         Me.GroupBox1.Controls.Add(Me.LabelToDivisi)
+        Me.GroupBox1.Controls.Add(Me.Label26)
         Me.GroupBox1.Controls.Add(Me.Label13)
         Me.GroupBox1.Controls.Add(Me.Label9)
+        Me.GroupBox1.Controls.Add(Me.LabelNoRequest)
         Me.GroupBox1.Controls.Add(Me.LabelFromDivisi)
+        Me.GroupBox1.Controls.Add(Me.Label24)
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.LabelSubject)
         Me.GroupBox1.Controls.Add(Me.LabelStatus)
+        Me.GroupBox1.Controls.Add(Me.LabelTempat)
         Me.GroupBox1.Controls.Add(Me.LabelPriority)
         Me.GroupBox1.Location = New System.Drawing.Point(49, 78)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(925, 352)
+        Me.GroupBox1.Size = New System.Drawing.Size(925, 377)
         Me.GroupBox1.TabIndex = 53
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "MAIN INFORMATION"
@@ -404,7 +416,7 @@ Partial Class FormRequestDetail
         Me.GroupBox2.Controls.Add(Me.LabelStatusBawah)
         Me.GroupBox2.Controls.Add(Me.LabelTgl1)
         Me.GroupBox2.Controls.Add(Me.LabelTglText1)
-        Me.GroupBox2.Location = New System.Drawing.Point(49, 457)
+        Me.GroupBox2.Location = New System.Drawing.Point(49, 515)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(925, 229)
         Me.GroupBox2.TabIndex = 53
@@ -611,6 +623,72 @@ Partial Class FormRequestDetail
         Me.LabelTglText1.TabIndex = 9
         Me.LabelTglText1.Text = "TEXT"
         '
+        'LabelTempat
+        '
+        Me.LabelTempat.AutoSize = True
+        Me.LabelTempat.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelTempat.ForeColor = System.Drawing.Color.Black
+        Me.LabelTempat.Location = New System.Drawing.Point(772, 29)
+        Me.LabelTempat.Name = "LabelTempat"
+        Me.LabelTempat.Size = New System.Drawing.Size(43, 21)
+        Me.LabelTempat.TabIndex = 9
+        Me.LabelTempat.Text = "TEXT"
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label24.ForeColor = System.Drawing.Color.Black
+        Me.Label24.Location = New System.Drawing.Point(729, 29)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(15, 21)
+        Me.Label24.TabIndex = 8
+        Me.Label24.Text = ":"
+        '
+        'LabelNoRequest
+        '
+        Me.LabelNoRequest.AutoSize = True
+        Me.LabelNoRequest.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelNoRequest.ForeColor = System.Drawing.Color.Black
+        Me.LabelNoRequest.Location = New System.Drawing.Point(208, 29)
+        Me.LabelNoRequest.Name = "LabelNoRequest"
+        Me.LabelNoRequest.Size = New System.Drawing.Size(43, 21)
+        Me.LabelNoRequest.TabIndex = 9
+        Me.LabelNoRequest.Text = "TEXT"
+        '
+        'Label26
+        '
+        Me.Label26.AutoSize = True
+        Me.Label26.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label26.ForeColor = System.Drawing.Color.Black
+        Me.Label26.Location = New System.Drawing.Point(29, 29)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(99, 21)
+        Me.Label26.TabIndex = 9
+        Me.Label26.Text = "NO REQUEST"
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label27.ForeColor = System.Drawing.Color.Black
+        Me.Label27.Location = New System.Drawing.Point(165, 29)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(15, 21)
+        Me.Label27.TabIndex = 10
+        Me.Label27.Text = ":"
+        '
+        'Label28
+        '
+        Me.Label28.AutoSize = True
+        Me.Label28.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label28.ForeColor = System.Drawing.Color.Black
+        Me.Label28.Location = New System.Drawing.Point(593, 29)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(70, 21)
+        Me.Label28.TabIndex = 6
+        Me.Label28.Text = "CABANG"
+        '
         'FormRequestDetail
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -682,4 +760,10 @@ Partial Class FormRequestDetail
     Friend WithEvents Label22 As Label
     Friend WithEvents Label15 As Label
     Friend WithEvents LabelUserUpdate As Label
+    Friend WithEvents Label28 As Label
+    Friend WithEvents Label27 As Label
+    Friend WithEvents Label26 As Label
+    Friend WithEvents LabelNoRequest As Label
+    Friend WithEvents Label24 As Label
+    Friend WithEvents LabelTempat As Label
 End Class

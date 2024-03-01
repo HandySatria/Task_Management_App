@@ -12,6 +12,7 @@ Public Class FormNotApprove
 
     Private Async Sub Button1_ClickAsync(sender As Object, e As EventArgs) Handles Button1.Click
         Try
+            ProgressPanelUtil.ShowProgressPanel(Me)
             If LabelTitle.Text = "DATA REVISI" Then
 
                 Call Koneksi()
@@ -90,14 +91,16 @@ Public Class FormNotApprove
                 End If
             End If
             MsgBox("Update Status Berhasil", vbOKOnly, "Success Message")
+            ProgressPanelUtil.HideProgressPanel()
             resetForm()
             FormTask.resetForm()
             Me.Close()
 
         Catch ex As Exception
             MsgBox(ex.Message)
+            ProgressPanelUtil.HideProgressPanel()
         End Try
-
+        ProgressPanelUtil.HideProgressPanel()
     End Sub
 
     Private Sub FormNotApprove_Load(sender As Object, e As EventArgs) Handles MyBase.Load

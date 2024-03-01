@@ -6,6 +6,7 @@ Public Class FormAddDivisi
         LabelId.Text = "id"
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        ProgressPanelUtil.ShowProgressPanel(Me)
         tString = TextBoxNamaDivisi.Text
         cek_simpan = 0
         For j = 0 To tString.Length - 1
@@ -46,13 +47,16 @@ Public Class FormAddDivisi
 
                     MsgBox("Edit Data Berhasil", vbOKOnly, "Success Message")
                 End If
+                ProgressPanelUtil.HideProgressPanel()
                 resetForm()
                 FormMasterDivisi.resetForm()
                 Me.Close()
             Catch ex As Exception
                 MsgBox(ex.Message)
+                ProgressPanelUtil.HideProgressPanel()
             End Try
         End If
+        ProgressPanelUtil.HideProgressPanel()
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click

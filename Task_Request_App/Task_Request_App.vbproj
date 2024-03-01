@@ -140,6 +140,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ProgressPanelUtil.vb" />
     <Compile Include="Classes\UserData.vb" />
     <Compile Include="Controls\HistoryCard.Designer.vb">
       <DependentUpon>HistoryCard.vb</DependentUpon>

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FormRequest
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FormRequest
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -30,9 +30,11 @@ Partial Class FormRequest
         Me.ButtonReset = New System.Windows.Forms.Button()
         Me.ButtonSearch = New System.Windows.Forms.Button()
         Me.ComboBoxStatus = New System.Windows.Forms.ComboBox()
+        Me.ComboBoxFromDivisi = New System.Windows.Forms.ComboBox()
         Me.ComboBoxDivisi = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TextBoxSubject = New System.Windows.Forms.TextBox()
@@ -48,8 +50,6 @@ Partial Class FormRequest
         Me.HapusDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LabelTotal = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.ComboBoxFromDivisi = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DateEdit2.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -167,6 +167,17 @@ Partial Class FormRequest
         Me.ComboBoxStatus.Size = New System.Drawing.Size(340, 32)
         Me.ComboBoxStatus.TabIndex = 1
         '
+        'ComboBoxFromDivisi
+        '
+        Me.ComboBoxFromDivisi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxFromDivisi.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBoxFromDivisi.FormattingEnabled = True
+        Me.ComboBoxFromDivisi.Location = New System.Drawing.Point(270, 225)
+        Me.ComboBoxFromDivisi.Name = "ComboBoxFromDivisi"
+        Me.ComboBoxFromDivisi.Size = New System.Drawing.Size(340, 32)
+        Me.ComboBoxFromDivisi.TabIndex = 1
+        Me.ComboBoxFromDivisi.Visible = False
+        '
         'ComboBoxDivisi
         '
         Me.ComboBoxDivisi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
@@ -196,6 +207,17 @@ Partial Class FormRequest
         Me.Label6.Size = New System.Drawing.Size(144, 24)
         Me.Label6.TabIndex = 0
         Me.Label6.Text = "Status Request"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(45, 231)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(101, 24)
+        Me.Label7.TabIndex = 0
+        Me.Label7.Text = "Dari Divisi"
+        Me.Label7.Visible = False
         '
         'Label2
         '
@@ -334,28 +356,6 @@ Partial Class FormRequest
         Me.LabelTotal.Name = "LabelTotal"
         Me.LabelTotal.Size = New System.Drawing.Size(0, 29)
         Me.LabelTotal.TabIndex = 10
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(45, 231)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(101, 24)
-        Me.Label7.TabIndex = 0
-        Me.Label7.Text = "Dari Divisi"
-        Me.Label7.Visible = False
-        '
-        'ComboBoxFromDivisi
-        '
-        Me.ComboBoxFromDivisi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBoxFromDivisi.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBoxFromDivisi.FormattingEnabled = True
-        Me.ComboBoxFromDivisi.Location = New System.Drawing.Point(270, 225)
-        Me.ComboBoxFromDivisi.Name = "ComboBoxFromDivisi"
-        Me.ComboBoxFromDivisi.Size = New System.Drawing.Size(340, 32)
-        Me.ComboBoxFromDivisi.TabIndex = 1
-        Me.ComboBoxFromDivisi.Visible = False
         '
         'FormRequest
         '

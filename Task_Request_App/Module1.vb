@@ -29,6 +29,38 @@ Module Module1
         End Try
     End Sub
 
+    Public Function GenerteRequestNo()
+        Try
+            Dim last_number As Integer
+            Dim result As String
+            Call Koneksi()
+            Cmd = New MySqlCommand("select count(request_id) as last_number from request where month(now()) = month(dtm_crt) and year(now()) = year(dtm_crt)", Conn)
+            Rd = Cmd.ExecuteReader
+            Rd.Read()
+            last_number = Rd.Item("last_number") + 1
+            If last_number < 10 Then
+                result = "REQ00" & last_number
+            ElseIf last_number < 100 Then
+                result = "REQ0" & last_number
+            Else
+                result = "REQ" & last_number
+            End If
+
+            If Month(Date.Now()) < 10 Then
+                result = result & "/0" & Month(Date.Now())
+            Else
+                result = result & "/" & Month(Date.Now())
+            End If
+            result = result & "/" & Year(Date.Now)
+            Return result
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+
+    End Function
+
     Sub Enkripsi(input As String)
         Dim xc As New DES
         Dim katakunci As String
