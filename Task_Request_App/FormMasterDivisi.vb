@@ -3,8 +3,12 @@ Public Class FormMasterDivisi
     Dim Cari_Data, Condition As String
     Dim baris As Integer
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        FormAddDivisi.LabelId.Text = ""
-        FormAddDivisi.ShowDialog()
+        'FormAddDivisi.LabelId.Text = ""
+        'FormAddDivisi.ShowDialog()
+        Using f As New FormAddDivisi
+            f.ShowDialog()
+            GetData()
+        End Using
     End Sub
 
     Private Sub GetData()
@@ -128,16 +132,20 @@ Public Class FormMasterDivisi
     End Sub
 
     Private Sub EditToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditToolStripMenuItem.Click
-        FormAddDivisi.LabelId.Text = DataGridView1.CurrentRow.Cells(0).Value
-        FormAddDivisi.TextBoxNamaDivisi.Text = DataGridView1.CurrentRow.Cells(1).Value
-        FormAddDivisi.ShowDialog()
+        'FormAddDivisi.LabelId.Text = DataGridView1.CurrentRow.Cells(0).Value
+        'FormAddDivisi.TextBoxNamaDivisi.Text = DataGridView1.CurrentRow.Cells(1).Value
+        'FormAddDivisi.ShowDialog()
+        Using f As New FormAddDivisi(DataGridView1.CurrentRow.Cells(0).Value, DataGridView1.CurrentRow.Cells(1).Value)
+            f.ShowDialog()
+            GetData()
+        End Using
     End Sub
     Sub hapusData()
         Call Koneksi()
         Cmd = New MySqlCommand("delete from divisi where divisi_id = '" & DataGridView1.CurrentRow.Cells(0).Value & "'", Conn)
         Cmd.ExecuteNonQuery()
         MsgBox("Divisi " & DataGridView1.CurrentRow.Cells(1).Value & " telah dihapus", vbOKOnly, "Success Message")
-        resetForm()
+        GetData()
     End Sub
     Private Sub HapusToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HapusToolStripMenuItem.Click
         Select Case MsgBox("Apakah anda yakin ingin menghapus Divisi " & DataGridView1.CurrentRow.Cells(1).Value & " ?", MsgBoxStyle.YesNo, "MESSAGE")

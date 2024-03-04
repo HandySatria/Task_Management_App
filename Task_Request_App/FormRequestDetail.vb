@@ -2,12 +2,35 @@
 Public Class FormRequestDetail
     Dim hist_request_id, request_id, ref_status_id, status_name, catatan, estimation_start_dt, estimation_end_dt, realisation_start_dt, realisation_end_dt, dtm_crt As String
 
+    Private id, namaDivisi As String
+
     Private Sub FormRequestDetail_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 
-    Dim baris As Integer
+      Dim listData As New List(Of String)()
 
+    Sub New(Optional ByVal idDivisi As String = "", Optional ByVal listData As List(Of String) = Nothing)
+        ' This call is required by the designer.
+        InitializeComponent()
+        ' Add any initialization after the InitializeComponent() call.
+        id = idDivisi
+        listData = listData
+        LabelId.Text = listData(0)
+        LabelNoRequest.Text = listData(1)
+        LabelFromDivisi.Text = listData(2)
+        LabelToDivisi.Text = listData(3)
+        LabelSubject.Text = listData(4)
+        TextBoxDescription.Text = listData(5)
+        LabelStatus.Text = listData(6)
+        LabelPriority.Text = listData(7)
+        LabelTempat.Text = listData(8)
+        getHistoryRequest()
+
+    End Sub
+
+
+    Dim baris As Integer
 
     Sub getHistoryRequest()
         Try

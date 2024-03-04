@@ -299,19 +299,16 @@ Public Class FormTask
     End Sub
 
     Private Sub ViewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewToolStripMenuItem.Click
-        FormRequestDetail.LabelId.Text = DataGridView1.CurrentRow.Cells(0).Value
-        FormRequestDetail.LabelNoRequest.Text = DataGridView1.CurrentRow.Cells(1).Value
-        FormRequestDetail.LabelFromDivisi.Text = DataGridView1.CurrentRow.Cells(2).Value
-        FormRequestDetail.LabelToDivisi.Text = DataGridView1.CurrentRow.Cells(3).Value
-        FormRequestDetail.LabelSubject.Text = DataGridView1.CurrentRow.Cells(4).Value
-        FormRequestDetail.TextBoxDescription.Text = DataGridView1.CurrentRow.Cells(5).Value
-        FormRequestDetail.LabelStatus.Text = DataGridView1.CurrentRow.Cells(6).Value
-        FormRequestDetail.LabelPriority.Text = DataGridView1.CurrentRow.Cells(7).Value
-        FormRequestDetail.LabelTempat.Text = DataGridView1.CurrentRow.Cells(8).Value
-        FormRequestDetail.LabelStatus.BackColor = DataGridView1.CurrentRow.Cells(6).Style.BackColor
-        FormRequestDetail.LabelPriority.ForeColor = DataGridView1.CurrentRow.Cells(7).Style.ForeColor
-        FormRequestDetail.getHistoryRequest()
-        FormMenu.switchForm(FormRequestDetail)
+        Dim rowValue As New List(Of String)
+        ' Loop melalui setiap sel (cell) pada baris yang dipilih
+        For Each cell As DataGridViewCell In DataGridView1.CurrentRow.Cells
+            ' Tambahkan nilai sel ke dalam list nilaiKolom
+            rowValue.Add(cell.Value)
+        Next
+        Dim f As New FormRequestDetail(DataGridView1.CurrentRow.Cells(0).Value, rowValue)
+        f.LabelStatus.BackColor = DataGridView1.CurrentRow.Cells(6).Style.BackColor
+        f.LabelPriority.ForeColor = DataGridView1.CurrentRow.Cells(7).Style.ForeColor
+        FormMenu.switchForm(f)
     End Sub
 
     Private Sub ButtonSearch_Click(sender As Object, e As EventArgs) Handles ButtonSearch.Click

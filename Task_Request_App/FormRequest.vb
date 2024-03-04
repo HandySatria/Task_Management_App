@@ -224,7 +224,7 @@ Public Class FormRequest
         End Try
     End Sub
 
-    Sub resetForm()
+    Private Sub resetForm()
         TextBoxRequestId.Text = ""
         TextBoxSubject.Text = ""
         DataGridView1.Columns.Clear()
@@ -279,8 +279,11 @@ Public Class FormRequest
     End Sub
 
     Private Sub EditDataToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditDataToolStripMenuItem.Click
-        FormAddRequest.LabelId.Text = DataGridView1.CurrentRow.Cells(0).Value
-        FormAddRequest.ShowDialog()
+        'FormAddRequest.LabelId.Text = DataGridView1.CurrentRow.Cells(0).Value
+        'FormAddRequest.ShowDialog()
+        Using f As New FormAddRequest(DataGridView1.CurrentRow.Cells(0).Value)
+            If f.ShowDialog(Me) = DialogResult.OK Then GetData()
+        End Using
     End Sub
 
     Private Sub HapusDataToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HapusDataToolStripMenuItem.Click
@@ -356,24 +359,34 @@ Public Class FormRequest
     End Sub
 
     Private Sub ViewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewToolStripMenuItem.Click
-        FormRequestDetail.LabelId.Text = DataGridView1.CurrentRow.Cells(0).Value
-        FormRequestDetail.LabelNoRequest.Text = DataGridView1.CurrentRow.Cells(1).Value
-        FormRequestDetail.LabelFromDivisi.Text = DataGridView1.CurrentRow.Cells(2).Value
-        FormRequestDetail.LabelToDivisi.Text = DataGridView1.CurrentRow.Cells(3).Value
-        FormRequestDetail.LabelSubject.Text = DataGridView1.CurrentRow.Cells(4).Value
-        FormRequestDetail.TextBoxDescription.Text = DataGridView1.CurrentRow.Cells(5).Value
-        FormRequestDetail.LabelStatus.Text = DataGridView1.CurrentRow.Cells(6).Value
-        FormRequestDetail.LabelPriority.Text = DataGridView1.CurrentRow.Cells(7).Value
-        FormRequestDetail.LabelTempat.Text = DataGridView1.CurrentRow.Cells(8).Value
-        FormRequestDetail.LabelStatus.BackColor = DataGridView1.CurrentRow.Cells(6).Style.BackColor
-        FormRequestDetail.LabelPriority.ForeColor = DataGridView1.CurrentRow.Cells(7).Style.ForeColor
-        FormRequestDetail.getHistoryRequest()
-        FormMenu.switchForm(FormRequestDetail)
+
+        'FormMenu.switchForm(FormRequestDetail)
+
+        Dim rowValue As New List(Of String)
+        ' Loop melalui setiap sel (cell) pada baris yang dipilih
+        For Each cell As DataGridViewCell In DataGridView1.CurrentRow.Cells
+            ' Tambahkan nilai sel ke dalam list nilaiKolom
+            rowValue.Add(cell.Value)
+        Next
+        Dim f As New FormRequestDetail(DataGridView1.CurrentRow.Cells(0).Value, rowValue)
+        f.LabelStatus.BackColor = DataGridView1.CurrentRow.Cells(6).Style.BackColor
+        f.LabelPriority.ForeColor = DataGridView1.CurrentRow.Cells(7).Style.ForeColor
+        FormMenu.switchForm(f)
+
+        'End Using
+
     End Sub
 
     Private Async Function ButtonAdd_ClickAsync(sender As Object, e As EventArgs) As Task Handles ButtonAdd.Click
-        FormAddRequest.LabelId.Text = ""
-        FormAddRequest.ShowDialog()
+        'FormAddRequest.LabelId.Text = ""
+        'FormAddRequest.ShowDialog()
+        Dim nilai As String
+        Using f As New FormAddRequest
+            If f.ShowDialog(Me) = DialogResult.OK Then
+                GetData()
+                nilai = f.getNilaiAkhir
+            End If
 
+        End Using
     End Function
 End Class

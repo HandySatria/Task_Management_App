@@ -140,6 +140,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Database.vb" />
+    <Compile Include="Classes\DataStructure.vb" />
     <Compile Include="Classes\ProgressPanelUtil.vb" />
     <Compile Include="Classes\UserData.vb" />
     <Compile Include="Controls\HistoryCard.Designer.vb">
@@ -245,7 +247,8 @@
     <Compile Include="FormTaskDetail.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Module1.vb" />
+    <Compile Include="Modules\Module1.vb" />
+    <Compile Include="Modules\StringHelper.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

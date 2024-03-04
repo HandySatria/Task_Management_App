@@ -4,8 +4,12 @@ Public Class FormMasterUser
     Dim baris As Integer
     Dim divisiDictionary As New Dictionary(Of Integer, String)()
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        FormAddUser.LabelId.Text = ""
-        FormAddUser.ShowDialog()
+        'FormAddUser.LabelId.Text = ""
+        'FormAddUser.ShowDialog()
+        Using f As New FormAddUser
+            f.ShowDialog()
+            GetData()
+        End Using
     End Sub
 
     Private Sub ButtonSearch_Click(sender As Object, e As EventArgs) Handles ButtonSearch.Click
@@ -155,7 +159,8 @@ Public Class FormMasterUser
         Cmd = New MySqlCommand("delete from user where user_id = '" & DataGridView1.CurrentRow.Cells(0).Value & "'", Conn)
         Cmd.ExecuteNonQuery()
         MsgBox("User " & DataGridView1.CurrentRow.Cells(1).Value & " telah dihapus", vbOKOnly, "Success Message")
-        resetForm()
+        'resetForm()
+        GetData()
     End Sub
 
     Private Sub TextBoxNamaKeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBoxNama.KeyPress
@@ -165,8 +170,12 @@ Public Class FormMasterUser
     End Sub
 
     Private Sub EditDataToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditDataToolStripMenuItem.Click
-        FormAddUser.LabelId.Text = DataGridView1.CurrentRow.Cells(0).Value
-        FormAddUser.ShowDialog()
+        'FormAddUser.LabelId.Text = DataGridView1.CurrentRow.Cells(0).Value
+        'FormAddUser.ShowDialog()
+        Using f As New FormAddUser(DataGridView1.CurrentRow.Cells(0).Value)
+            f.ShowDialog(Me)
+            GetData()
+        End Using
     End Sub
 
     Private Sub HapusDataToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HapusDataToolStripMenuItem.Click

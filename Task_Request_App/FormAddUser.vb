@@ -3,6 +3,15 @@ Public Class FormAddUser
     Dim tString, mode As String
     Dim cek_simpan As Integer
     Dim divisiDictionary, cabangDictionary As New Dictionary(Of Integer, String)()
+
+    Private id As String
+
+    Sub New(Optional ByVal idUser As String = "")
+        ' This call is required by the designer.
+        InitializeComponent()
+        ' Add any initialization after the InitializeComponent() call.
+        id = idUser
+    End Sub
     Sub resetForm()
         TextBoxNama.Text = ""
         TextBoxUsername.Text = ""
@@ -103,7 +112,7 @@ Public Class FormAddUser
         If cek_simpan = 0 Then
             Try
                 Call Enkripsi(TextBoxPassword.Text)
-                If LabelId.Text = "" Then
+                If id = "" Then
                     Call Koneksi()
                     Cmd = New MySqlCommand("INSERT INTO user(username,  password, fullname, divisi_id, chat_id_telegram, is_admin, id_cabang, user_crt, user_upd, dtm_crt,dtm_upd) values(@username,  @password, @fullname, @divisi_id, @chat_id_telegram, @is_admin, @id_cabang, @user_crt, @user_upd, @dtm_crt, @dtm_upd) ", Conn)
                     Cmd.Parameters.Add("@username", MySqlDbType.VarChar).Value = TextBoxUsername.Text
@@ -121,7 +130,7 @@ Public Class FormAddUser
                     MsgBox("Input Data Berhasil", vbOKOnly, "Success Message")
                 Else
                     Call Koneksi()
-                    Cmd = New MySqlCommand("Update user set username=@username, password=@password, fullname=@fullname, divisi_id=@divisi_id, chat_id_telegram=@chat_id_telegram, is_admin=@is_admin, id_cabang=@id_cabang, user_upd=@user_upd, dtm_upd=@dtm_upd where user_id = '" & LabelId.Text & "'", Conn)
+                    Cmd = New MySqlCommand("Update user set username=@username, password=@password, fullname=@fullname, divisi_id=@divisi_id, chat_id_telegram=@chat_id_telegram, is_admin=@is_admin, id_cabang=@id_cabang, user_upd=@user_upd, dtm_upd=@dtm_upd where user_id = '" & id & "'", Conn)
                     Cmd.Parameters.Add("@username", MySqlDbType.VarChar).Value = TextBoxUsername.Text
                     Cmd.Parameters.Add("@password", MySqlDbType.VarChar).Value = HasilEnkripsi
                     Cmd.Parameters.Add("@fullname", MySqlDbType.VarChar).Value = TextBoxNama.Text
@@ -135,7 +144,7 @@ Public Class FormAddUser
                     MsgBox("Edit Data Berhasil", vbOKOnly, "Success Message")
                 End If
                 resetForm()
-                FormMasterUser.resetForm()
+                'FormMasterUser.resetForm()
                 Me.Close()
             Catch ex As Exception
                 MsgBox(ex.Message)
@@ -145,13 +154,13 @@ Public Class FormAddUser
 
     Private Sub FormAddUser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         setComboBoxValue()
-        If LabelId.Text = "" Then
+        If id = "" Then
             mode = "add"
             resetForm()
         Else
             mode = "edit"
             Call Koneksi()
-            Cmd = New MySqlCommand("SELECT u.user_id as user_id, u.fullname as fullname, u.username as username, u.password as password, d.divisi_name as divisi_name, d.divisi_id as divisi_id, u.chat_id_telegram as chat_id_telegram, u.is_admin as is_admin, u.id_cabang as id_cabang FROM user u left join divisi d on u.divisi_id = d.divisi_id where u.user_id ='" & LabelId.Text & "'", Conn)
+            Cmd = New MySqlCommand("SELECT u.user_id as user_id, u.fullname as fullname, u.username as username, u.password as password, d.divisi_name as divisi_name, d.divisi_id as divisi_id, u.chat_id_telegram as chat_id_telegram, u.is_admin as is_admin, u.id_cabang as id_cabang FROM user u left join divisi d on u.divisi_id = d.divisi_id where u.user_id ='" & id & "'", Conn)
             Rd = Cmd.ExecuteReader
             If Rd.HasRows Then
                 Do While Rd.Read

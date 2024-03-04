@@ -1,13 +1,24 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class FormAddRequest
+    Private id As String
+    Public nilaiAkhir As String
+
     Dim tString, mode As String
     Dim cek_simpan As Integer
     Dim divisiDictionary As New Dictionary(Of Integer, String)()
     Dim prioritasDictionary As New Dictionary(Of Integer, String)()
 
-    Private Sub Label8_Click(sender As Object, e As EventArgs)
+    Sub New(Optional ByVal idRequest As String = "")
+        ' This call is required by the designer.
+        InitializeComponent()
 
+        ' Add any initialization after the InitializeComponent() call.
+        id = idRequest
+        nilaiAkhir = "Ini nilai akhir"
     End Sub
+    Public Function getNilaiAkhir() As String
+        Return nilaiAkhir
+    End Function
 
     Sub resetForm()
         TextBoxSubject.Text = ""
@@ -109,7 +120,7 @@ Public Class FormAddRequest
 
             If cek_simpan = 0 Then
 
-                If LabelId.Text = "" Then
+                If id = "" Then
                     Dim reqNo As String
                     reqNo = GenerteRequestNo()
 
@@ -171,7 +182,7 @@ Public Class FormAddRequest
                         Do While Rd.Read
                             Dim chatIdTujuan As Long = Rd.Item("chat_id_telegram")
                             Dim pesan As String
-                            pesan = "** EDIT TASK DENGAN ID : " & LabelId.Text & "  **" & Environment.NewLine & Environment.NewLine & Environment.NewLine &
+                            pesan = "** EDIT TASK DENGAN ID : " & id & "  **" & Environment.NewLine & Environment.NewLine & Environment.NewLine &
                                 "- Dari Divisi : " & activeUserData.getDivisionName & Environment.NewLine & Environment.NewLine &
                                 "- Subject : " & TextBoxSubject.Text & Environment.NewLine & Environment.NewLine &
                                 "- Deskripsi : " & TextBoxDeskripsi.Text & Environment.NewLine & Environment.NewLine &
@@ -182,7 +193,7 @@ Public Class FormAddRequest
                     End If
 
                     Call Koneksi()
-                    Cmd = New MySqlCommand("Update request set subject=@subject, to_divisi =@to_divisi, description =@description, prioritas =@prioritas, user_upd =@user_upd, dtm_upd =@dtm_upd where request_id = '" & LabelId.Text & "'", Conn)
+                    Cmd = New MySqlCommand("Update request set subject=@subject, to_divisi =@to_divisi, description =@description, prioritas =@prioritas, user_upd =@user_upd, dtm_upd =@dtm_upd where request_id = '" & id & "'", Conn)
                     Cmd.Parameters.Add("@subject", MySqlDbType.VarChar).Value = TextBoxSubject.Text
                     Cmd.Parameters.Add("@to_divisi", MySqlDbType.VarChar).Value = ComboBoxDivisi.SelectedValue
                     Cmd.Parameters.Add("@description", MySqlDbType.VarChar).Value = TextBoxDeskripsi.Text
@@ -193,9 +204,10 @@ Public Class FormAddRequest
                     Cmd.ExecuteNonQuery()
                     MsgBox("Edit Data Berhasil", vbOKOnly, "Success Message")
                 End If
-                resetForm()
-                FormRequest.resetForm()
-                Me.Close()
+                DialogResult = DialogResult.OK
+                'resetForm()
+                'FormRequest.resetForm()
+                'Me.Close()
             End If
             ProgressPanelUtil.HideProgressPanel()
             ButtonSimpan.Enabled = True
@@ -216,13 +228,13 @@ Public Class FormAddRequest
 
     Private Sub FormAddRequest_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         setComboBoxValue()
-        If LabelId.Text = "" Then
+        If id = "" Then
             mode = "add"
             resetForm()
         Else
             mode = "edit"
             Call Koneksi()
-            Cmd = New MySqlCommand("select request_id, request_date, subject, description, from_divisi, to_divisi, prioritas from request where request_id ='" & LabelId.Text & "'", Conn)
+            Cmd = New MySqlCommand("select request_id, request_date, subject, description, from_divisi, to_divisi, prioritas from request where request_id ='" & id & "'", Conn)
             Rd = Cmd.ExecuteReader
             If Rd.HasRows Then
                 Do While Rd.Read

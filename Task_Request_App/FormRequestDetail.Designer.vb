@@ -52,6 +52,12 @@ Partial Class FormRequestDetail
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.LabelNoRequest = New System.Windows.Forms.Label()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.LabelTempat = New System.Windows.Forms.Label()
         Me.PanelStep = New System.Windows.Forms.FlowLayoutPanel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label14 = New System.Windows.Forms.Label()
@@ -72,12 +78,6 @@ Partial Class FormRequestDetail
         Me.LabelStatusBawah = New System.Windows.Forms.Label()
         Me.LabelTgl1 = New System.Windows.Forms.Label()
         Me.LabelTglText1 = New System.Windows.Forms.Label()
-        Me.LabelTempat = New System.Windows.Forms.Label()
-        Me.Label24 = New System.Windows.Forms.Label()
-        Me.LabelNoRequest = New System.Windows.Forms.Label()
-        Me.Label26 = New System.Windows.Forms.Label()
-        Me.Label27 = New System.Windows.Forms.Label()
-        Me.Label28 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -383,6 +383,72 @@ Partial Class FormRequestDetail
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "MAIN INFORMATION"
         '
+        'Label28
+        '
+        Me.Label28.AutoSize = True
+        Me.Label28.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label28.ForeColor = System.Drawing.Color.Black
+        Me.Label28.Location = New System.Drawing.Point(593, 29)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(70, 21)
+        Me.Label28.TabIndex = 6
+        Me.Label28.Text = "CABANG"
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label27.ForeColor = System.Drawing.Color.Black
+        Me.Label27.Location = New System.Drawing.Point(165, 29)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(15, 21)
+        Me.Label27.TabIndex = 10
+        Me.Label27.Text = ":"
+        '
+        'Label26
+        '
+        Me.Label26.AutoSize = True
+        Me.Label26.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label26.ForeColor = System.Drawing.Color.Black
+        Me.Label26.Location = New System.Drawing.Point(29, 29)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(99, 21)
+        Me.Label26.TabIndex = 9
+        Me.Label26.Text = "NO REQUEST"
+        '
+        'LabelNoRequest
+        '
+        Me.LabelNoRequest.AutoSize = True
+        Me.LabelNoRequest.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelNoRequest.ForeColor = System.Drawing.Color.Black
+        Me.LabelNoRequest.Location = New System.Drawing.Point(208, 29)
+        Me.LabelNoRequest.Name = "LabelNoRequest"
+        Me.LabelNoRequest.Size = New System.Drawing.Size(43, 21)
+        Me.LabelNoRequest.TabIndex = 9
+        Me.LabelNoRequest.Text = "TEXT"
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label24.ForeColor = System.Drawing.Color.Black
+        Me.Label24.Location = New System.Drawing.Point(729, 29)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(15, 21)
+        Me.Label24.TabIndex = 8
+        Me.Label24.Text = ":"
+        '
+        'LabelTempat
+        '
+        Me.LabelTempat.AutoSize = True
+        Me.LabelTempat.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelTempat.ForeColor = System.Drawing.Color.Black
+        Me.LabelTempat.Location = New System.Drawing.Point(772, 29)
+        Me.LabelTempat.Name = "LabelTempat"
+        Me.LabelTempat.Size = New System.Drawing.Size(43, 21)
+        Me.LabelTempat.TabIndex = 9
+        Me.LabelTempat.Text = "TEXT"
+        '
         'PanelStep
         '
         Me.PanelStep.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -622,72 +688,6 @@ Partial Class FormRequestDetail
         Me.LabelTglText1.Size = New System.Drawing.Size(43, 21)
         Me.LabelTglText1.TabIndex = 9
         Me.LabelTglText1.Text = "TEXT"
-        '
-        'LabelTempat
-        '
-        Me.LabelTempat.AutoSize = True
-        Me.LabelTempat.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelTempat.ForeColor = System.Drawing.Color.Black
-        Me.LabelTempat.Location = New System.Drawing.Point(772, 29)
-        Me.LabelTempat.Name = "LabelTempat"
-        Me.LabelTempat.Size = New System.Drawing.Size(43, 21)
-        Me.LabelTempat.TabIndex = 9
-        Me.LabelTempat.Text = "TEXT"
-        '
-        'Label24
-        '
-        Me.Label24.AutoSize = True
-        Me.Label24.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label24.ForeColor = System.Drawing.Color.Black
-        Me.Label24.Location = New System.Drawing.Point(729, 29)
-        Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(15, 21)
-        Me.Label24.TabIndex = 8
-        Me.Label24.Text = ":"
-        '
-        'LabelNoRequest
-        '
-        Me.LabelNoRequest.AutoSize = True
-        Me.LabelNoRequest.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelNoRequest.ForeColor = System.Drawing.Color.Black
-        Me.LabelNoRequest.Location = New System.Drawing.Point(208, 29)
-        Me.LabelNoRequest.Name = "LabelNoRequest"
-        Me.LabelNoRequest.Size = New System.Drawing.Size(43, 21)
-        Me.LabelNoRequest.TabIndex = 9
-        Me.LabelNoRequest.Text = "TEXT"
-        '
-        'Label26
-        '
-        Me.Label26.AutoSize = True
-        Me.Label26.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label26.ForeColor = System.Drawing.Color.Black
-        Me.Label26.Location = New System.Drawing.Point(29, 29)
-        Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(99, 21)
-        Me.Label26.TabIndex = 9
-        Me.Label26.Text = "NO REQUEST"
-        '
-        'Label27
-        '
-        Me.Label27.AutoSize = True
-        Me.Label27.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label27.ForeColor = System.Drawing.Color.Black
-        Me.Label27.Location = New System.Drawing.Point(165, 29)
-        Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(15, 21)
-        Me.Label27.TabIndex = 10
-        Me.Label27.Text = ":"
-        '
-        'Label28
-        '
-        Me.Label28.AutoSize = True
-        Me.Label28.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label28.ForeColor = System.Drawing.Color.Black
-        Me.Label28.Location = New System.Drawing.Point(593, 29)
-        Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(70, 21)
-        Me.Label28.TabIndex = 6
-        Me.Label28.Text = "CABANG"
         '
         'FormRequestDetail
         '
