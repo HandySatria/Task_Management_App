@@ -247,6 +247,7 @@
     <Compile Include="FormTaskDetail.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modules\GeneralFunctions.vb" />
     <Compile Include="Modules\Module1.vb" />
     <Compile Include="Modules\StringHelper.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

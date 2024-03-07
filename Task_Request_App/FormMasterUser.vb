@@ -1,5 +1,7 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.ComponentModel
+Imports MySql.Data.MySqlClient
 Public Class FormMasterUser
+    Private mainDataTable As DataTable = Nothing
     Dim Cari_Data, Condition As String
     Dim baris As Integer
     Dim divisiDictionary As New Dictionary(Of Integer, String)()
@@ -71,6 +73,100 @@ Public Class FormMasterUser
         End Try
     End Sub
 
+    Private Sub buildMainData(ByVal dt As DataTable)
+
+        If dt Is Nothing Then Exit Sub
+
+
+        Dim index As Integer = 0
+
+        For Each dr As DataRow In dt.Rows
+
+            'With dataCard
+            '    .taskId = CInt(dr("id_task"))
+            '    .lblTitle.Text = $"{dr("title")} ({dr("tanggalRequest")})"
+            '    .lblSubtitle.Text = getRequestStatus(CInt(dr("status"))) & If(dr("subtitle") = "", "", " - ") & dr("subtitle")
+            '    .lblDescription.Text = dr("nama_divisi") & " - " & dr("description")
+            '    .Anchor = AnchorStyles.Left And AnchorStyles.Right
+            '    If (index Mod 2) = 0 Then .BackColor = Color.LightGray
+            '    .btnResponse.Visible = (lblRequestFromOther.BackColor = Color.LightCoral) OrElse CInt(dr("status")) = 4
+            '    ' Pakai handler karena perlu ada next action di form ini.
+            '    ' Opsi lain bisa pakai callback, agar handler bisa tetap di dalam DataCard instead of di mainForm
+
+            'End With
+            'panelMainData.Controls.Add(dataCard)
+
+            index += 1
+        Next
+    End Sub
+
+    Private Sub filterData()
+        Dim filter As New List(Of String)
+
+        '' Filter berdasarkan divisi
+        'If lblRequestFromOther.BackColor = Color.LightCoral Then
+        '    ' Ini bagian permintaan dari divisi lain
+        '    If cboDivisi.SelectedIndex <> 0 Then filter.Add("divisi_asal = " & cboDivisi.SelectedValue)
+        'Else
+        '    ' Ini bagian permintaan dari divisi saya ke divisi lain
+        '    If cboDivisi.SelectedIndex <> 0 Then filter.Add("id_divisi = " & cboDivisi.SelectedValue)
+        'End If
+
+        'If cboStatus.SelectedIndex <> 0 Then filter.Add("status = " & cboStatus.SelectedIndex)
+        Dim copiedDatatable As DataTable = Nothing
+
+        Try
+            copiedDatatable = mainDataTable.Select(String.Join(" AND ", filter)).CopyToDataTable
+        Catch ex As Exception
+
+        End Try
+
+        buildMainData(copiedDatatable)
+    End Sub
+
+    Private Sub dataPulled(ByVal sender As Object, ByVal e As RunWorkerCompletedEventArgs)
+        Dim responds As Dictionary(Of String, DatasetResult) = CType(e.Result, Dictionary(Of String, DatasetResult))
+        Dim respond As DatasetResult = Nothing
+        Dim isError As Boolean = False
+        '  Dim ds As DataSet
+
+        For Each kvp As KeyValuePair(Of String, DatasetResult) In responds
+            respond = kvp.Value
+
+            If Not respond.isSuccess Then
+
+                MessageBox.Show(respond.errorMessage, "Kesalahan pada " & kvp.Key, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Else
+
+                'Dim arrColor() As Color = {SystemColors.Control, Color.LightGray, Color.LightBlue, Color.LightPink}
+                mainDataTable = respond.dataset.Tables("mydata")
+                ' buildMainData(mainDataTable)
+                'If cboDivisi.Items.Count > 0 Then cboDivisi.SelectedIndex = 0
+                'cboStatus.SelectedIndex = 0
+                filterData()
+            End If
+        Next
+    End Sub
+    Private Sub pullData(Optional ByVal isMine As Boolean = False)
+
+        Dim paramWorker As New paramWorker(db)
+        Dim sqlQuery As String '= $"select * from m_task where id_divisi = {activeUserData.getDivisionId}"
+        sqlQuery = $"SELECT u.user_id as user_id, u.fullname as fullname, u.username as username, u.password as password, d.divisi_name as divisi_name, u.user_crt as user_crt, u.user_upd as user_upd, u.dtm_crt as dtm_crt, u.dtm_upd as dtm_upd FROM user u left join divisi d on u.divisi_id = d.divisi_id"
+
+        If isMine Then
+            '  sqlQuery = $"SELECT * FROM m_task t JOIN m_staff s USING (id_staff) JOIN m_divisi d ON s.id_divisi = d.id_divisi WHERE t.id_staff = {activeUserData.getUserId}"
+            sqlQuery = $"SELECT u.user_id as user_id, u.fullname as fullname, u.username as username, u.password as password, d.divisi_name as divisi_name, u.user_crt as user_crt, u.user_upd as user_upd, u.dtm_crt as dtm_crt, u.dtm_upd as dtm_upd FROM user u left join divisi d on u.divisi_id = d.divisi_id"
+        End If
+
+        paramWorker.queries.Add("mydata", sqlQuery)
+
+        Dim bw As New BackgroundWorker
+        AddHandler bw.DoWork, AddressOf processPullData
+        AddHandler bw.RunWorkerCompleted, AddressOf dataPulled
+        bw.RunWorkerAsync(paramWorker)
+
+    End Sub
+
     Private Sub GetData()
         Try
             Condition = " Where 1=1"
@@ -86,6 +182,7 @@ Public Class FormMasterUser
                 End If
             End If
 
+            pullData(True)
 
             Call Koneksi()
             Cari_Data = "SELECT u.user_id as user_id, u.fullname as fullname, u.username as username, u.password as password, d.divisi_name as divisi_name, u.user_crt as user_crt, u.user_upd as user_upd, u.dtm_crt as dtm_crt, u.dtm_upd as dtm_upd FROM user u left join divisi d on u.divisi_id = d.divisi_id" & Condition
