@@ -1,5 +1,11 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports DevExpress.XtraGrid.Views.Grid
+Imports MySql.Data.MySqlClient
 Public Class FormRequest
+    Sub New()
+
+        InitializeComponent()
+    End Sub
+
     Dim Cari_Data, Condition As String
     Dim baris As Integer
     Dim divisiDictionary As New Dictionary(Of Integer, String)()
@@ -294,7 +300,7 @@ Public Class FormRequest
     End Sub
 
     Private Sub ContextMenuStrip1_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip1.Opening
-        If DataGridView1.CurrentRow.Cells(DataGridView1.ColumnCount - 1).Value = 7  Then
+        If DataGridView1.CurrentRow.Cells(DataGridView1.ColumnCount - 1).Value = 7 Then
             KonfirmasiSelesaiToolStripMenuItem.Visible = True
             NotApproveToolStripMenuItem.Visible = True
         Else
@@ -377,6 +383,10 @@ Public Class FormRequest
 
     End Sub
 
+    Private Sub GridControl1_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
     Private Async Function ButtonAdd_ClickAsync(sender As Object, e As EventArgs) As Task Handles ButtonAdd.Click
         'FormAddRequest.LabelId.Text = ""
         'FormAddRequest.ShowDialog()
@@ -386,7 +396,8 @@ Public Class FormRequest
                 GetData()
                 nilai = f.getNilaiAkhir
             End If
-
         End Using
     End Function
+
+
 End Class

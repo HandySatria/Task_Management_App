@@ -4,11 +4,7 @@ Public Class FormRequestDetail
 
     Private id, namaDivisi As String
 
-    Private Sub FormRequestDetail_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
-
-      Dim listData As New List(Of String)()
+    Dim listData As New List(Of String)()
 
     Sub New(Optional ByVal idDivisi As String = "", Optional ByVal listData As List(Of String) = Nothing)
         ' This call is required by the designer.

@@ -4,10 +4,12 @@ Public Class FormLogin
     Sub KondisiTerbuka()
         FormMenu.RequestToolStripMenuItem.Visible = True
         FormMenu.TaskToolStripMenuItem.Visible = True
+        FormMenu.DASHBOARDToolStripMenuItem.Visible = True
         If activeUserData.getIsAdmin Then
             FormMenu.SettingToolStripMenuItem.Visible = True
         End If
         FormMenu.ButtonLogin.Text = "LOGOUT"
+        XtraForm1.DashboardViewer1.Dashboard.Parameters("FromDivisiId").Value = 5
     End Sub
 
     Private Sub ButtonLogin_Click(sender As Object, e As EventArgs) Handles ButtonLogin.Click
@@ -94,4 +96,7 @@ Public Class FormLogin
         End If
     End Sub
 
+    Private Sub TextEditNama_EditValueChanged(sender As Object, e As EventArgs)
+
+    End Sub
 End Class

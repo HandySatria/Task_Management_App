@@ -50,6 +50,7 @@ Partial Class FormRequest
         Me.HapusDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LabelTotal = New System.Windows.Forms.Label()
+        Me.queryBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GroupBox1.SuspendLayout()
         CType(Me.DateEdit2.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -57,6 +58,7 @@ Partial Class FormRequest
         CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
+        CType(Me.queryBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -302,7 +304,7 @@ Partial Class FormRequest
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(1361, 477)
+        Me.DataGridView1.Size = New System.Drawing.Size(1362, 477)
         Me.DataGridView1.TabIndex = 11
         '
         'ContextMenuStrip1
@@ -378,6 +380,7 @@ Partial Class FormRequest
         CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuStrip1.ResumeLayout(False)
+        CType(Me.queryBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -410,4 +413,5 @@ Partial Class FormRequest
     Friend WithEvents ViewToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ComboBoxFromDivisi As ComboBox
     Friend WithEvents Label7 As Label
+    Friend WithEvents queryBindingSource As BindingSource
 End Class
