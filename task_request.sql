@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 01, 2024 at 10:01 AM
+-- Generation Time: Mar 21, 2024 at 02:45 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.4
 
@@ -49,7 +49,8 @@ INSERT INTO `divisi` (`divisi_id`, `divisi_name`, `user_crt`, `user_upd`, `dtm_c
 (6, 'PRODUKSI', 'system', 'system', '2024-02-22 10:16:07', '2024-02-22 10:16:07'),
 (7, 'OUTLET', 'system', 'system', '2024-02-22 10:16:59', '2024-02-22 10:16:59'),
 (8, 'OPERASIONALLL', 'admin01', 'bambang', '0000-00-00 00:00:00', '2024-02-26 09:42:35'),
-(9, 'DIREKSI', 'admin01', 'admin01', '2024-02-23 00:00:00', '2024-02-23 00:00:00');
+(9, 'DIREKSI', 'admin01', 'admin01', '2024-02-23 00:00:00', '2024-02-23 00:00:00'),
+(14, 'HURA HURAA', 'admin01', 'admin01', '2024-03-20 11:55:39', '2024-03-20 11:55:54');
 
 -- --------------------------------------------------------
 
@@ -98,7 +99,22 @@ INSERT INTO `hist_request` (`hist_request_id`, `request_id`, `ref_status_id`, `c
 (21, 20, 1, '', 'admin01', 'admin01', '2024-03-01 10:09:24', '2024-03-01 10:09:24', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
 (22, 21, 1, '', 'admin01', 'admin01', '2024-03-01 15:06:26', '2024-03-01 15:06:26', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
 (23, 22, 1, '', 'admin01', 'admin01', '2024-03-01 15:24:24', '2024-03-01 15:24:24', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
-(24, 23, 1, '', 'satria', 'satria', '2024-03-01 15:30:03', '2024-03-01 15:30:03', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00');
+(24, 23, 1, '', 'satria', 'satria', '2024-03-01 15:30:03', '2024-03-01 15:30:03', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
+(25, 24, 1, '', 'admin01', 'admin01', '2024-03-02 17:26:16', '2024-03-02 17:26:16', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
+(26, 24, 5, 'akan kami buatkan pada tanggal yang tertera', 'bagas', 'bagas', '2024-03-03 18:50:32', '2024-03-03 18:50:32', '2024-03-06', '2024-03-07', '0000-00-00', '0000-00-00'),
+(27, 24, 5, 'akan kami buatkan pada tanggal yang tertera', 'bagas', 'bagas', '2024-03-03 18:50:32', '2024-03-03 18:50:32', '2024-03-06', '2024-03-07', '0000-00-00', '0000-00-00'),
+(28, 25, 1, '', 'admin01', 'admin01', '2024-03-08 16:11:19', '2024-03-08 16:11:19', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
+(29, 11, 6, 'proses\r\n', 'bambang', 'bambang', '2024-03-13 09:22:27', '2024-03-13 09:22:27', '0000-00-00', '0000-00-00', '2024-03-01', '0000-00-00'),
+(30, 11, 7, 'sudah selesai\r\n', 'bambang', 'bambang', '2024-03-13 09:26:19', '2024-03-13 09:26:19', '0000-00-00', '0000-00-00', '0000-00-00', '2024-03-31'),
+(31, 26, 1, '', 'admin01', 'admin01', '2024-03-16 09:12:52', '2024-03-16 09:12:52', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00'),
+(32, 15, 5, 'akan kita kerjakan', 'bambang', 'bambang', '2024-03-16 12:00:30', '2024-03-16 12:00:30', '2024-03-18', '2024-03-19', '0000-00-00', '0000-00-00'),
+(33, 15, 6, 'kita kerjakan hari ini', 'bambang', 'bambang', '2024-03-16 12:01:10', '2024-03-16 12:01:10', '0000-00-00', '0000-00-00', '2024-03-16', '0000-00-00'),
+(34, 15, 7, 'sudah selesai hari ini juga', 'bambang', 'bambang', '2024-03-16 12:01:36', '2024-03-16 12:01:36', '0000-00-00', '0000-00-00', '0000-00-00', '2024-03-16'),
+(35, 8, 5, 'akan kami kerjakan besok yaa', 'bambang', 'bambang', '2024-03-18 11:19:34', '2024-03-18 11:19:34', '2024-03-19', '2024-03-19', '0000-00-00', '0000-00-00'),
+(36, 17, 5, 'kita akan perbaiki besok gaes', 'bambang', 'bambang', '2024-03-18 11:20:37', '2024-03-18 11:20:37', '2024-03-19', '2024-03-19', '0000-00-00', '0000-00-00'),
+(37, 17, 6, 'kita kerjakan hari ini saja ya', 'bambang', 'bambang', '2024-03-18 11:21:57', '2024-03-18 11:21:57', '0000-00-00', '0000-00-00', '2024-03-18', '0000-00-00'),
+(38, 17, 7, 'sudah selesai yaa', 'bambang', 'bambang', '2024-03-18 11:22:34', '2024-03-18 11:22:34', '0000-00-00', '0000-00-00', '0000-00-00', '2024-03-18'),
+(39, 17, 9, 'masih patah bawahnya pak', 'admin01', 'admin01', '2024-03-18 11:25:12', '2024-03-18 11:25:12', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -208,36 +224,40 @@ CREATE TABLE `request` (
   `prioritas` int(11) NOT NULL,
   `request_no` varchar(50) NOT NULL,
   `urutan_ke` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `is_cancel` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `request`
 --
 
-INSERT INTO `request` (`request_id`, `from_divisi`, `to_divisi`, `subject`, `description`, `status`, `user_crt`, `user_upd`, `dtm_crt`, `dtm_upd`, `request_date`, `prioritas`, `request_no`, `urutan_ke`, `user_id`) VALUES
-(1, 5, 4, 'PENGADAAN KIPAS ANGIN DIRUANGAN IT', 'SAAT INI HANYA TERDAPAT 1 KIPAS ANGIN DI RUANG IT, KARENA TERDAPAT 3 ORANG IT MAKA PERLU DI TAMBAHKAN 2 KIPAS ANGIN LAGI AGAR 1 ORANG MEMPUNYAI 1 KIPAS ANGIN ..,NHHKHGG', 8, 'system', 'admin01', '2024-02-26 07:50:01', '2024-02-27 10:57:38', '2024-02-26 07:50:01', 1, '001/02/2024', 1, 1),
-(2, 5, 3, 'TRAINING IT', 'KITA DARI DIVISI IT AKAN MEMBUAT TRAINING BUAT KARYAWAN BARU DIVISI IT, JADI MOHON DISIAPKAN UNTUK GURUNYA HEHEHEeeee', 1, 'admin01', 'admin01', '2024-02-26 16:15:51', '2024-03-01 15:52:00', '0000-00-00 00:00:00', 2, '002/02/2024', 2, 1),
-(3, 2, 5, 'REQUEST APLIKASI GAME', 'KAMI DARI DIVISI HRD BORING NIH, TOLONG BUATKAN APLIKASI SEJENIS MOBILE LEGEND', 4, 'arhan', 'admin01', '2024-02-26 16:19:55', '2024-02-29 08:55:39', '0000-00-00 00:00:00', 3, '003/02/2024', 3, 4),
-(4, 2, 4, 'REQUEST MEJA DAN KURSI BUAT ANAK BARU', 'TERDAPAT KARYAWAN BARU DI DIVISI HRD, MINTA TOLONG DIBERIKAN KURSI DAN MEJA', 4, 'arhan', 'bambang', '2024-02-26 16:39:11', '2024-02-27 11:37:13', '0000-00-00 00:00:00', 2, '004/02/2024', 4, 4),
-(5, 5, 4, 'LAMPU RUSAK', 'Lampu ruangan IT mati, minta tolong di ganti yang baru', 8, 'admin01', 'admin01', '2024-02-27 10:59:48', '2024-02-27 15:00:13', '0000-00-00 00:00:00', 3, '005/02/2024', 5, 1),
-(6, 5, 2, 'MINTA TOLONG CARIKAN IT SUPPORT', 'Dikarenakan akan membuka 15 cabang baru kita butuh IT Support baru agar membantu pemasangan dan maintenence', 1, 'admin01', 'admin01', '2024-02-27 15:02:34', '2024-02-27 17:28:56', '0000-00-00 00:00:00', 1, '006/02/2024', 6, 1),
-(7, 5, 4, 'KERAN KAMAR MANDI BOCOR', 'kerana kamar mandi di ruangan IT mampet karena tersumbal bola plastik, kita minta tolong untuk diperbaiki keranya', 5, 'admin01', 'bambang', '2024-02-27 15:04:40', '2024-02-29 14:56:44', '0000-00-00 00:00:00', 2, '007/02/2024', 7, 1),
-(8, 2, 4, 'KAKI KURSI PATAH', 'Di ruangan HRD kaki kuri yang sebelumnya 4 tinggal 3, akibatnya kursi tidak bisa digunakan. tolong pasangkan kaki kursi agar kembali menjadi 4 kaki', 1, 'arhan', 'arhan', '2024-02-27 15:15:06', '2024-02-27 15:15:06', '0000-00-00 00:00:00', 2, '008/02/2024', 8, 4),
-(9, 5, 4, 'REQUEST GALON BARU', 'di rangan IT galonya bocor, minta tolong diberi galon baru yang buagus hehe', 1, 'admin01', 'admin01', '2024-02-27 16:32:25', '2024-02-27 16:32:25', '0000-00-00 00:00:00', 2, '009/02/2024', 9, 1),
-(10, 5, 4, 'REQUEST PANCI BARU', 'di ruangan IT Pancinya rusak, minta tolong dibelikan panci baru agar bisa buat bikin mie instan', 5, 'admin01', 'bambang', '2024-02-27 16:34:14', '2024-03-01 15:55:57', '0000-00-00 00:00:00', 2, '010/02/2024', 10, 1),
-(11, 5, 4, 'REQUEST GELAS ', 'gelas di ruangan IT bocor pak, ketik minum jadinya tumpah deh', 5, 'admin01', 'bambang', '2024-02-27 16:36:40', '2024-02-28 15:11:07', '0000-00-00 00:00:00', 2, '011/02/2024', 11, 1),
-(12, 5, 2, 'KEBUTUHAN TRAINING OUTLET', 'terdapat beberapa outlet baru yang membutuhkan training agar lebih leluasa saat melayani pelanggan dan penataan display roti', 1, 'admin01', 'admin01', '2024-02-27 16:49:41', '2024-03-01 15:52:11', '0000-00-00 00:00:00', 1, '012/02/2024', 12, 1),
-(13, 5, 4, 'PEMBELIAN KULKAS', 'Kami dari divisi IT kalau siang kehausan dan pingin minum air dingin agar badan tetap sehat dan bugar. tolong dibelikan kulkas dong di ruangan IT.', 8, 'admin01', 'admin01', '2024-02-27 17:51:59', '2024-02-27 18:30:11', '0000-00-00 00:00:00', 2, '013/02/2024', 13, 1),
-(15, 5, 4, 'REQUEST PERBAIKAN PINTU', 'Pintu di ruangan IT patah setengaj, jadi minta tolong untuk dipanggilkan tukang untuk diperbaiki pintunya', 9, 'admin01', 'admin01', '2024-02-28 13:20:07', '2024-02-28 16:51:08', '0000-00-00 00:00:00', 1, '014/02/2024', 14, 1),
-(16, 5, 4, 'CENDELA RUSAK SETENGAH', 'cendela di ruangan IT patah pak, minta tolong untuk dikirim tukang untuk memperbaiki besok ya', 4, 'satria', 'okky', '2024-02-29 15:48:41', '2024-02-29 16:09:01', '0000-00-00 00:00:00', 1, '015/02/2024', 15, 10),
-(17, 5, 4, 'PERBAIKAN GAGANG PINTU', 'GAGANG PINTU DI RUANG IT DI GIGIT RAYAP PAK, MINTA TOLONG UNTUK DIGANTI YANG BARU', 1, 'admin01', 'admin01', '2024-03-01 09:51:36', '2024-03-01 09:51:36', '0000-00-00 00:00:00', 1, 'REQ001/03/2024', 0, 1),
-(18, 5, 6, 'PESANAN BANYAK', 'TERDAPAT PESANAN YANG LUMAYAN BANYAK, BUAT PT INDONESIA MAJU, TOLONG DISELESIKAN BESOK', 1, 'admin01', 'admin01', '2024-03-01 09:54:16', '2024-03-01 09:54:16', '0000-00-00 00:00:00', 1, 'REQ002/03/2024', 0, 1),
-(19, 5, 3, 'PELATIHAN KODING', 'minta tolong dibuatkan pelatihan koding untuk programmer IT yang baru', 1, 'admin01', 'admin01', '2024-03-01 10:05:58', '2024-03-01 10:05:58', '0000-00-00 00:00:00', 2, 'REQ003/03/2024', 0, 1),
-(20, 5, 6, 'MILKBUN HABIS', 'karena Milkbun laris manis di outlet baratajaya, minta tolong untuk dibuatkan lebih banyak lagi agar stok terpenuhi', 1, 'admin01', 'admin01', '2024-03-01 10:09:24', '2024-03-01 10:09:24', '0000-00-00 00:00:00', 2, 'REQ004/03/2024', 0, 1),
-(21, 5, 6, 'BOMBOLONI HABIS', 'tolong dibuatkan extra roti bomboloni agar stok mencukupi', 1, 'admin01', 'admin01', '2024-03-01 15:06:26', '2024-03-01 15:06:26', '0000-00-00 00:00:00', 2, 'REQ005/03/2024', 0, 1),
-(22, 5, 6, 'BUTUH KUE ULANG TAHUN', 'minta tolong dibuatkan kue ulangtahun untuk para tukang yang sedang ulang tahun\r\n', 1, 'admin01', 'admin01', '2024-03-01 15:24:24', '2024-03-01 15:24:24', '0000-00-00 00:00:00', 1, 'REQ006/03/2024', 0, 1),
-(23, 5, 6, 'ROTI BAKAR HABIS', 'minta tolong dibuatkan roti bakar dengan jumlah yang lebih banyak agar stok tidak habis', 1, 'satria', 'satria', '2024-03-01 15:30:03', '2024-03-01 15:30:34', '0000-00-00 00:00:00', 2, 'REQ007/03/2024', 0, 10);
+INSERT INTO `request` (`request_id`, `from_divisi`, `to_divisi`, `subject`, `description`, `status`, `user_crt`, `user_upd`, `dtm_crt`, `dtm_upd`, `request_date`, `prioritas`, `request_no`, `urutan_ke`, `user_id`, `is_cancel`) VALUES
+(1, 5, 4, 'PENGADAAN KIPAS ANGIN DIRUANGAN IT', 'SAAT INI HANYA TERDAPAT 1 KIPAS ANGIN DI RUANG IT, KARENA TERDAPAT 3 ORANG IT MAKA PERLU DI TAMBAHKAN 2 KIPAS ANGIN LAGI AGAR 1 ORANG MEMPUNYAI 1 KIPAS ANGIN ..,NHHKHGG', 8, 'system', 'admin01', '2024-02-26 07:50:01', '2024-02-27 10:57:38', '2024-02-26 07:50:01', 1, '001/02/2024', 1, 1, 1),
+(2, 5, 3, 'TRAINING IT', 'KITA DARI DIVISI IT AKAN MEMBUAT TRAINING BUAT KARYAWAN BARU DIVISI IT, JADI MOHON DISIAPKAN UNTUK GURUNYA HEHEHEeeee', 1, 'admin01', 'admin01', '2024-02-26 16:15:51', '2024-03-04 08:38:02', '0000-00-00 00:00:00', 2, '002/02/2024', 2, 1, 0),
+(3, 2, 5, 'REQUEST APLIKASI GAME', 'KAMI DARI DIVISI HRD BORING NIH, TOLONG BUATKAN APLIKASI SEJENIS MOBILE LEGEND', 4, 'arhan', 'admin01', '2024-02-26 16:19:55', '2024-02-29 08:55:39', '0000-00-00 00:00:00', 3, '003/02/2024', 3, 4, 0),
+(4, 2, 4, 'REQUEST MEJA DAN KURSI BUAT ANAK BARU', 'TERDAPAT KARYAWAN BARU DI DIVISI HRD, MINTA TOLONG DIBERIKAN KURSI DAN MEJA', 4, 'arhan', 'bambang', '2024-02-26 16:39:11', '2024-02-27 11:37:13', '0000-00-00 00:00:00', 2, '004/02/2024', 4, 4, 0),
+(5, 5, 4, 'LAMPU RUSAK', 'Lampu ruangan IT mati, minta tolong di ganti yang baru', 8, 'admin01', 'admin01', '2024-02-27 10:59:48', '2024-02-27 15:00:13', '0000-00-00 00:00:00', 3, '005/02/2024', 5, 1, 0),
+(6, 5, 2, 'MINTA TOLONG CARIKAN IT SUPPORT', 'Dikarenakan akan membuka 15 cabang baru kita butuh IT Support baru agar membantu pemasangan dan maintenence', 1, 'admin01', 'admin01', '2024-02-27 15:02:34', '2024-02-27 17:28:56', '0000-00-00 00:00:00', 1, '006/02/2024', 6, 1, 0),
+(7, 5, 4, 'KERAN KAMAR MANDI BOCOR', 'kerana kamar mandi di ruangan IT mampet karena tersumbal bola plastik, kita minta tolong untuk diperbaiki keranya', 5, 'admin01', 'bambang', '2024-02-27 15:04:40', '2024-02-29 14:56:44', '0000-00-00 00:00:00', 2, '007/02/2024', 7, 1, 0),
+(8, 2, 4, 'KAKI KURSI PATAH SEBELAH', 'Di ruangan HRD kaki kuri yang sebelumnya 4 tinggal 3, akibatnya kursi tidak bisa digunakan. tolong pasangkan kaki kursi agar kembali menjadi 4 kaki', 5, 'arhan', 'bambang', '2024-02-27 15:15:06', '2024-03-18 11:19:34', '0000-00-00 00:00:00', 2, '008/02/2024', 8, 4, 0),
+(9, 5, 4, 'REQUEST GALON BARU', 'di rangan IT galonya bocor, minta tolong diberi galon baru yang buagus hehe', 1, 'admin01', 'admin01', '2024-02-27 16:32:25', '2024-02-27 16:32:25', '0000-00-00 00:00:00', 2, '009/02/2024', 9, 1, 0),
+(10, 5, 4, 'REQUEST PANCI BARU', 'di ruangan IT Pancinya rusak, minta tolong dibelikan panci baru agar bisa buat bikin mie instan', 5, 'admin01', 'bambang', '2024-02-27 16:34:14', '2024-03-01 15:55:57', '0000-00-00 00:00:00', 2, '010/02/2024', 10, 1, 0),
+(11, 5, 4, 'REQUEST GELAS ', 'gelas di ruangan IT bocor pak, ketik minum jadinya tumpah deh', 8, 'admin01', 'admin01', '2024-02-27 16:36:40', '2024-03-18 11:14:03', '0000-00-00 00:00:00', 2, '011/02/2024', 11, 1, 0),
+(12, 5, 2, 'KEBUTUHAN TRAINING OUTLET CABANG BARU', 'terdapat beberapa outlet baru yang membutuhkan training agar lebih leluasa saat melayani pelanggan dan penataan display roti', 1, 'admin01', 'admin01', '2024-02-27 16:49:41', '2024-03-04 09:18:32', '0000-00-00 00:00:00', 1, '012/02/2024', 12, 1, 0),
+(13, 5, 4, 'PEMBELIAN KULKAS', 'Kami dari divisi IT kalau siang kehausan dan pingin minum air dingin agar badan tetap sehat dan bugar. tolong dibelikan kulkas dong di ruangan IT.', 8, 'admin01', 'admin01', '2024-02-27 17:51:59', '2024-02-27 18:30:11', '0000-00-00 00:00:00', 2, '013/02/2024', 13, 1, 0),
+(15, 5, 4, 'REQUEST PERBAIKAN PINTU', 'Pintu di ruangan IT patah setengaj, jadi minta tolong untuk dipanggilkan tukang untuk diperbaiki pintunya', 8, 'admin01', 'admin01', '2024-02-28 13:20:07', '2024-03-16 12:02:17', '0000-00-00 00:00:00', 1, '014/02/2024', 14, 1, 0),
+(16, 5, 4, 'CENDELA RUSAK SETENGAH', 'cendela di ruangan IT patah pak, minta tolong untuk dikirim tukang untuk memperbaiki besok ya', 4, 'satria', 'okky', '2024-02-29 15:48:41', '2024-02-29 16:09:01', '0000-00-00 00:00:00', 1, '015/02/2024', 15, 10, 0),
+(17, 5, 4, 'PERBAIKAN GAGANG PINTU', 'GAGANG PINTU DI RUANG IT DI GIGIT RAYAP PAK, MINTA TOLONG UNTUK DIGANTI YANG BARU', 9, 'admin01', 'admin01', '2024-03-01 09:51:36', '2024-03-18 11:25:12', '0000-00-00 00:00:00', 1, 'REQ001/03/2024', 0, 1, 0),
+(18, 5, 6, 'PESANAN BANYAK', 'TERDAPAT PESANAN YANG LUMAYAN BANYAK, BUAT PT INDONESIA MAJU, TOLONG DISELESIKAN BESOK', 1, 'admin01', 'admin01', '2024-03-01 09:54:16', '2024-03-04 10:48:22', '0000-00-00 00:00:00', 1, 'REQ002/03/2024', 0, 1, 0),
+(19, 5, 3, 'PELATIHAN KODING', 'minta tolong dibuatkan pelatihan koding untuk programmer IT yang baru....', 1, 'admin01', 'admin01', '2024-03-01 10:05:58', '2024-03-16 09:02:09', '0000-00-00 00:00:00', 2, 'REQ003/03/2024', 0, 1, 0),
+(20, 5, 6, 'MILKBUN HABIS', 'karena Milkbun laris manis di outlet baratajaya, minta tolong untuk dibuatkan lebih banyak lagi agar stok terpenuhi', 1, 'admin01', 'admin01', '2024-03-01 10:09:24', '2024-03-01 10:09:24', '0000-00-00 00:00:00', 2, 'REQ004/03/2024', 0, 1, 0),
+(21, 5, 6, 'BOMBOLONI HABIS', 'tolong dibuatkan extra roti bomboloni agar stok mencukupi', 1, 'admin01', 'admin01', '2024-03-01 15:06:26', '2024-03-01 15:06:26', '0000-00-00 00:00:00', 2, 'REQ005/03/2024', 0, 1, 0),
+(22, 5, 6, 'BUTUH KUE ULANG TAHUN', 'minta tolong dibuatkan kue ulangtahun untuk para tukang yang sedang ulang tahun\r\n', 1, 'admin01', 'admin01', '2024-03-01 15:24:24', '2024-03-01 15:24:24', '0000-00-00 00:00:00', 1, 'REQ006/03/2024', 0, 1, 0),
+(23, 5, 6, 'ROTI BAKAR HABIS', 'minta tolong dibuatkan roti bakar dengan jumlah yang lebih banyak agar stok tidak habis', 1, 'satria', 'admin01', '2024-03-01 15:30:03', '2024-03-20 14:17:14', '0000-00-00 00:00:00', 2, 'REQ007/03/2024', 0, 10, 1),
+(24, 5, 6, 'ROTI BAKAR', 'minta dibuatkan menu baru roti bakar karena peminatnya banyak', 5, 'admin01', 'bagas', '2024-03-02 17:26:16', '2024-03-03 18:50:32', '0000-00-00 00:00:00', 1, 'REQ008/03/2024', 0, 1, 0),
+(25, 5, 6, 'REQUEST KUE NASTAR', 'minta tolong dibuatkan kue nastar karena laku pas waktu indul fitri', 1, 'admin01', 'admin01', '2024-03-08 16:11:19', '2024-03-08 16:11:19', '0000-00-00 00:00:00', 2, 'REQ009/03/2024', 0, 1, 0),
+(26, 5, 6, 'OUTKET TERBANG', 'Dikarenakan outlet barata terbang tertiup angin untuk sementara mengungsi ke outlet nias', 1, 'admin01', 'admin01', '2024-03-16 09:12:52', '2024-03-20 14:23:07', '0000-00-00 00:00:00', 1, 'REQ010/03/2024', 0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -255,7 +275,7 @@ CREATE TABLE `user` (
   `user_upd` varchar(100) NOT NULL,
   `dtm_crt` datetime NOT NULL,
   `dtm_upd` datetime NOT NULL,
-  `chat_id_telegram` int(11) NOT NULL,
+  `chat_id_telegram` bigint(11) NOT NULL,
   `is_admin` tinyint(1) NOT NULL,
   `id_cabang` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -268,13 +288,13 @@ INSERT INTO `user` (`user_id`, `username`, `password`, `fullname`, `divisi_id`, 
 (1, 'admin01', 'Wzmb8+GoyAQ=', 'HANDY SATRIA', 5, 'system', 'admin01', '2024-02-22 10:06:12', '2024-03-01 13:01:18', 1486234824, 1, 1),
 (2, 'bagas', 'LT3UArJ8LQQ=', 'BAGAS KAHFAA', 6, 'admin01', 'admin01', '2024-02-26 09:24:34', '2024-02-26 10:28:51', 1486234824, 0, 2),
 (3, 'maulana', 'W34DDTl2hBI=', 'EGY MAULANA', 1, 'admin01', 'admin01', '2024-02-26 09:33:42', '2024-02-26 09:33:42', 1486234824, 0, 3),
-(4, 'arhan', 'UrlBG1zKFRE=', 'ARHAN PRATAMA', 2, 'admin01', 'admin01', '2024-02-26 09:34:14', '2024-02-26 09:34:14', 1560150396, 0, 4),
+(4, 'arhan', 'UrlBG1zKFRE=', 'ARHAN PRATAMA', 2, 'admin01', 'admin01', '2024-02-26 09:34:14', '2024-02-26 09:34:14', 6035045658, 0, 4),
 (5, 'bambang', 'GJCH3OtiqDs=', 'BAMBANG PAMUNGKAS', 4, 'admin01', 'admin01', '2024-02-26 09:34:50', '2024-02-26 10:29:54', 1486234824, 0, 5),
 (7, 'luhut', 'sY6gPsscmA8=', 'LUHUT BINSAR', 9, 'admin01', 'admin01', '2024-02-26 10:35:24', '2024-02-26 10:35:52', 1486234824, 1, 6),
-(9, 'maman', 'sF1jXMY4oAM=', 'MAMAN ABDURAHMAN', 7, 'admin01', 'maman', '2024-02-26 10:36:37', '2024-03-01 13:08:19', 1486234824, 0, 21),
-(10, 'satria', '4wiVQZZOT20=', 'SATRIA', 5, 'admin01', 'admin01', '2024-02-29 15:45:14', '2024-03-01 15:53:42', 1486234824, 0, 8),
+(10, 'satria', '4wiVQZZOT20=', 'SATRIA', 5, 'admin01', 'admin01', '2024-02-29 15:45:14', '2024-03-01 15:53:42', 2147483647, 0, 8),
 (11, 'okky', 'yYXzE2ciDCM=', 'OKKY CANDRA', 4, 'admin01', 'admin01', '2024-02-29 15:45:54', '2024-02-29 15:45:54', 592651364, 0, 16),
-(12, 'gonzales', '34X6yUE+oW764+9kWtll1w==', 'GONZALES', 3, 'admin01', 'admin01', '2024-03-01 11:35:30', '2024-03-01 11:35:30', 1486234824, 1, 6);
+(12, 'gonzales', '34X6yUE+oW764+9kWtll1w==', 'GONZALES', 3, 'admin01', 'admin01', '2024-03-01 11:35:30', '2024-03-01 11:35:30', 1486234824, 0, 6),
+(15, 'ronaldo', 'CQctnu45JsA=', 'RONALDO', 1, 'admin01', 'admin01', '2024-03-20 11:56:26', '2024-03-20 11:56:46', 123, 0, 25);
 
 --
 -- Indexes for dumped tables
@@ -328,13 +348,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `divisi`
 --
 ALTER TABLE `divisi`
-  MODIFY `divisi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `divisi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `hist_request`
 --
 ALTER TABLE `hist_request`
-  MODIFY `hist_request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `hist_request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `ref_prioritas`
@@ -352,13 +372,13 @@ ALTER TABLE `ref_status`
 -- AUTO_INCREMENT for table `request`
 --
 ALTER TABLE `request`
-  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
