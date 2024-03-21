@@ -73,7 +73,4 @@ Public Class FormAddDivisi
         Me.Close()
     End Sub
 
-    Private Sub FormAddDivisi_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 End Class

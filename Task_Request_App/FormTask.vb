@@ -264,7 +264,6 @@ Public Class FormTask
         Else
             DoneToolStripMenuItem.Visible = False
         End If
-
     End Sub
 
     Private Async Sub TidakSetujuToolStripMenuItem_ClickAsync(sender As Object, e As EventArgs) Handles TidakSetujuToolStripMenuItem.Click

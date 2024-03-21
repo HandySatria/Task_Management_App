@@ -15,6 +15,7 @@
         ButtonLogin.Text = "LOGIN"
         RequestToolStripMenuItem.Visible = False
         TaskToolStripMenuItem.Visible = False
+        DASHBOARDToolStripMenuItem.Visible = False
         SettingToolStripMenuItem.Visible = False
     End Sub
     Private Sub ButtonLogin_Click(sender As Object, e As EventArgs) Handles ButtonLogin.Click
@@ -40,6 +41,7 @@
         SettingToolStripMenuItem.BackColor = Color.LightPink
         MASTERUSERToolStripMenuItem.BackColor = Color.LightPink
         MASTERDIVISIToolStripMenuItem.BackColor = Color.LightPink
+        DASHBOARDToolStripMenuItem.BackColor = Color.LightPink
     End Sub
 
     Private Sub FormMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -74,4 +76,13 @@
         SettingToolStripMenuItem.BackColor = Color.GhostWhite
     End Sub
 
+    Private Sub SettingToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub DASHBOARDToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DASHBOARDToolStripMenuItem.Click
+        DisableButtonColor()
+        switchForm(XtraForm1)
+        DASHBOARDToolStripMenuItem.BackColor = Color.GhostWhite
+    End Sub
 End Class

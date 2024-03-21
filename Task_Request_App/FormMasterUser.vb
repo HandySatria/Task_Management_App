@@ -86,9 +86,10 @@ Public Class FormMasterUser
                 End If
             End If
 
-
             Call Koneksi()
-            Cari_Data = "SELECT u.user_id as user_id, u.fullname as fullname, u.username as username, u.password as password, d.divisi_name as divisi_name, u.user_crt as user_crt, u.user_upd as user_upd, u.dtm_crt as dtm_crt, u.dtm_upd as dtm_upd FROM user u left join divisi d on u.divisi_id = d.divisi_id" & Condition
+            Cari_Data = "SELECT u.user_id as user_id, u.fullname as fullname, u.username as username, u.password as password, d.divisi_name as divisi_name, u.user_crt as user_crt, u.user_upd as user_upd, u.dtm_crt as dtm_crt, u.dtm_upd as dtm_upd 
+                         FROM user u 
+                           left join divisi d on u.divisi_id = d.divisi_id" & Condition
             Cmd = New MySqlCommand(Cari_Data, Conn)
             Rd = Cmd.ExecuteReader
             DataGridView1.Columns.Clear()
